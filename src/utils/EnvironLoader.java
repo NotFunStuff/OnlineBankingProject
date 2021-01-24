@@ -16,7 +16,7 @@ public class EnvironLoader {
         System.out.println(env.get("password"));
     */
 
-    final HashMap envDict = new HashMap<String, String>();
+    final static HashMap envDict = new HashMap<String, String>();
 
     public EnvironLoader() {
         try {
@@ -29,9 +29,9 @@ public class EnvironLoader {
                         String key = line.substring(0, eqlInd);
                         key = key.toLowerCase().trim();
                         String value = line.substring(eqlInd+1, line.length());
-                        value = value.toLowerCase().trim();
+                        value = value.trim();
 
-                        this.envDict.put(key, value);
+                        EnvironLoader.envDict.put(key, value);
                     }
                 }
             }
@@ -40,8 +40,8 @@ public class EnvironLoader {
         }
     }
 
-    public String get(String key) {
-        return (String) this.envDict.get(key.toLowerCase().trim());
+    public static String get(String key) {
+        return (String) EnvironLoader.envDict.get(key.toLowerCase().trim());
     }
 
 }
