@@ -3,3 +3,4 @@ nbproject/*
 build.xml
 .idea/*
 /build/
+src/assets/env.txt
