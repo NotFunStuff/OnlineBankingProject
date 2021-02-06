@@ -23,12 +23,52 @@ public class Business extends Account {
 	private String location;
 	
 	@Column
-	private String Industry;
+	private String industry;
 
 	
 	@OneToMany(mappedBy = "business")
 	@JsonIgnoreProperties(value = "business")
 	private List<Service> services;
+
+
+	public String getBusinessName() {
+		return businessName;
+	}
+
+
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+	public String getIndustry() {
+		return industry;
+	}
+
+
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+
+
+	public List<Service> getServices() {
+		return services;
+	}
+
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
 	
 	
 }

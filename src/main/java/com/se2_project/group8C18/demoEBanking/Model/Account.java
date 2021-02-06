@@ -15,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -31,13 +32,14 @@ public class Account {
 	private int accountId;
 	
 	@Column(nullable = false)
+	@Size(min = 2)
 	private String name;
 	
 	@Column
 	private Date dateOfBirth;
 	
 	
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	@CreationTimestamp
 	private LocalDateTime timeCreated;
 	
@@ -63,4 +65,78 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	@JsonIgnoreProperties(value = "account")
 	private List<Transaction> transactions;
+
+	public int getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public LocalDateTime getTimeCreated() {
+		return timeCreated;
+	}
+
+	public void setTimeCreated(LocalDateTime timeCreated) {
+		this.timeCreated = timeCreated;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	public List<Gift> getToGifts() {
+		return toGifts;
+	}
+
+	public void setToGifts(List<Gift> toGifts) {
+		this.toGifts = toGifts;
+	}
+
+	public List<PaymentMethod> getPaymentMethods() {
+		return paymentMethods;
+	}
+
+	public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+	
+	
 }

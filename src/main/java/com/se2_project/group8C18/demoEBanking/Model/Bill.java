@@ -34,10 +34,7 @@ public class Bill extends Transaction {
 //	private Account account;
 	
 	
-	@Column
-	private int amount;
-	
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	@CreationTimestamp
 	private LocalDateTime time_created;
 	
@@ -46,5 +43,29 @@ public class Bill extends Transaction {
 	@JoinColumn(name = "serviceId", foreignKey = @ForeignKey(name = "fk_service_bill")) 
 	@JsonIgnoreProperties(value = "bills")
 	private Service service;
+
+
+
+
+	public LocalDateTime getTime_created() {
+		return time_created;
+	}
+
+
+	public void setTime_created(LocalDateTime time_created) {
+		this.time_created = time_created;
+	}
+
+
+	public Service getService() {
+		return service;
+	}
+
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+	
+	
 	
 }

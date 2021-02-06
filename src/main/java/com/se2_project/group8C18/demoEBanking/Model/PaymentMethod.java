@@ -34,12 +34,56 @@ public class PaymentMethod {
 	@JsonIgnoreProperties(value = "paymentMethods")
 	private Account account;
 	
-	@Column(insertable = false, updatable = false)
+	@Column( updatable = false)
 	@CreationTimestamp
 	private LocalDateTime time_created;
 	
 	@Column(nullable = false)
 	private boolean verified;
+
+	@OneToOne(mappedBy = "paymentMethod")
+	@JsonIgnoreProperties(value = "paymentMethod")
+	private Transaction transaction;
+	
+	public int getPaymentMethodId() {
+		return paymentMethodId;
+	}
+
+	public void setPaymentMethodId(int paymentMethodId) {
+		this.paymentMethodId = paymentMethodId;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public LocalDateTime getTime_created() {
+		return time_created;
+	}
+
+	public void setTime_created(LocalDateTime time_created) {
+		this.time_created = time_created;
+	}
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
+	public Transaction getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}
 	
 	
 }

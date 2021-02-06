@@ -20,4 +20,36 @@ public class NationalBank extends PaymentMethod{
 	
 	@Column(nullable = false)
 	private String nameOnCard;
+
+
+	public String getBankName() {
+		return bankName;
+	}
+
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+
+
+	public String getBankLogo() {
+		return bankLogo;
+	}
+
+
+	public void setBankLogo(String bankLogo) {
+		this.bankLogo = bankLogo;
+	}
+
+
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+
+
+	public void setNameOnCard(String nameOnCard) {
+		this.nameOnCard = nameOnCard;
+	}
+	
+	
 }

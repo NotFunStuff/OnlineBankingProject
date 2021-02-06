@@ -13,4 +13,14 @@ public class Normal extends Account {
 	
 	@Column
 	private String identityCard;
+
+	public String getIdentityCard() {
+		return identityCard;
+	}
+
+	public void setIdentityCard(String identityCard) {
+		this.identityCard = identityCard;
+	}
+	
+	
 }

@@ -32,6 +32,14 @@ public class Gift extends Transaction{
 	@JoinColumn( name = "toAccountId" , foreignKey = @ForeignKey(name = "fk_toAccount_gift"))
 	@JsonIgnoreProperties(value = {"fromGifts", "toGifts"})
 	private Account toAccount;
+
+	public Account getToAccount() {
+		return toAccount;
+	}
+
+	public void setToAccount(Account toAccount) {
+		this.toAccount = toAccount;
+	}
 	
 	
 }
