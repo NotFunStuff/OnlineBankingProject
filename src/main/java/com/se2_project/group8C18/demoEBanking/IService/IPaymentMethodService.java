@@ -11,5 +11,6 @@ public interface IPaymentMethodService {
 	public String addPaymentMethod(String paymentMethod);
 	public String deletePaymentMethodById(int paymentMethodId);
 	public String editPaymentMethod(String paymentMethod);
+	public List<PaymentMethod> getPaymentMethodsByAccount(int accountId);
 	
 }

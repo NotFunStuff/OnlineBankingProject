@@ -12,4 +12,5 @@ public interface IBillService {
 	public String addBill(String bill);
 	public String deleteBillById(int billId);
 	public String editBill(String bill);
+	public List<Bill> getBillsByAccount(int accountId);
 }

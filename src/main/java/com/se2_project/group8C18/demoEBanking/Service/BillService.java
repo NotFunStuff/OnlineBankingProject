@@ -1,6 +1,7 @@
 package com.se2_project.group8C18.demoEBanking.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import com.se2_project.group8C18.demoEBanking.Helper.CheckValidate;
 import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.IBillService;
+import com.se2_project.group8C18.demoEBanking.Model.Account;
 import com.se2_project.group8C18.demoEBanking.Model.Bill;
 import com.se2_project.group8C18.demoEBanking.Repository.BillRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.ServiceRepository;
@@ -28,6 +30,9 @@ public class BillService implements IBillService {
 	@Autowired
 	ServiceRepository serviceRepository;
 
+	@Autowired
+	AccountService accountService;
+	
 	@Autowired
 	ErrorType errorType;
 
@@ -100,6 +105,22 @@ public class BillService implements IBillService {
 			return "bill " + errorType.isValidated(bil.getTransactionId());
 		}
 		return "bill " + errorType.isNotExisted(bil.getTransactionId() + "");
+	}
+
+	@Override
+	public List<Bill> getBillsByAccount(int accountId) {
+		List<Bill> bills = new ArrayList<Bill>();
+		Account acc = accountService.findById(accountId);
+		if(acc != null)
+		{
+			acc.getTransactions().forEach(x -> {
+				if(billRepository.existsById(x.getTransactionId()))
+				{
+					bills.add(getBillById(x.getTransactionId()));
+				}
+			});
+		}
+		return bills;
 	}
 
 }

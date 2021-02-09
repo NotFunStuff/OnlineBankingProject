@@ -34,7 +34,9 @@ public class NationalBankService implements INationalService {
 
 	@Override
 	public NationalBank getNationalBankById(int nationalBankId) {
-		return nationalBankRepository.findById(nationalBankId).get();
+		if (nationalBankRepository.existsById(nationalBankId))
+			return nationalBankRepository.findById(nationalBankId).get();
+		return null;
 	}
 
 	@Override
@@ -75,10 +77,13 @@ public class NationalBankService implements INationalService {
 		if (nationalBankRepository.existsById(na.getPaymentMethodId())) {
 			if (checkValidate.getOk(na)) {
 				NationalBank fixNa = getNationalBankById(na.getPaymentMethodId());
-				if(na.getBankLogo() != null ) fixNa.setBankLogo(na.getBankLogo());
-				if(na.getBankName() != null ) fixNa.setBankName(na.getBankName());
-				if(na.getNameOnCard() != null) fixNa.setNameOnCard(na.getNameOnCard());
-				
+				if (na.getBankLogo() != null)
+					fixNa.setBankLogo(na.getBankLogo());
+				if (na.getBankName() != null)
+					fixNa.setBankName(na.getBankName());
+				if (na.getNameOnCard() != null)
+					fixNa.setNameOnCard(na.getNameOnCard());
+
 				paymentMethodService.editPaymentMethod(nationalBank);
 				nationalBankRepository.save(fixNa);
 				return errorType.getSuccesful();

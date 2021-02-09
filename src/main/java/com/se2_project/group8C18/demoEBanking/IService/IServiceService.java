@@ -10,4 +10,5 @@ public interface IServiceService {
 	public String addService(String service);
 	public String deleteServiceById(int serviceId);
 	public String editService(String service);
+	public List<Service> getServicesByBusiness(int businessId);
 }

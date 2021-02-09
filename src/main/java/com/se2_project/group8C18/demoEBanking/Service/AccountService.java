@@ -161,5 +161,16 @@ public class AccountService implements IAccountService {
 		}
 		return errorType.isNotExisted(acc.getName());
 	}
+
+	@Override
+	public boolean isUserNameExisted(String accountName) {
+		return accountRepository.getAccountByAccountName(accountName) != null;
+	}
+
+	@Override
+	public boolean isAccountExisted(String accountName, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

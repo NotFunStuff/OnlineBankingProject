@@ -1,5 +1,6 @@
 package com.se2_project.group8C18.demoEBanking.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.se2_project.group8C18.demoEBanking.Helper.CheckValidate;
 import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.IServiceService;
+import com.se2_project.group8C18.demoEBanking.Model.Business;
 import com.se2_project.group8C18.demoEBanking.Model.Service;
 import com.se2_project.group8C18.demoEBanking.Repository.BusinessRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.ServiceRepository;
@@ -22,6 +24,9 @@ public class ServiceService implements IServiceService {
 	@Autowired
 	BusinessRepository businessRepository;
 
+	@Autowired
+	BusinessService businessService;
+	
 	@Autowired
 	BillService billService;
 
@@ -90,13 +95,26 @@ public class ServiceService implements IServiceService {
 				if (ser.getServiceName() != null)
 					fixSer.setServiceName(ser.getServiceName());
 
-				serviceRepository.save(ser);
+				serviceRepository.save(fixSer);
 				return errorType.getSuccesful();
 			}
 			return errorType.isValidated(ser.getServiceName());
 		}
 
 		return errorType.isExisted(ser.getServiceName());
+	}
+
+	@Override
+	public List<Service> getServicesByBusiness(int businessId) {
+		List<Service> services = new ArrayList<Service>();
+		Business bus = businessService.getBusinessAccountById(businessId);
+		if(bus != null)
+		{
+			bus.getServices().forEach(x -> {
+				services.add(x);
+			});
+		}
+		return services;
 	}
 
 }

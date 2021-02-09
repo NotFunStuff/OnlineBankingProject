@@ -1,5 +1,6 @@
 package com.se2_project.group8C18.demoEBanking.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.se2_project.group8C18.demoEBanking.Helper.CheckValidate;
 import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.IGiftService;
+import com.se2_project.group8C18.demoEBanking.Model.Account;
 import com.se2_project.group8C18.demoEBanking.Model.Gift;
 import com.se2_project.group8C18.demoEBanking.Repository.AccountRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.GiftRepository;
@@ -27,6 +29,9 @@ public class GiftService implements IGiftService {
 	@Autowired
 	TransactionService transactionService;
 
+	@Autowired
+	AccountService accountService;
+	
 	@Autowired
 	TransactionRepository transactionRepository;
 
@@ -97,4 +102,22 @@ public class GiftService implements IGiftService {
 		}
 		return "Gift " + errorType.isNotExisted(gi.getTransactionId() + "");
 	}
+
+	@Override
+	public List<Gift> getGiftsByAccount(int accountId) {
+		Account acc = accountService.findById(accountId);
+		List<Gift> gifts = new ArrayList<Gift>();
+		if(acc != null)
+		{
+			acc.getTransactions().forEach(x -> {
+				if(giftRepository.existsById(x.getTransactionId()))
+				{
+					gifts.add(getGiftById(x.getTransactionId()));
+				}
+			});
+		}
+		return gifts;
+	}
+	
+	
 }

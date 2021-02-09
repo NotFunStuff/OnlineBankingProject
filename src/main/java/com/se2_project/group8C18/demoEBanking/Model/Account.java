@@ -39,6 +39,10 @@ public class Account {
 	private Date dateOfBirth;
 	
 	
+	@Column(nullable = false)
+	@Size(min = 8)
+	private String password;
+	
 	@Column(updatable = false)
 	@CreationTimestamp
 	private LocalDateTime timeCreated;
@@ -137,6 +141,15 @@ public class Account {
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 	
 }

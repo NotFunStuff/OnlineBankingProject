@@ -10,4 +10,5 @@ public interface ITransactionService {
 	public String addTransaction(String transaction);
 	public String deleteTransactionById(int transactionId);
 	public String editTransaction(String transaction);
+	public List<Transaction> getTransactionsByAccount(int accountId);
 }

@@ -1,5 +1,6 @@
 package com.se2_project.group8C18.demoEBanking.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.se2_project.group8C18.demoEBanking.Helper.CheckValidate;
 import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.ITransactionService;
+import com.se2_project.group8C18.demoEBanking.Model.Account;
 import com.se2_project.group8C18.demoEBanking.Model.Transaction;
 import com.se2_project.group8C18.demoEBanking.Repository.AccountRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.BillRepository;
@@ -35,6 +37,9 @@ public class TransactionService implements ITransactionService {
 	@Autowired
 	GiftRepository giftRepository;
 
+	@Autowired
+	AccountService accountService;
+	
 	@Autowired
 	ErrorType errorType;
 
@@ -106,4 +111,18 @@ public class TransactionService implements ITransactionService {
 		return "Transaction " + errorType.isNotExisted(tran.getTransactionId());
 	}
 
+	@Override
+	public List<Transaction> getTransactionsByAccount(int accountId) {
+		Account acc = accountService.findById(accountId);
+		List<Transaction> trans = new ArrayList<Transaction>();
+		
+		if(acc != null)
+		{
+			acc.getTransactions().forEach(x -> trans.add(x));
+		}
+		return trans;
+	}
+	
+	
+	
 }

@@ -18,6 +18,9 @@ public interface IAccountService {
 	
 	public String editAccount(String account);
 	
+	public boolean isUserNameExisted(String accountName);
+	
+	public boolean isAccountExisted(String accountName, String password);
 	
 	
 }

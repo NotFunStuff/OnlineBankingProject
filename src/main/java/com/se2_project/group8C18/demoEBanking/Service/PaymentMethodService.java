@@ -1,6 +1,7 @@
 package com.se2_project.group8C18.demoEBanking.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import com.se2_project.group8C18.demoEBanking.Helper.CheckValidate;
 import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.IPaymentMethodService;
+import com.se2_project.group8C18.demoEBanking.Model.Account;
 import com.se2_project.group8C18.demoEBanking.Model.PaymentMethod;
 import com.se2_project.group8C18.demoEBanking.Repository.AccountRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.InternationalBankRepository;
@@ -33,6 +35,9 @@ public class PaymentMethodService implements IPaymentMethodService {
 	@Autowired
 	TransactionService transactionService;
 
+	@Autowired
+	AccountService accountService;
+	
 	@Autowired
 	NationalBankRepository nationalBankRepository;
 
@@ -111,4 +116,17 @@ public class PaymentMethodService implements IPaymentMethodService {
 		return errorType.isNotExisted(pay.getPaymentMethodId());
 	}
 
+	@Override
+	public List<PaymentMethod> getPaymentMethodsByAccount(int accountId) {
+		Account acc =  accountService.findById(accountId);
+		List<PaymentMethod> pays = new ArrayList<PaymentMethod>();
+		if(acc!= null)
+		{
+			acc.getPaymentMethods().forEach(x -> pays.add(x));
+		}
+		return pays;
+	}
+	
+	
+	
 }

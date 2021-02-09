@@ -10,5 +10,5 @@ public interface IGiftService {
 	public String deleteGiftById(int giftId);
 	public String addGift(String gift);
 	public String editGift(String gift);
-	
+	public List<Gift> getGiftsByAccount(int accountId);
 }
