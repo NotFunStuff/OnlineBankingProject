@@ -43,6 +43,9 @@ public class Account {
 	@Size(min = 8)
 	private String password;
 	
+	@Column
+	private String role;
+	
 	@Column(updatable = false)
 	@CreationTimestamp
 	private LocalDateTime timeCreated;
@@ -54,7 +57,8 @@ public class Account {
 	@Column
 	private String bio;
 	
-
+	@Column
+	private int currentAmount;
 	
 	@OneToMany(mappedBy = "toAccount")
 	@JsonIgnoreProperties(value = { "toAccount"})
@@ -70,6 +74,8 @@ public class Account {
 	@JsonIgnoreProperties(value = "account")
 	private List<Transaction> transactions;
 
+	
+	
 	public int getAccountId() {
 		return accountId;
 	}
@@ -148,6 +154,22 @@ public class Account {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public int getCurrentAmount() {
+		return currentAmount;
+	}
+
+	public void setCurrentAmount(int currentAmount) {
+		this.currentAmount = currentAmount;
 	}
 	
 	
