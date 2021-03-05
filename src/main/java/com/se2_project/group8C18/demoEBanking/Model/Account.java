@@ -174,6 +174,14 @@ public class Account {
 	public void setCurrentAmount(int currentAmount) {
 		this.currentAmount = currentAmount;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	
 	
 	
