@@ -35,6 +35,9 @@ public class Account {
 	@Size(min = 2)
 	private String name;
 	
+	@Column(nullable = false)
+	private String userName;
+	
 	@Column
 	private Date dateOfBirth;
 	
