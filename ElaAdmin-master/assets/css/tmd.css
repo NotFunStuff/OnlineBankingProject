@@ -1,3 +1,7 @@
 .tmd{
     color: black;
+    text-align: left;
+}
+.align-center-tmd{
+    text-align: center;
 }

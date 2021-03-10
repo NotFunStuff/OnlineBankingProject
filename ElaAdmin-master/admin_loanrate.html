@@ -165,7 +165,7 @@
                                             </div>                                            
                                         </form>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary btn-sm">
+                                            <button type="submit" class="btn btn-primary btn-sm" id ="#submitBtn1">
                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                             </button>                                            
                                         </div>
@@ -175,7 +175,7 @@
                                     <section class="card">
                                         <div class="card-header font-weight-bold">Bank Loan
                                             statistic: </div>
-                                        <form action="#" method="post" class="form-horizontal card-body card-block" id="myForm1">
+                                        <form action="#" method="post" class="form-horizontal card-body card-block" id="myForm2">
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label
                                                         class=" form-control-label">Current Loaning Rate:</label></div>
@@ -199,7 +199,7 @@
                                             </div>                                            
                                         </form>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary btn-sm">
+                                            <button type="submit" class="btn btn-primary btn-sm" id ="#submitBtn2">
                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                             </button>                                            
                                         </div>
@@ -257,10 +257,25 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        var btn = document.getElementById("submitBtn");
+        var btn = document.getElementById("submitBtn1");
 
         btn.addEventListener("click", function () {
             var form = document.getElementById("myForm1");
+            console.log(form)
+            if (form.reportValidity()) {
+                console.log(form)
+                form.submit();
+            }
+        })
+
+        $(document).ready(function () {
+            $('#bootstrap-data-table-export').DataTable();
+        });
+
+        var btn = document.getElementById("submitBtn2");
+
+        btn.addEventListener("click", function () {
+            var form = document.getElementById("myForm2");
             console.log(form)
             if (form.reportValidity()) {
                 console.log(form)
