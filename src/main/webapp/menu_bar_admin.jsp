@@ -44,13 +44,19 @@
 			<div id="main-menu" class="main-menu collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li class="menu-title">14C36 Online Banking</li>
-					<li><a href="/SE2Tut04/user_page.jsp"> <i
+					<li><a href="/SE2Tut04/admin.jsp" > <i
 							class="menu-icon fa fa-home"></i>Home
+					</a></li>
+					<li><a href="/SE2Tut04/admin_transaction.jsp" > <i
+							class="menu-icon fa fa-file-text-o"></i>Transaction
+					</a></li>
+					<li><a href="/SE2Tut04/admin_loanrate.jsp" > <i
+							class="menu-icon fa fa-credit-card"></i>Manage Interests
 					</a></li>
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-cogs"></i>Service
+							class="menu-icon fa fa-cogs"></i>Manage Service
 					</a>
 						<ul class="sub-menu children dropdown-menu">
 							<li><i class="fa fa-film"></i><a href="/class_list">Movie</a></li>

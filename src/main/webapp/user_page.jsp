@@ -374,12 +374,12 @@
 
 		</div>
 		<!-- .animated -->
-	</div>
+	
 	<!-- .content -->
 
 
 	<jsp:include page="footer.jsp"></jsp:include>
-
+</div>
 
 </body>
 
