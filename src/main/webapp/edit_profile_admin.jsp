@@ -6,11 +6,11 @@
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Class Management Web - made by FunStuff I</title>
-<meta name="description" content="Ela Admin - HTML5 Admin Template">
+<title>Online Banking Web - made by team 14C36</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+<!-- <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png"> -->
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -28,14 +28,15 @@
 <link rel="stylesheet"
 	href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/tmd.css">
 
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
+
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 <body>
-<jsp:include page="menu_bar.jsp"></jsp:include>
+<jsp:include page="menu_bar_admin.jsp"></jsp:include>
 
 	<!-- Right Panel -->
 
@@ -48,12 +49,12 @@
 
                     <div class="col-md-12">
                         <div class="card">
+                            {msg}
                             <div class="card-header">
-                                <strong>Edit Profiles Form</strong>
+                                <strong>Edit Account Form</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="/profiles" id="myForm1" enctype="multipart/form-data" method="POST"
-                                    class="form-horizontal">
+                                <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class="form-control-label">Username</label>
                                         </div>
@@ -62,25 +63,20 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input"
-                                                class=" form-control-label">Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" id="password-input"
-                                                name="password" placeholder="Password" class="form-control"><small
-                                                class="help-block form-text">Should be more than 6 letters or number
-                                                with at least one uppercase character</small></div>
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Name</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="className"
+                                                class="form-control" value=""></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="name" placeholder="Name"
-                                                value="{name_value}" class="form-control"></div>
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Bio</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="classRoom"
+                                                class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Bio</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="name" placeholder="Name"
-                                                value="{bio_value}" class="form-control"></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Phone Number</label></div>
+                                        <div class="col col-md-3"><label class=" form-control-label">Phone
+                                                Number</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="name" placeholder="Name"
                                                 value="{bio_value}" class="form-control"></div>
                                     </div>
@@ -91,9 +87,38 @@
                                                 class="form-control-file"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">DoB</label></div>
+                                        <div class="col col-md-3"><label class=" form-control-label">Date of
+                                                Birth</label></div>
                                         <div class="col-12 col-md-9">
                                             <input type="date" name="date">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group hidden">
+                                        <div class="col col-md-3"><label class=" form-control-label">Business name</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="business_name" placeholder="Business Name"
+                                                value="{bio_value}" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group hidden">
+                                        <div class="col col-md-3"><label class=" form-control-label">Location</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="location" placeholder="Name"
+                                                value="{bio_value}" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group hidden">
+                                        <div class="col col-md-3"><label class=" form-control-label">Industry</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="industry" placeholder="Name"
+                                                value="{bio_value}" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Invest money</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p class="form-control-static hidden">+ - 1000</p>
+                                            <p class="form-control-static">This account has not invest money yet <button
+                                                    type="button"
+                                                    class="btn btn-link btn-sm hidden">Edit</button><button
+                                                    type="button" class="btn btn-link btn-sm">Add</button></p>
+
                                         </div>
                                     </div>
 
