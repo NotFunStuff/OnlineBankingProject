@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Online Banking Web - made by team 14C36</title>   
+    <title>Class Management Web - made by FunStuff I</title>    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -40,7 +40,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Transaction list</strong>
+                                <strong class="card-title">Class list</strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -60,6 +60,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
