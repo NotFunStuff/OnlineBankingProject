@@ -264,11 +264,29 @@
         function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/class_delete_' + uid
+                window.location.href = '/editAccount/' + uid
             }
         }
     </script>
+<script>
+    let uid = 1
+    document.querySelector('#submitBtn').addEventListener("click", () => {
+        fetch(`http://localhost:3000/accounts/editAccount/${uid}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                // name: "A",
+                // bio: "abcde",
+                // phone: 01234,
+                // location; "VN"
+            })
+        }).then(r => r.json())
+            .then(res => {
+                // đã gửi thành công 
+                // redirect về profile page
+            })
+    })
 
+</script>
 
 </body>
 

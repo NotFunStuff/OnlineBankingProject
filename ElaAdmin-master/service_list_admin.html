@@ -150,7 +150,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="services">
                                         <!-- content -->
                                     </tbody>
                                 </table>
@@ -214,6 +214,29 @@
                 window.location.href = '/class_delete_' + uid
             }
         }
+        document.querySelector('#services').innerHTML = entry
+        document.querySelector('#bootstrap-data-table_next').addEventListener("click", () => {
+            fetch(`http://localhost:3000/services/getAllTransactions`, {
+                    method: 'GET'
+                }).then(r => r.json())
+                .then(res => {
+                    entry = ""
+                    ví_dụ_res.forEach(element => {
+                        entry += `
+                            <tr>
+                                <td>${element.id}</td>
+                                <td>${element.name}</td>
+                                <td>${element.description}</td>
+                                <td>${element.producer}</td>
+                                <td>${element.price}</td>
+                                <td><a href="javascript:confirmDelete('${String(element.id)}')">Delete</a></td>
+                            </tr>
+                        `
+                    });
+
+                    document.querySelector('#services').innerHTML = entry
+                })
+        })
     </script>
 
 

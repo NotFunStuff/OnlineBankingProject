@@ -148,7 +148,7 @@
                                             <th scope="col">Payment method ID</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id ="transaction">
                                         <!-- content -->
                                     </tbody>
                                 </table>
@@ -212,6 +212,50 @@
                 window.location.href = '/class_delete_' + uid
             }
         }
+        document.querySelector('#transaction').innerHTML = entry
+        document.querySelector('#bootstrap-data-table_next').addEventListener("click", () => {
+            fetch(`http://localhost:3000/transaction/list`, {
+                    method: 'GET'
+                }).then(r => r.json())
+                .then(res => {
+                    // res là json chứa danh sách service 
+                    ví_dụ_res = [{
+                            id: 1,
+                            name: "cgv cinama",
+                            description: "abcd",
+                            price: 1234
+                        },
+                        {
+                            id: 2,
+                            name: "giặt là",
+                            description: "abcd",
+                            price: 123
+                        },
+                        {
+                            id: 1,
+                            name: "cgv cinama 2",
+                            description: "èghdfd",
+                            price: 12345
+                        },
+                    ]
+
+                    // từ danh sách mình hiển thị cho người dùng
+                    entry = ""
+                    ví_dụ_res.forEach(element => {
+                        entry += `
+                            <tr>
+                                <td>${element.id}</td>
+                                <td>${element.name}</td>
+                                <td>${element.time}</td>
+                                <td>${element.ammount}</td>
+                                <td>${element.payment_method_id}</td>                                
+                            </tr>
+                        `
+                    });
+
+                    document.querySelector('#transaction').innerHTML = entry
+                })
+        })
     </script>
 
 

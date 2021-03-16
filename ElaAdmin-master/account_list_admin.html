@@ -213,9 +213,37 @@
       function confirmDelete(uid) {
 		var r = confirm("Are you sure you want to delete?")
 		if (r) {
-			window.location.href = '/class_delete_' + uid
+			window.location.href = '/accounts_delete_' + uid
 		}
 	}
+    document.querySelector('#services').innerHTML = entry
+        document.querySelector('#bootstrap-data-table_next').addEventListener("click", () => {
+            fetch(`http://localhost:3000/accounts/getAllAccounts`, {
+                    method: 'GET'
+                }).then(r => r.json())
+                .then(res => {
+                    entry = ""
+                    ví_dụ_res.forEach(element => {
+                        entry += `
+                            <tr>
+                                <td>${element.id}</td>
+                                <td>${element.username}</td>
+                                <td>${element.name}</td>
+                                <td>${element.bio}</td>
+                                <td>${element.dob}</td>
+                                <td>${element.timecreated}</td>
+                                <td>${element.balance}</td>
+                                <td>${element.role}</td>
+                                <td>${element.price}</td>
+                                <td><a href="/class_edit_${element.id}">Edit</a></td>
+                                <td><a href="javascript:confirmDelete('${String(element.id)}')">Delete</a></td>
+                            </tr>
+                        `
+                    });
+
+                    document.querySelector('#services').innerHTML = entry
+                })
+        })
   </script>
 
 
