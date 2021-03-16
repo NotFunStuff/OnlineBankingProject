@@ -133,8 +133,7 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        <div class="card">
-                            {msg}
+                        <div class="card">                            
                             <div class="card-header">
                                 <strong>Edit Account Form</strong>
                             </div>
@@ -179,19 +178,23 @@
                                         </div>
                                     </div>
                                     <div class="row form-group hidden">
-                                        <div class="col col-md-3"><label class=" form-control-label">Business name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="business_name" placeholder="Business Name"
-                                                value="{bio_value}" class="form-control"></div>
+                                        <div class="col col-md-3"><label class=" form-control-label">Business
+                                                name</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="business_name"
+                                                placeholder="Business Name" value="{bio_value}" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="row form-group hidden">
-                                        <div class="col col-md-3"><label class=" form-control-label">Location</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="location" placeholder="Name"
-                                                value="{bio_value}" class="form-control"></div>
+                                        <div class="col col-md-3"><label class=" form-control-label">Location</label>
+                                        </div>
+                                        <div class="col-12 col-md-9"><input type="text" name="location"
+                                                placeholder="Name" value="{bio_value}" class="form-control"></div>
                                     </div>
                                     <div class="row form-group hidden">
-                                        <div class="col col-md-3"><label class=" form-control-label">Industry</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="industry" placeholder="Name"
-                                                value="{bio_value}" class="form-control"></div>
+                                        <div class="col col-md-3"><label class=" form-control-label">Industry</label>
+                                        </div>
+                                        <div class="col-12 col-md-9"><input type="text" name="industry"
+                                                placeholder="Name" value="{bio_value}" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -283,7 +286,24 @@
         })
     </script>
 
-
+    <script>
+        let uid = 1
+        document.querySelector('#submitBtn').addEventListener("click", () => {
+            fetch(`http://localhost:8000/account/EditAccount/${uid}`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        // name: "A",
+                        // bio: "abcde",
+                        // phone: 01234,
+                        // location; "VN"
+                    })
+                }).then(r => r.json())
+                .then(res => {
+                    // đã gửi thành công 
+                    // redirect về profile page
+                })
+        })
+    </script>
 </body>
 
 </html>
