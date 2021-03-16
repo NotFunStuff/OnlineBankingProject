@@ -2,9 +2,11 @@ package com.se2_project.group8C18.demoEBanking.IService;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.se2_project.group8C18.demoEBanking.Model.Account;
 
-
+@Service
 public interface IAccountService {
 	
 	
@@ -18,9 +20,7 @@ public interface IAccountService {
 	
 	public String editAccount(String account);
 	
-	public boolean isUserNameExisted(String accountName);
+	public Account getAccountByName(String accountName);
 	
-	public boolean isAccountExisted(String accountName, String password);
-	
-	
+	public boolean checkPhoneNumber(String phoneNumber);
 }

@@ -11,8 +11,8 @@ public class ErrorType {
 		return  "Successful";
 	};
 	
-	public String getFail() {
-		return "Fail";
+	public String getFail(String reason) {
+		return "Fail because "+ reason ;
 	}
 	
 	public String isExisted(String nameObject) {
@@ -41,4 +41,9 @@ public class ErrorType {
 	{
 		return objectId + " is validated";
 	}
+	
+	public String isEmpty() {
+		return "is Empty!!!";
+	}
+	
 }

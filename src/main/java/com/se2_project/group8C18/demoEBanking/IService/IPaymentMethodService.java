@@ -2,8 +2,10 @@ package com.se2_project.group8C18.demoEBanking.IService;
 
 import java.util.List;
 
-import com.se2_project.group8C18.demoEBanking.Model.PaymentMethod;
+import org.springframework.stereotype.Service;
 
+import com.se2_project.group8C18.demoEBanking.Model.PaymentMethod;
+@Service
 public interface IPaymentMethodService {
 	public PaymentMethod getPaymentMethodById(int paymentMethodId);
 	

@@ -2,8 +2,9 @@ package com.se2_project.group8C18.demoEBanking.IService;
 
 import java.util.List;
 
-import com.se2_project.group8C18.demoEBanking.Model.Service;
 
+import com.se2_project.group8C18.demoEBanking.Model.Service;
+@org.springframework.stereotype.Service
 public interface IServiceService {
 	public Service getServiceById(int serviceId);
 	public List<Service> getAllService();

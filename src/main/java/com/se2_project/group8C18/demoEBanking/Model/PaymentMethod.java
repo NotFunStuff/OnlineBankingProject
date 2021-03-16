@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -32,6 +33,7 @@ public class PaymentMethod {
 	@ManyToOne
 	@JoinColumn(name = "accountId", foreignKey = @ForeignKey(name = "fk_account_paymentMethod"))
 	@JsonIgnoreProperties(value = "paymentMethods")
+	@JsonBackReference
 	private Account account;
 	
 	@Column( updatable = false)
@@ -42,7 +44,8 @@ public class PaymentMethod {
 	private boolean verified;
 
 	@OneToOne(mappedBy = "paymentMethod")
-	@JsonIgnoreProperties(value = "paymentMethod")
+//	@JsonIgnoreProperties(value = {"paymentMethod", "account"})
+	@Transient
 	private Transaction transaction;
 	
 	public int getPaymentMethodId() {

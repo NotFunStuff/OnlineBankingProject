@@ -2,8 +2,10 @@ package com.se2_project.group8C18.demoEBanking.IService;
 
 import java.util.List;
 
-import com.se2_project.group8C18.demoEBanking.Model.NationalBank;
+import org.springframework.stereotype.Service;
 
+import com.se2_project.group8C18.demoEBanking.Model.NationalBank;
+@Service
 public interface INationalService {
 	public NationalBank getNationalBankById(int nationalBankId);
 	public List<NationalBank> getAllNationalBank();

@@ -30,10 +30,14 @@ public class Service {
 	@Column
 	private String description;
 	
+	@Column
+	private long priceTag;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "businessId", foreignKey = @ForeignKey(name = "fk_business_service"))
 	@JsonIgnoreProperties(value = "services")
 	private  Business business;
+	
 	
 	@OneToMany(mappedBy = "service")
 	@JsonIgnoreProperties(value = "service")
@@ -78,6 +82,16 @@ public class Service {
 	public void setBills(List<Bill> bills) {
 		this.bills = bills;
 	}
+
+	public long getPriceTag() {
+		return priceTag;
+	}
+
+	public void setPriceTag(long priceTag) {
+		this.priceTag = priceTag;
+	}
+	
+	
 	
 	
 }

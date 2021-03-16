@@ -9,6 +9,7 @@ public class DemoEBankingApplication extends ServletInitializer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoEBankingApplication.class, args);
+		
 	}
 
 }

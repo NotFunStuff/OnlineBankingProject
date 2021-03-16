@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-@PrimaryKeyJoinColumn(name = "bussinessId")
+@PrimaryKeyJoinColumn(name = "normalId")
 public class Normal extends Account {
 	
 	

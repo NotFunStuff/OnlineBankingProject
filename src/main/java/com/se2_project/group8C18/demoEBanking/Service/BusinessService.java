@@ -76,6 +76,7 @@ public class BusinessService implements IBusinessService {
 
 		if (!businessRepository.existsById(bus.getAccountId())) {
 			if (checkValidate.getOk(bus)) {
+				bus.setRole("business");
 				businessRepository.save(bus);
 				return errorType.getSuccesful();
 			}

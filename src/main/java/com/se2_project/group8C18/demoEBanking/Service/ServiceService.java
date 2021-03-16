@@ -94,7 +94,7 @@ public class ServiceService implements IServiceService {
 					fixSer.setDescription(ser.getDescription());
 				if (ser.getServiceName() != null)
 					fixSer.setServiceName(ser.getServiceName());
-
+				
 				serviceRepository.save(fixSer);
 				return errorType.getSuccesful();
 			}

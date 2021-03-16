@@ -2,8 +2,10 @@ package com.se2_project.group8C18.demoEBanking.IService;
 
 import java.util.List;
 
-import com.se2_project.group8C18.demoEBanking.Model.InternationalBank;
+import org.springframework.stereotype.Service;
 
+import com.se2_project.group8C18.demoEBanking.Model.InternationalBank;
+@Service
 public interface IInternationalService {
 	public InternationalBank getInternationalBankById(int internationalId );
 	public List<InternationalBank> getAllInternationalBanks();
