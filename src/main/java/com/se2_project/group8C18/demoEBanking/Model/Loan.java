@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-@PrimaryKeyJoinColumn(name = "saveId")
+@PrimaryKeyJoinColumn(name = "loanId")
 public class Loan extends InvestType{
 
 	

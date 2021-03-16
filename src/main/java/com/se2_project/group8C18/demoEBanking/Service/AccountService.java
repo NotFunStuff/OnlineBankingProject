@@ -124,14 +124,16 @@ public class AccountService implements IAccountService {
 			if(checkValidate.getOk(acc))
 			{
 				acc.setTimeCreated(LocalDateTime.now());
+				
 				if(acc.getRole() == null || acc.getRole().equalsIgnoreCase("normal")) {
 					acc.setRole("normal");
 					normalService.addNormal(account);
 				}
-				if(acc.getRole().equalsIgnoreCase("business")) {
+				else if(acc.getRole().equalsIgnoreCase("business")) {
 					businessService.addBusiness(account);
 					
 				}
+				
 				
 				
 				return errorType.getSuccesful();
