@@ -63,6 +63,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="assets/js/main.js"></script>
+<script> //not test yet
+        let username = document.getElementsByName('name')
+        const response = await fetch('http://localhost:8000/account/getAccountByUserName/' + username, {
+            method: 'GET'
+        })
+        const json = await response.json()
+        if (json === null) {
+            alert("Wrong credential!!");
+        } else {
+            if (json.password === getElementsByName('password').value) {
+                if (json.role === "admin") {
+                    localStorage.setItem('accountId', json.accountId) 
+                    window.location.href = '/account_list_admin.html'
 
+                } else {
+                    localStorage.setItem('accountId', json.accountId)
+                    window.location.href = '/user_page.html'
+                }
+            } else {
+                alert("Wrong credential!!");
+            }
+        }
+    </script>
 </body>
 </html>

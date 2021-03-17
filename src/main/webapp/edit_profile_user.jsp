@@ -169,6 +169,77 @@
 		</div>
 		<!-- .content -->
 		<jsp:include page="footer.jsp"></jsp:include>
+		<script>
+    //not finished
+    let uid = req.params.id
+    const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+        method: 'GET'
+    })
+    const json = await response.json()
+    document.querySelector('.un').innerHTML = json.username
+    document.getElementsbyName('password').value= json.password
+    document.getElementsByName('name').value = json.name
+    document.getElementsByName('bio').value = json.bio
+    document.getElementsByName('phoneNumber').value = json.phoneNumber
+    document.getElementsByName('date').value = json.date              
+    if (json.role === 'business') {
+        const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
+            method: 'GET'
+        })
+        const jsonBusiness = await response.json()
+        document.getElementsByName('business_name').value = jsonBusiness.businessName
+        document.getElementsByName('industry').value = jsonBusiness.industry
+        document.getElementsByName('location').value = jsonBusiness.location
+        document.querySelector('#submitBtn').addEventListener("click", () => {
+            fetch(`http://localhost:8000/account/editBusiness`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        // name: "A",
+                        // bio: "abcde",
+                        // phone: 01234,
+                        // location; "VN"
+                        id: uid,
+                        username: json.username,
+                        name: document.getElementsByName('name').value,
+                        bio: document.getElementsByName('bio').value,
+                        phoneNumber: document.getElementsByName('phoneNumber').value,
+                        password:  document.getElementsByName('password').value,
+                        dob: document.getElementsByName('dob').value,
+                        ava: document.getElementsByName('ava').value,
+                        businessName: document.getElementsByName('business_name').value,
+                        industry: document.getElementsByName('industry').value,
+                        location: document.getElementsByName('location').value
+                    })
+                }).then(r => r.json())
+                .then(res => {                   
+                	window.location.replace("\homepage_user.html");
+                })
+        })
+    } else {
+        document.querySelector('#submitBtn').addEventListener("click", () => {
+            fetch(`http://localhost:8000/account/editAccount`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        // name: "A",
+                        // bio: "abcde",
+                        // phone: 01234,
+                        // location; "VN"
+                        id: uid,
+                        username: json.username,
+                        name: document.getElementsByName('name').value,
+                        bio: document.getElementsByName('bio').value,
+                        phoneNumber: document.getElementsByName('phoneNumber').value,
+                        dob: document.getElementsByName('dob').value,
+                        ava: document.getElementsByName('ava').value
+                    })
+                }).then(r => r.json())
+                .then(res => {
+                    
+                    window.location.replace("\homepage_user.html");
+                })
+        })
+    }
+</script>
 	</div>
 </body>
 </html>
