@@ -3,6 +3,7 @@ package com.se2_project.group8C18.demoEBanking.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.se2_project.group8C18.demoEBanking.IService.IAccountService;
 import com.se2_project.group8C18.demoEBanking.Model.Account;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 //@WebServlet(urlPatterns = { "/home", "/log-in" })
 public class AccountController {
 
@@ -41,7 +43,7 @@ public class AccountController {
 
 		return accountService.addAccount(account);
 	}
-
+	
 	@GetMapping(value = "/account/getAllAccounts")
 	public List<Account> getAllAccounts() {
 		return accountService.findAll();
@@ -60,5 +62,10 @@ public class AccountController {
 	@DeleteMapping(value = "/account/deleteAccountById")
 	public String deleteAccountById(@RequestParam int accountId) {
 		return accountService.deleteAccountById(accountId);
+	}
+	
+	@GetMapping(value = "/account/getAccountByUserName")
+	public Account getAccountByUserName(@RequestParam String userName) {
+		return accountService.getAccountByUserName(userName);
 	}
 }

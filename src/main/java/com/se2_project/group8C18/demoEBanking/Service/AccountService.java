@@ -170,11 +170,11 @@ public class AccountService implements IAccountService {
 	}
 
 	@Override
-	public Account getAccountByName(String accountName) {
+	public Account getAccountByUserName(String userName) {
 	
 		for(Account acc: accountRepository.findAll())
 		{
-			if(acc.getName().equalsIgnoreCase(accountName))
+			if(acc.getUserName().equalsIgnoreCase(userName))
 			{
 				return acc;
 			}

@@ -20,7 +20,7 @@ public interface IAccountService {
 	
 	public String editAccount(String account);
 	
-	public Account getAccountByName(String accountName);
+	public Account getAccountByUserName(String userName);
 	
 	public boolean checkPhoneNumber(String phoneNumber);
 }
