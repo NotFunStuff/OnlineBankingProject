@@ -8,8 +8,6 @@
 <title>Home</title>
 </head>
 <body>
-<h1>${account.accountName}</h1>
-<h2>${card.cardNumber }</h2>
-<h3>${bill.transferMoney}</h3>
+<h1>Hello Huy</h1>
 </body>
 </html>
