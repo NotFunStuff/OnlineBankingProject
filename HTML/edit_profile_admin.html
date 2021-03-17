@@ -294,12 +294,11 @@
             method: 'GET'
         })
         const json = await response.json()
-        document.querySelector('.un').innerHTML = json.username
-        document.querySelector('.un').innerHTML = json.userName
+        document.querySelector('.un').innerHTML = json.username        
         document.getElementsByName('name').value = json.name
         document.getElementsByName('bio').value = json.bio
         document.getElementsByName('phoneNumber').value = json.phoneNumber
-        document.getElementsByName('dob').value = json.date              
+        document.getElementsByName('date').value = json.date              
         if (json.role === 'business') {
             const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
                 method: 'GET'
@@ -319,9 +318,10 @@
                             id: uid,
                             username: json.username,
                             name: document.getElementsByName('name').value,
+                            password: json.password,
                             bio: document.getElementsByName('bio').value,
                             phoneNumber: document.getElementsByName('phoneNumber').value,
-                            dob: document.getElementsByName('dob').value,
+                            dob: document.getElementsByName('date').value,
                             ava: document.getElementsByName('ava').value,
                             businessName: document.getElementsByName('business_name').value,
                             industry: document.getElementsByName('industry').value,
