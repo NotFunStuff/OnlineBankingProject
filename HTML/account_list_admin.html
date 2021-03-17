@@ -135,10 +135,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Class list</strong>
+                                <strong class="card-title">Account list</strong>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -153,8 +153,8 @@
                                             <th scope="col">#</th>
                                         </tr>
                                     </thead>
-                                    <tbody id ="services">
-                                        1
+                                    <tbody id="services">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -187,6 +187,32 @@
     <!-- Right Panel -->
 
     <!-- Scripts -->
+    <script>
+        fetch(`http://localhost:8080/account/getAllAccounts`, {
+                method: 'GET'
+            }).then(r => r.json())
+            .then(res => {   
+                entry = ""
+                res.forEach(element => {
+                    entry += `
+                            <tr>
+                                <td>${element.accountId}</td>
+                        <td>${element.userName}</td>
+                        <td>${element.name}</td>
+                        <td>${element.bio}</td>
+                        <td>${element.dateOfBirth}</td>
+                        <td>${element.timeCreated}</td>
+                        <td>${element.balance}</td>
+                        <td>${element.role}</td>
+                        <td><a href="/Failure(Java)/SE2Project/HTML/edit_profile_admin.html/?params=${element.accountId}">Edit</a></td>
+                        <td><a href="javascript:confirmDelete('${String(element.accountId)}')">Delete</a></td>  
+                            </tr>
+                        `
+                });
+
+                document.querySelector('#services').innerHTML = entry
+            })
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -218,37 +244,7 @@
             }
         }
     </script>
-    <script    
-        let entry = "";
-        
-            fetch(`http://localhost:8000/account/getAllAccounts`, {
-                    method: 'GET'
-                }).then(r => r.json()
-                .then(res => {   
-                    
-                    // từ danh sách mình hiển thị cho người dùng
-                    entry = ""
-                    res.forEach(element => {
-                        entry +=
-                            `<tr>
-                        <td>${element.id}</td>
-                        <td>${element.username}</td>
-                        <td>${element.name}</td>
-                        <td>${element.bio}</td>
-                        <td>${element.dob}</td>
-                        <td>${element.time_created}</td>
-                        <td>${element.balance}</td>
-                        <td>${element.role}</td>
-                        <td><a href="/account/editAccount/${element.id}">Edit</a></td>
-                        <td><a href="javascript:confirmDelete('${String(element.id)}')">Delete</a></td>  
-                    </tr>`
-                    });
-                    
-                    document.querySelector('#services').innerHTML = entry
-                })
-       
-        document.querySelector('#services').innerHTML = entry
-    </script>
+    
 </body>
 
 </html>
