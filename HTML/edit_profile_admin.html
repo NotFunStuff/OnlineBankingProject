@@ -133,7 +133,7 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        <div class="card">                            
+                        <div class="card">
                             <div class="card-header">
                                 <strong>Edit Account Form</strong>
                             </div>
@@ -143,26 +143,27 @@
                                         <div class="col col-md-3"><label class="form-control-label">Username</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">usermame</p>
+                                            <p class="form-control-static un">usermame</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="className"
-                                                class="form-control" value=""></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="name"
+                                                class="form-control" value="name" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Bio</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="classRoom"
-                                                class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="bio"
+                                                class="form-control" value="{bio_value}" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Phone
                                                 Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="name" placeholder="Name"
-                                                value="{bio_value}" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber"
+                                                placeholder="Name" value="{phone_value}" class="form-control" required>
+                                        </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
@@ -181,20 +182,21 @@
                                         <div class="col col-md-3"><label class=" form-control-label">Business
                                                 name</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="business_name"
-                                                placeholder="Business Name" value="{bio_value}" class="form-control">
+                                                placeholder="Business Name" value=""
+                                                class="form-control">
                                         </div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
-                                                placeholder="Name" value="{bio_value}" class="form-control"></div>
+                                                placeholder="Location" value="" class="form-control"></div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="industry"
-                                                placeholder="Name" value="{bio_value}" class="form-control"></div>
+                                                placeholder="Industry" value="" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -287,15 +289,36 @@
     </script>
 
     <script>
-        let uid = 1
+        //not finished
+        let uid = req.params.id
+        const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+            method: 'GET'
+        })
+        const json = await response.json()
+        document.querySelector('.un').innerHTML = json.username
+        document.getElementsByName('name').value = json.name
+        document.getElementsByName('bio').value = json.bio
+        document.getElementsByName('phoneNumber').value = json.phoneNumber
+        document.getElementsByName('dob').value = json.date
+        if(json.role === 'business'){
+            document.getElementsByName('business_name').value = json.bio
+            document.getElementsByName('bio').value = json.bio
+            document.getElementsByName('bio').value = json.bio
+        }
         document.querySelector('#submitBtn').addEventListener("click", () => {
-            fetch(`http://localhost:8000/account/EditAccount/${uid}`, {
+            fetch(`http://localhost:8000/account/editAccount`, {
                     method: 'POST',
                     body: JSON.stringify({
                         // name: "A",
                         // bio: "abcde",
                         // phone: 01234,
                         // location; "VN"
+                        id: uid,
+                        username: json.username,
+                        name: document.getElementsByName('name').value,
+                        bio: document.getElementsByName('bio').value,
+                        phoneNumber: document.getElementsByName('phoneNumber').value,
+                        dob: document.getElementsByName('dob').value
                     })
                 }).then(r => r.json())
                 .then(res => {
