@@ -120,5 +120,24 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script> // not test yet
+        document.querySelector('#submitBtn').addEventListener("click", () => {
+            fetch(`http://localhost:8080/account/addAccount`, {
+                    method: 'POST',
+                    body: JSON.stringify({                                          
+                        username: document.getElementsByName('userName').value,
+                        name: document.getElementsByName('name').value,
+                        password: document.getElementsByName('password').value,
+                        phoneNumber: document.getElementsByName('phoneNumber').value,
+                        timeCreated: new Date(),
+                        dob: document.getElementsByName('dob').value,
+                        role: document.getElementsByName('role').value
+                    })             
+                }).then(r => r.json())
+                .then(res => {                    
+                    window.location.replace("/login.html");
+                })
+        })
+    </script>
 </body>
 </html>

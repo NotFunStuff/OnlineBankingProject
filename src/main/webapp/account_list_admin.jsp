@@ -72,6 +72,32 @@
             </div><!-- .animated -->
         </div><!-- .content -->
         <jsp:include page="footer.jsp"></jsp:include>
+        <script> //not finished
+        fetch(`http://localhost:8080/account/getAllAccounts`, {
+                method: 'GET'
+            }).then(r => r.json())
+            .then(res => {   
+                entry = ""
+                res.forEach(element => {
+                    entry += `
+                            <tr>
+                                <td>${element.accountId}</td>
+                        <td>${element.userName}</td>
+                        <td>${element.name}</td>
+                        <td>${element.bio}</td>
+                        <td>${element.dateOfBirth}</td>
+                        <td>${element.timeCreated}</td>
+                        <td>${element.balance}</td>
+                        <td>${element.role}</td>
+                        <td><a href="/Failure(Java)/SE2Project/HTML/edit_profile_admin.html/?params=${element.accountId}">Edit</a></td>
+                        <td><a href="javascript:confirmDelete('${String(element.accountId)}')">Delete</a></td>  
+                            </tr>
+                        `
+                });
+
+                document.querySelector('#services').innerHTML = entry
+            })
+    </script>
         </div>
 </body>
 </html>
