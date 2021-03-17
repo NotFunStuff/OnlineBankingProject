@@ -108,10 +108,10 @@
                     </div>
 
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
+                        <!-- <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{avatar}" alt="User Avatar">
-                        </a>
+                        </a> -->
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="/profiles"><i class="fa fa-user"></i>My Profile</a>
@@ -153,8 +153,8 @@
                                             <th scope="col">#</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <!-- content -->
+                                    <tbody id ="services">
+                                        1
                                     </tbody>
                                 </table>
                             </div>
@@ -218,80 +218,17 @@
             }
         }
     </script>
-
-    <script>
-        ví_dụ_res = [{
-                id: 1,
-                name: "cgv cinama",
-                description: "abcd",
-                price: 1234
-            },
-            {
-                id: 2,
-                name: "giặt là",
-                description: "abcd",
-                price: 123
-            },
-            {
-                id: 1,
-                name: "cgv cinama 2",
-                description: "eghdfd",
-                price: 12345
-            },
-        ]
-
-        // từ danh sách mình hiển thị cho người dùng
-        entry = ""
-        ví_dụ_res.forEach(element => {
-            entry += `
-        <tr>
-            <td>${element.id}</td>
-            <td>${element.username}</td>
-            <td>${element.name}</td>
-            <td>${element.bio}</td>
-            <td>${element.dob}</td>
-            <td>${element.time_created}</td>
-            <td>${element.balance}</td>
-            <td>${element.role}</td>
-            <td><a href="/account/editAccount/${element.id}">Edit</a></td>
-            <td><a href="javascript:confirmDelete('${String(element.id)}')">Delete</a></td>                   
-        </tr>
-    `
-        });
-
-
-
-        // CÁI BÊN TRÊN ĐỂ VÍ DỤ. GIỐNG HỆT BÊN DƯỚI 
-        document.querySelector('#services').innerHTML = entry
-        document.querySelector('#bootstrap-data-table_next').addEventListener("click", () => {
-            fetch(`http://localhost:8000/account/getAllAccount`, {
+    <script    
+        let entry = "";
+        
+            fetch(`http://localhost:8000/account/getAllAccounts`, {
                     method: 'GET'
-                }).then(r => r.json())
-                .then(res => {
-                    // res là json chứa danh sách service 
-                    ví_dụ_res = [{
-                            id: 1,
-                            name: "cgv cinama",
-                            description: "abcd",
-                            price: 1234
-                        },
-                        {
-                            id: 2,
-                            name: "giặt là",
-                            description: "abcd",
-                            price: 123
-                        },
-                        {
-                            id: 1,
-                            name: "cgv cinama 2",
-                            description: "èghdfd",
-                            price: 12345
-                        },
-                    ]
-
+                }).then(r => r.json()
+                .then(res => {   
+                    
                     // từ danh sách mình hiển thị cho người dùng
                     entry = ""
-                    ví_dụ_res.forEach(element => {
+                    res.forEach(element => {
                         entry +=
                             `<tr>
                         <td>${element.id}</td>
@@ -306,9 +243,11 @@
                         <td><a href="javascript:confirmDelete('${String(element.id)}')">Delete</a></td>  
                     </tr>`
                     });
+                    
                     document.querySelector('#services').innerHTML = entry
                 })
-        })
+       
+        document.querySelector('#services').innerHTML = entry
     </script>
 </body>
 
