@@ -59,7 +59,7 @@ public class Account {
 	@Column
 	private long balance;
 
-	@Column(nullable = false)
+	@Column()
 	private String phoneNumber;
 
 	@OneToMany(mappedBy = "toAccount")

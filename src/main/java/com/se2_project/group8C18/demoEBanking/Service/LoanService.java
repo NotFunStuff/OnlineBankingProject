@@ -82,7 +82,7 @@ public class LoanService implements ILoanService {
 		else{
 
 			if (checkValidate.getOk(lo)) {
-				Loan loanCurrent = loanRepository.findById(lo.getInvestTypeId()).get();
+				Loan loanCurrent = getLoan(lo.getAccount().getAccountId());
 				if (lo.getAmount() != loanCurrent.getAmount())
 					loanCurrent.setAmount(lo.getAmount());
 				if (lo.getDescription() != null)
@@ -92,6 +92,7 @@ public class LoanService implements ILoanService {
 				if (lo.getRate() != loanCurrent.getRate())
 					loanCurrent.setRate(lo.getRate());
 				loanCurrent.setTimeCreated(LocalDateTime.now());
+				loanRepository.save(loanCurrent);
 				return errorType.getSuccesful();
 			}
 			return errorType.isValidated("loan");
