@@ -16,7 +16,7 @@ import com.se2_project.group8C18.demoEBanking.IService.IAccountService;
 import com.se2_project.group8C18.demoEBanking.Model.Account;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 //@WebServlet(urlPatterns = { "/home", "/log-in" })
 public class AccountController {
 

@@ -16,7 +16,7 @@ import com.se2_project.group8C18.demoEBanking.Model.Business;
 import com.se2_project.group8C18.demoEBanking.Service.BusinessService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class BusinessController {
 
 	@Autowired
