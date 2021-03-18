@@ -191,6 +191,17 @@ public class AccountService implements IAccountService {
 		}
 		return false;
 	}
+
+	@Override
+	public Account getAccountByPhoneNumber(String phoneNumber) {
+		for(Account x: accountRepository.findAll()) {
+			if(x.getPhoneNumber().equalsIgnoreCase(phoneNumber)) {
+				return x;
+			}
+		}
+		return null;
+	}
+	
 	
 	
 	
