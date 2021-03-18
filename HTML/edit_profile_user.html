@@ -270,6 +270,7 @@
     </script>
 
 <script>
+    
     //not finished
     let uid = req.params.id
     const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
@@ -298,7 +299,7 @@
                         // bio: "abcde",
                         // phone: 01234,
                         // location; "VN"
-                        id: uid,
+                        accountId: uid,
                         username: json.username,
                         name: document.getElementsByName('name').value,
                         bio: document.getElementsByName('bio').value,

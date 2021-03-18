@@ -110,7 +110,7 @@
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{avatar}" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -140,45 +140,46 @@
                                             <div class="corner-ribon blue-ribon">
                                                 <i class="fa fa-twitter"></i>
                                             </div>
-                                            <a href="#">
+                                            <a>
                                                 <img class="align-self-center rounded-circle mr-3"
-                                                    style="width:85px; height:85px;" alt="" src="images/admin.jpg">
+                                                    style="width:85px; height:85px;" id="ava" alt=""
+                                                    src="images/admin.jpg">
                                             </a>
-                                            <h2>Name</h2>
-                                            <p>Bio</p>
+                                            <h2 id="name">Name</h2>
+                                            <p id="bio">Bio</p>
                                             <div class="row form-group">
                                                 <div class="col col-md-3 tmd"><label class=" form-control-label">Time
                                                         Created:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">10/3/2021</p>
+                                                    <p class="form-control-static" id="timeCreated">10/3/2021</p>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3 tmd"><label
                                                         class=" form-control-label">Dob:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">28/09/2000</p>
+                                                    <p class="form-control-static" id="dob">28/09/2000</p>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3 tmd"><label
                                                         class=" form-control-label">Balance:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">1000000000000</p>
+                                                    <p class="form-control-static" id="balance">1000000000000</p>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3 tmd"><label class=" form-control-label">Phone
                                                         Number:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">0987654321</p>
+                                                    <p class="form-control-static" id="phoneNumber">0987654321</p>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3 tmd"><label
                                                         class=" form-control-label">Role:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">User</p>
+                                                    <p class="form-control-static" id="Role">User</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,15 +219,17 @@
                                                                     class=" form-control-label">Withdrawable Amount of
                                                                     money:</label></div>
                                                             <div class="col-12 col-md-9">
-                                                                <p class="form-control-static">Balance - 50k</p>
+                                                                <p class="form-control-static" id="withdraw_amount">
+                                                                    Balance - 50k</p>
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
-                                                            <div class="col col-md-3"><label for="saveRate"
-                                                                    class=" form-control-label">Withdraw:</label></div>
+                                                            <div class="col col-md-3"><label for="withdraw"
+                                                                    class=" form-control-label">Withdraw (x.000
+                                                                    VND):</label></div>
                                                             <div class="col-12 col-md-9"><input type="number"
-                                                                    id="hf-email" name="saveRate"
-                                                                    placeholder="Min of 1.000" class="form-control">
+                                                                    id="hf-email" name="withdraw" placeholder="Min: 1"
+                                                                    class="form-control">
                                                             </div>
                                                         </div>
                                                         <p class="align-center-tmd">
@@ -246,14 +249,16 @@
                                                                     class=" form-control-label">Current Balance:</label>
                                                             </div>
                                                             <div class="col-12 col-md-9">
-                                                                <p class="form-control-static">Balance</p>
+                                                                <p class="form-control-static" id="c_balance">Balance
+                                                                </p>
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
-                                                            <div class="col col-md-3"><label for="saveRate"
-                                                                    class=" form-control-label">Deposit:</label></div>
+                                                            <div class="col col-md-3"><label for="deposit"
+                                                                    class=" form-control-label">Deposit (x.000
+                                                                    VND):</label></div>
                                                             <div class="col-12 col-md-9"><input type="number"
-                                                                    id="hf-email" name="saveRate"
+                                                                    id="hf-email" name="deposit"
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
@@ -274,7 +279,8 @@
                                                                     class=" form-control-label">Transferable Amount of
                                                                     money:</label></div>
                                                             <div class="col-12 col-md-9">
-                                                                <p class="form-control-static">Balance - 50k</p>
+                                                                <p class="form-control-static" id="transfer_ammount">
+                                                                    Balance - 50k</p>
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
@@ -282,7 +288,7 @@
                                                                     class=" form-control-label">Receiver phone
                                                                     number:</label></div>
                                                             <div class="col-12 col-md-9"><input type="text"
-                                                                    id="hf-email" name="saveRate"
+                                                                    id="hf-email" name="receiver"
                                                                     placeholder="0987654321" class="form-control">
                                                             </div>
                                                         </div>
@@ -291,7 +297,7 @@
                                                                     class=" form-control-label">Transfer
                                                                     Ammount:</label></div>
                                                             <div class="col-12 col-md-9"><input type="number"
-                                                                    id="hf-email" name="saveRate"
+                                                                    id="hf-email" name="transfer"
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
@@ -331,29 +337,42 @@
                                         <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="custom-nav-save" role="tabpanel"
                                                 aria-labelledby="custom-nav-save-tab">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3 tmd"><label
-                                                            class=" form-control-label">Saving Amount:</label></div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static">Balance</p>
+                                                <div id="save_board">
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Saving Amount:</label></div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="save_balance">Balance</p>
+                                                        </div>
                                                     </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Current Interest
+                                                                rate:</label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="save_rate">100%</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Save Remain Term:</label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="save_term">Compute</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Interest will earn:</label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="save_earn">Compute</p>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3 tmd"><label
-                                                            class=" form-control-label">Interest Earned:</label></div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static">Compute</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3 tmd"><label
-                                                            class=" form-control-label">Current Interest rate:</label>
-                                                    </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static">100%</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group hidden">
+                                                <div class="row form-group hidden" id="save_hidden_display">
                                                     <div class="col col-md-12 tmd"><label
                                                             class=" form-control-label">Your account is not saving
                                                             account</label></div>
@@ -361,32 +380,44 @@
                                             </div>
                                             <div class="tab-pane fade" id="custom-nav-loan" role="tabpanel"
                                                 aria-labelledby="custom-nav-loan-tab">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3 tmd"><label
-                                                            class=" form-control-label">Loan Amount:</label></div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static"> - Balance</p>
+                                                <div id="loan_board">
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Loan Amount:</label></div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="loan_balance"> - Balance
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Loan Interest rate:</label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="loan_rate">100%</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Loan Remain Term:</label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="loan_term">Compute</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-3 tmd"><label
+                                                                class=" form-control-label">Loan Interest
+                                                                Amount:</label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <p class="form-control-static" id="loan_earn">Compute</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3 tmd"><label
-                                                            class=" form-control-label">Loan Interest Amount:</label>
-                                                    </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static">Compute</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3 tmd"><label
-                                                            class=" form-control-label">Loan Interest rate:</label>
-                                                    </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static">100%</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group hidden">
+                                                <div class="row form-group hidden" id="loan_hidden_display">
                                                     <div class="col col-md-12 tmd"><label
-                                                            class=" form-control-label">Your account is not saving
+                                                            class=" form-control-label">Your account is not loaning
                                                             account</label></div>
                                                 </div>
                                             </div>
@@ -476,36 +507,131 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
-        });
-
-        var btn = document.getElementById("submitBtn1");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
+        });         
+    </script>
+    <script>
+        //get only
+        const uid = localStorage.getItem('accountId')
+        const response = fetch('http://localhost:8000/account/getAccountById/' + uid, {
+            method: 'GET'
         })
-
-        $(document).ready(function () {
-            $('#bootstrap-data-table-export').DataTable();
-        });
-
-        var btn = document.getElementById("submitBtn2");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm2");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
+        const json =  response.json
+        document.getElementById('ava').src = json.avatar
+        document.getElementById('name').innerHTML = json.name
+        document.getElementById('bio').innerHTML = json.bio
+        document.getElementById('timeCreated').innerHTML = json.timeCreated
+        document.getElementById('dob').innerHTML = json.dateOfBirth
+        document.getElementById('phoneNumber').innerHTML = json.phoneNumber
+        document.getElementById('balance').innerHTML = json.balance
+        document.getElementById('role').innerHTML = json.role
+        document.getElementById('c_balance').innerHTML = json.balance
+        if (json.balance <= 50) {
+            document.getElementById('withdraw_amount').innerHTML = 0
+            document.getElementById('transfer_ammount').innerHTML = 0
+        } else {
+            document.getElementById('withdraw_amount').innerHTML = json.balance - 50
+            document.getElementById('transfer_ammount').innerHTML = json.balance - 50
+        }
+        
+        const response1 =  fetch('http://localhost:8000/save/getSave/' + uid, {
+            method: 'GET'
+        })
+        const jsonSave =  response1.json()
+        
+        const response2 = fetch('http://localhost:8000/loan/getLoan/' + uid, {
+            method: 'GET'
+        })
+        const jsonLoan =  response2.json()
+        if (jsonSave === null) {
+            document.getElementById('save_board').classList.add('hidden')
+            document.getElementById('save_hidden_display').classList.remove('hidden')
+        } else {
+            document.getElementById('save_balance').innerHTML = jsonSave.amount
+            document.getElementById('save_rate').innerHTML = jsonSave.rate
+            document.getElementById('save_term').innerHTML = new Date() - jsonSave.duration
+            document.getElementById('save_earn').innerHTML = jsonSave.amount * jsonSave.rate - jsonSave.amount
+        }
+        if (jsonLoan === null) {
+            document.getElementById('loan_board').classList.add('hidden')
+            document.getElementById('loan_hidden_display').classList.remove('hidden')
+        } else {
+            document.getElementById('loan_balance').innerHTML = jsonLoan.amount
+            document.getElementById('loan_rate').innerHTML = jsonLoan.rate
+            document.getElementById('loan_term').innerHTML = new Date() - jsonLoan.duration
+            document.getElementById('loan_earn').innerHTML = jsonLoan.amount * jsonLoan.rate - jsonLoan.amount
+        }
+    </script>
+    <script>
+        //post only
+        document.querySelector('#submitBtn1').addEventListener("click", () => {
+            fetch(`http://localhost:8000/transaction/addTransaction`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        // name: "A",
+                        // bio: "abcde",
+                        // phone: 01234,
+                        // location; "VN"
+                        amount: document.getElementById('withdraw'),
+                        accountId: localStorage.getItem('accountId'),
+                        timeCreated: new Date(),
+                        verified: 0,
+                        //payment method ???
+                    })
+                }).then(r => r.json())
+                .then(res => {
+                    // đã gửi thành công 
+                    // redirect về profile page
+                    window.location.replace("\homepage_user.html");
+                })
+        })
+        document.querySelector('#submitBtn2').addEventListener("click", () => {
+            fetch(`http://localhost:8000/transaction/addTransaction`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        // name: "A",
+                        // bio: "abcde",
+                        // phone: 01234,
+                        // location; "VN"
+                        amount: document.getElementById('deposit'),
+                        accountId: localStorage.getItem('accountId'),
+                        timeCreated: new Date(),
+                        verified: 0,
+                        //payment method ???
+                    })
+                }).then(r => r.json())
+                .then(res => {
+                    // đã gửi thành công 
+                    // redirect về profile page
+                    window.location.replace("\homepage_user.html");
+                })
+        })
+        document.querySelector('#submitBtn3').addEventListener("click", () => {
+            const response3 = fetch('http://localhost:8000/account/getAccountByPhoneNumber/' + document.getElementById('receiver'), {
+            method: 'GET'
+        })
+        const jsonPhone =  response3.json()
+            fetch(`http://localhost:8000/transaction/addTransaction`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        // name: "A",
+                        // bio: "abcde",
+                        // phone: 01234,
+                        // location; "VN"
+                        amount: document.getElementById('transfer'),
+                        accountId: localStorage.getItem('accountId'),
+                        toAccountId: jsonPhone.accountId,
+                        timeCreated: new Date(),
+                        verified: 1,
+                        //payment method ???
+                    })
+                }).then(r => r.json())
+                .then(res => {
+                    // đã gửi thành công 
+                    // redirect về profile page
+                    window.location.replace("\homepage_user.html");
+                })
         })
     </script>
-
-
 </body>
 
 </html>
