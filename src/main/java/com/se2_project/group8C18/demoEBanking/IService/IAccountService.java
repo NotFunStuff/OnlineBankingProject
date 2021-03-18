@@ -23,4 +23,6 @@ public interface IAccountService {
 	public Account getAccountByUserName(String userName);
 	
 	public boolean checkPhoneNumber(String phoneNumber);
+	
+	public Account getAccountByPhoneNumber(String phoneNumber);
 }

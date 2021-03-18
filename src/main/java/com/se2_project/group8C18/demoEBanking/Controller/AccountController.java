@@ -68,4 +68,14 @@ public class AccountController {
 	public Account getAccountByUserName(@RequestParam String userName) {
 		return accountService.getAccountByUserName(userName);
 	}
+	
+	@GetMapping(value = "/account/checkPhoneNumber")
+	public boolean checkAccountByPhoneNumber(@RequestParam String phoneNumber) {
+		return accountService.checkPhoneNumber(phoneNumber);
+	}
+	
+	@GetMapping(value = "/account/getAccountByPhoneNumber")
+	public Account getAccountByPhoneNumber(String phoneNumber) {
+		return accountService.getAccountByPhoneNumber(phoneNumber);
+	}
 }
