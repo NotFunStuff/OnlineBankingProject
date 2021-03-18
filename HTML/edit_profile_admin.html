@@ -149,39 +149,39 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="name"
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input name" name="name"
                                                 class="form-control" value="name" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Bio</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="bio"
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input bio" name="bio"
                                                 class="form-control" value="{bio_value}" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Phone
                                                 Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber"
+                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber" id = "phoneNumber"
                                                 placeholder="Name" value="{phone_value}" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
                                                 class=" form-control-label">Avatar</label></div>
-                                        <div class="col-12 col-md-9"><input type="file" id="file-input" name="ava"
+                                        <div class="col-12 col-md-9"><input type="file" id="file-input ava" name="ava"
                                                 class="form-control-file"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Date of
                                                 Birth</label></div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" name="date">
+                                            <input type="date" name="date" id = "date">
                                         </div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Business
                                                 name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="business_name"
+                                        <div class="col-12 col-md-9"><input type="text" name="business_name" id = "business_name"
                                                 placeholder="Business Name" value="" class="form-control">
                                         </div>
                                     </div>
@@ -189,13 +189,13 @@
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
-                                                placeholder="Location" value="" class="form-control"></div>
+                                                placeholder="Location" value="" class="form-control" id ="location"></div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="industry"
-                                                placeholder="Industry" value="" class="form-control"></div>
+                                                placeholder="Industry" value="" class="form-control" id="industry"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -289,75 +289,77 @@
 
     <script>
         //not finished
-        let uid = req.params.id
-        const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
-            method: 'GET'
-        })
-        const json = await response.json()
-        document.querySelector('.un').innerHTML = json.username        
-        document.getElementsByName('name').value = json.name
-        document.getElementsByName('bio').value = json.bio
-        document.getElementsByName('phoneNumber').value = json.phoneNumber
-        document.getElementsByName('date').value = json.date              
-        if (json.role === 'business') {
-            const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
+        async function loadJson() {
+            let uid = req.params.id
+            const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
                 method: 'GET'
             })
-            const jsonBusiness = await response.json()
-            document.getElementsByName('business_name').value = jsonBusiness.businessName
-            document.getElementsByName('industry').value = jsonBusiness.industry
-            document.getElementsByName('location').value = jsonBusiness.location
-            document.querySelector('#submitBtn').addEventListener("click", () => {
-                fetch(`http://localhost:8000/account/editBusiness`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            // name: "A",
-                            // bio: "abcde",
-                            // phone: 01234,
-                            // location; "VN"
-                            accountId: uid,
-                            username: json.username,
-                            name: document.getElementsByName('name').value,
-                            password: json.password,
-                            bio: document.getElementsByName('bio').value,
-                            phoneNumber: document.getElementsByName('phoneNumber').value,
-                            dob: document.getElementsByName('date').value,
-                            ava: document.getElementsByName('ava').value,
-                            businessName: document.getElementsByName('business_name').value,
-                            industry: document.getElementsByName('industry').value,
-                            location: document.getElementsByName('location').value
+            const json = await response.json()
+            document.querySelector('.un').innerHTML = json.username
+            document.getElementById('name').value = json.name
+            document.getElementById('bio').value = json.bio
+            document.getElementById('phoneNumber').value = json.phoneNumber
+            document.getElementById('date').value = json.date
+            if (json.role === 'business') {
+                const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
+                    method: 'GET'
+                })
+                const jsonBusiness = await response.json()
+                document.getElementById('business_name').value = jsonBusiness.businessName
+                document.getElementById('industry').value = jsonBusiness.industry
+                document.getElementById('location').value = jsonBusiness.location
+                document.querySelector('#submitBtn').addEventListener("click", () => {
+                    fetch(`http://localhost:8000/account/editBusiness`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                // name: "A",
+                                // bio: "abcde",
+                                // phone: 01234,
+                                // location; "VN"
+                                accountId: uid,
+                                username: json.username,
+                                name: document.getElementById('name').value,
+                                password: json.password,
+                                bio: document.getElementById('bio').value,
+                                phoneNumber: document.getElementById('phoneNumber').value,
+                                dob: document.getElementById('date').value,
+                                ava: document.getElementById('ava').value,
+                                businessName: document.getElementById('business_name').value,
+                                industry: document.getElementById('industry').value,
+                                location: document.getElementById('location').value
+                            })
+                        }).then(r => r.json())
+                        .then(res => {
+                            // đã gửi thành công 
+                            // redirect về profile page
+                            window.redirect
                         })
-                    }).then(r => r.json())
-                    .then(res => {
-                        // đã gửi thành công 
-                        // redirect về profile page
-                        window.redirect
-                    })
-            })
-        } else {
-            document.querySelector('#submitBtn').addEventListener("click", () => {
-                fetch(`http://localhost:8000/account/editAccount`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            // name: "A",
-                            // bio: "abcde",
-                            // phone: 01234,
-                            // location; "VN"
-                            id: uid,
-                            username: json.username,
-                            name: document.getElementsByName('name').value,
-                            bio: document.getElementsByName('bio').value,
-                            phoneNumber: document.getElementsByName('phoneNumber').value,
-                            dob: document.getElementsByName('dob').value,
-                            ava: document.getElementsByName('ava').value
+                })
+            } else {
+                document.querySelector('#submitBtn').addEventListener("click", () => {
+                    fetch(`http://localhost:8000/account/editAccount`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                // name: "A",
+                                // bio: "abcde",
+                                // phone: 01234,
+                                // location; "VN"
+                                id: uid,
+                                username: json.username,
+                                name: document.getElementById('name').value,
+                                bio: document.getElementById('bio').value,
+                                phoneNumber: document.getElementById('phoneNumber').value,
+                                dob: document.getElementById('dob').value,
+                                ava: document.getElementById('ava').value
+                            })
+                        }).then(r => r.json())
+                        .then(res => {
+                            // đã gửi thành công 
+                            // redirect về profile page
+                            window.location.replace("\account_list_admin.html");
                         })
-                    }).then(r => r.json())
-                    .then(res => {
-                        // đã gửi thành công 
-                        // redirect về profile page
-                        window.location.replace("\account_list_admin.html");
-                    })
-            })
+                })
+            }
         }
     </script>
 </body>

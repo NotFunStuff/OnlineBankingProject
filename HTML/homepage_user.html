@@ -507,64 +507,68 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
-        });         
+        });
     </script>
     <script>
+        //not test yet
         //get only
-        const uid = localStorage.getItem('accountId')
-        const response = fetch('http://localhost:8000/account/getAccountById/' + uid, {
-            method: 'GET'
-        })
-        const json =  response.json
-        document.getElementById('ava').src = json.avatar
-        document.getElementById('name').innerHTML = json.name
-        document.getElementById('bio').innerHTML = json.bio
-        document.getElementById('timeCreated').innerHTML = json.timeCreated
-        document.getElementById('dob').innerHTML = json.dateOfBirth
-        document.getElementById('phoneNumber').innerHTML = json.phoneNumber
-        document.getElementById('balance').innerHTML = json.balance
-        document.getElementById('role').innerHTML = json.role
-        document.getElementById('c_balance').innerHTML = json.balance
-        if (json.balance <= 50) {
-            document.getElementById('withdraw_amount').innerHTML = 0
-            document.getElementById('transfer_ammount').innerHTML = 0
-        } else {
-            document.getElementById('withdraw_amount').innerHTML = json.balance - 50
-            document.getElementById('transfer_ammount').innerHTML = json.balance - 50
+        async function getJson() {
+            const uid = localStorage.getItem('accountId')
+            const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+                method: 'GET'
+            })
+            const json = await response.json
+            document.getElementById('ava').src = json.avatar
+            document.getElementById('name').innerHTML = json.name
+            document.getElementById('bio').innerHTML = json.bio
+            document.getElementById('timeCreated').innerHTML = json.timeCreated
+            document.getElementById('dob').innerHTML = json.dateOfBirth
+            document.getElementById('phoneNumber').innerHTML = json.phoneNumber
+            document.getElementById('balance').innerHTML = json.balance
+            document.getElementById('role').innerHTML = json.role
+            document.getElementById('c_balance').innerHTML = json.balance
+            if (json.balance <= 50) {
+                document.getElementById('withdraw_amount').innerHTML = 0
+                document.getElementById('transfer_ammount').innerHTML = 0
+            } else {
+                document.getElementById('withdraw_amount').innerHTML = json.balance - 50
+                document.getElementById('transfer_ammount').innerHTML = json.balance - 50
+            }
+
+            const response1 = await fetch('http://localhost:8000/save/getSave/' + uid, {
+                method: 'GET'
+            })
+            const jsonSave = await response1.json()
+
+            const response2 = await fetch('http://localhost:8000/loan/getLoan/' + uid, {
+                method: 'GET'
+            })
+            const jsonLoan = await response2.json()
+            if (jsonSave === null) {
+                document.getElementById('save_board').classList.add('hidden')
+                document.getElementById('save_hidden_display').classList.remove('hidden')
+            } else {
+                document.getElementById('save_balance').innerHTML = jsonSave.amount
+                document.getElementById('save_rate').innerHTML = jsonSave.rate
+                document.getElementById('save_term').innerHTML = new Date() - jsonSave.duration
+                document.getElementById('save_earn').innerHTML = jsonSave.amount * jsonSave.rate - jsonSave.amount
+            }
+            if (jsonLoan === null) {
+                document.getElementById('loan_board').classList.add('hidden')
+                document.getElementById('loan_hidden_display').classList.remove('hidden')
+            } else {
+                document.getElementById('loan_balance').innerHTML = jsonLoan.amount
+                document.getElementById('loan_rate').innerHTML = jsonLoan.rate
+                document.getElementById('loan_term').innerHTML = new Date() - jsonLoan.duration
+                document.getElementById('loan_earn').innerHTML = jsonLoan.amount * jsonLoan.rate - jsonLoan.amount
+            }
         }
-        
-        const response1 =  fetch('http://localhost:8000/save/getSave/' + uid, {
-            method: 'GET'
-        })
-        const jsonSave =  response1.json()
-        
-        const response2 = fetch('http://localhost:8000/loan/getLoan/' + uid, {
-            method: 'GET'
-        })
-        const jsonLoan =  response2.json()
-        if (jsonSave === null) {
-            document.getElementById('save_board').classList.add('hidden')
-            document.getElementById('save_hidden_display').classList.remove('hidden')
-        } else {
-            document.getElementById('save_balance').innerHTML = jsonSave.amount
-            document.getElementById('save_rate').innerHTML = jsonSave.rate
-            document.getElementById('save_term').innerHTML = new Date() - jsonSave.duration
-            document.getElementById('save_earn').innerHTML = jsonSave.amount * jsonSave.rate - jsonSave.amount
-        }
-        if (jsonLoan === null) {
-            document.getElementById('loan_board').classList.add('hidden')
-            document.getElementById('loan_hidden_display').classList.remove('hidden')
-        } else {
-            document.getElementById('loan_balance').innerHTML = jsonLoan.amount
-            document.getElementById('loan_rate').innerHTML = jsonLoan.rate
-            document.getElementById('loan_term').innerHTML = new Date() - jsonLoan.duration
-            document.getElementById('loan_earn').innerHTML = jsonLoan.amount * jsonLoan.rate - jsonLoan.amount
-        }
+        getJson()
     </script>
     <script>
-        //post only
-        document.querySelector('#submitBtn1').addEventListener("click", () => {
-            fetch(`http://localhost:8000/transaction/addTransaction`, {
+        //post only        
+        document.querySelector('#submitBtn1').addEventListener("click", async () => {
+            await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
                         // name: "A",
@@ -584,8 +588,8 @@
                     window.location.replace("\homepage_user.html");
                 })
         })
-        document.querySelector('#submitBtn2').addEventListener("click", () => {
-            fetch(`http://localhost:8000/transaction/addTransaction`, {
+        document.querySelector('#submitBtn2').addEventListener("click", async () => {
+            await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
                         // name: "A",
@@ -605,12 +609,13 @@
                     window.location.replace("\homepage_user.html");
                 })
         })
-        document.querySelector('#submitBtn3').addEventListener("click", () => {
-            const response3 = fetch('http://localhost:8000/account/getAccountByPhoneNumber/' + document.getElementById('receiver'), {
-            method: 'GET'
-        })
-        const jsonPhone =  response3.json()
-            fetch(`http://localhost:8000/transaction/addTransaction`, {
+        document.querySelector('#submitBtn3').addEventListener("click", async () => {
+            const response3 = await fetch('http://localhost:8000/account/getAccountByPhoneNumber/' +
+                document.getElementById('receiver'), {
+                    method: 'GET'
+                })
+            const jsonPhone = await response3.json()
+            await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
                         // name: "A",

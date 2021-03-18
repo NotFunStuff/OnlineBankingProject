@@ -150,7 +150,7 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input"
                                                 class=" form-control-label">Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" id="password-input"
+                                        <div class="col-12 col-md-9"><input type="password" id="password-input password"
                                                 name="password" placeholder="Password" class="form-control"><small
                                                 class="help-block form-text">Should be more than 6 letters or number
                                                 with at least one uppercase character</small></div>
@@ -158,44 +158,44 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Name</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="name" placeholder="Name"
-                                                value="" class="form-control"></div>
+                                                value="" class="form-control" id ="name"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Bio</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="bio" placeholder="Name"
-                                                value="" class="form-control"></div>
+                                                value="" class="form-control" id ="bio"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Phone Number</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="phoneNumber" placeholder="Name"
-                                                value="" class="form-control"></div>
+                                                value="" class="form-control" id ="phoneNumber"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
                                                 class=" form-control-label">Avatar</label></div>
                                         <div class="col-12 col-md-9"><input type="file" id="file-input" name="ava"
-                                                class="form-control-file"></div>
+                                                class="form-control-file" id ="ava"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">DoB</label></div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" name="date">
+                                            <input type="date" name="date" id ="date">
                                         </div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Business name</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="businessName" placeholder="Business Name"
-                                                value="" class="form-control"></div>
+                                                value="" class="form-control" id ="business_name"></div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="location" placeholder="Name"
-                                                value="{bio_value}" class="form-control"></div>
+                                                value="{bio_value}" class="form-control" id = "location"></div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="industry" placeholder="Name"
-                                                value="{bio_value}" class="form-control"></div>
+                                                value="{bio_value}" class="form-control" id ="industry"></div>
                                     </div>
                                 </form>
 
@@ -278,19 +278,19 @@
     })
     const json = await response.json()
     document.querySelector('.un').innerHTML = json.username
-    document.getElementsbyName('password').value= json.password
-    document.getElementsByName('name').value = json.name
-    document.getElementsByName('bio').value = json.bio
-    document.getElementsByName('phoneNumber').value = json.phoneNumber
-    document.getElementsByName('date').value = json.date              
+    document.getElementById('password').value= json.password
+    document.getElementById('name').value = json.name
+    document.getElementById('bio').value = json.bio
+    document.getElementById('phoneNumber').value = json.phoneNumber
+    document.getElementById('date').value = json.date              
     if (json.role === 'business') {
         const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
             method: 'GET'
         })
         const jsonBusiness = await response.json()
-        document.getElementsByName('business_name').value = jsonBusiness.businessName
-        document.getElementsByName('industry').value = jsonBusiness.industry
-        document.getElementsByName('location').value = jsonBusiness.location
+        document.getElementById('business_name').value = jsonBusiness.businessName
+        document.getElementById('industry').value = jsonBusiness.industry
+        document.getElementById('location').value = jsonBusiness.location
         document.querySelector('#submitBtn').addEventListener("click", () => {
             fetch(`http://localhost:8000/account/editBusiness`, {
                     method: 'POST',
@@ -301,15 +301,15 @@
                         // location; "VN"
                         accountId: uid,
                         username: json.username,
-                        name: document.getElementsByName('name').value,
-                        bio: document.getElementsByName('bio').value,
-                        phoneNumber: document.getElementsByName('phoneNumber').value,
-                        password:  document.getElementsByName('password').value,
-                        dob: document.getElementsByName('dob').value,
-                        ava: document.getElementsByName('ava').value,
-                        businessName: document.getElementsByName('business_name').value,
-                        industry: document.getElementsByName('industry').value,
-                        location: document.getElementsByName('location').value
+                        name: document.getElementById('name').value,
+                        bio: document.getElementById('bio').value,
+                        phoneNumber: document.getElementById('phoneNumber').value,
+                        password:  document.getElementById('password').value,
+                        dob: document.getElementById('dob').value,
+                        ava: document.getElementById('ava').value,
+                        businessName: document.getElementById('business_name').value,
+                        industry: document.getElementById('industry').value,
+                        location: document.getElementById('location').value
                     })
                 }).then(r => r.json())
                 .then(res => {
@@ -329,11 +329,11 @@
                         // location; "VN"
                         id: uid,
                         username: json.username,
-                        name: document.getElementsByName('name').value,
-                        bio: document.getElementsByName('bio').value,
-                        phoneNumber: document.getElementsByName('phoneNumber').value,
-                        dob: document.getElementsByName('dob').value,
-                        ava: document.getElementsByName('ava').value
+                        name: document.getElementById('name').value,
+                        bio: document.getElementById('bio').value,
+                        phoneNumber: document.getElementById('phoneNumber').value,
+                        dob: document.getElementById('dob').value,
+                        ava: document.getElementById('ava').value
                     })
                 }).then(r => r.json())
                 .then(res => {
