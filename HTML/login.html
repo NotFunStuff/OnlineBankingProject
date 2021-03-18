@@ -75,7 +75,7 @@
             document.querySelector('#submitBtn').addEventListener("click", async () => {
                 let username = document.getElementById('name').value
                 console.log(username)
-                const response = await fetch('http://localhost:8000/account/getAccountByUserName/username' , {
+                const response = await fetch('http://localhost:8000/account/getAccountByUserName/' + username , {
                     method: 'GET'
                 })
                 const json = await response.json

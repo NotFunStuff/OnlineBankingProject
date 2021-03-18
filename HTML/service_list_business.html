@@ -212,90 +212,36 @@
         function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/class_delete_' + uid
+                window.location.href = '/deleteServiceById/' + uid
             }
         }
     </script>
-    <script>
-        ví_dụ_res = [{
-                id: 1,
-                name: "cgv cinama",
-                description: "abcd",
-                price: 1234
-            },
-            {
-                id: 2,
-                name: "giặt là",
-                description: "abcd",
-                price: 123
-            },
-            {
-                id: 1,
-                name: "cgv cinama 2",
-                description: "eghdfd",
-                price: 12345
-            },
-        ]
-
-        // từ danh sách mình hiển thị cho người dùng
-        entry = ""
-        ví_dụ_res.forEach(element => {
-            entry += `
-            <tr>
-                <td>${element.id}</td>
-                <td>${element.name}</td>
-                <td>${element.description}</td>
-                <td>${element.producer}</td>
-                <td>${element.price}</td>
-                <td><a href="/class_edit_${element.id}">Buy</a></td>                    
-            </tr>
-        `
-        });
-
-
-
-        // CÁI BÊN TRÊN ĐỂ VÍ DỤ. GIỐNG HỆT BÊN DƯỚI 
-        document.querySelector('#services').innerHTML = entry
-        document.querySelector('#bootstrap-data-table_next').addEventListener("click", () => {
+    <script>//not test yet        
+        document.querySelector('#bootstrap-data-table_next').addEventListener("click", async () => {
             fetch(`http://localhost:8000/services/getAllService`, {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => {
-                    // res là json chứa danh sách service 
-                    ví_dụ_res = [{
-                            id: 1,
-                            name: "cgv cinama",
-                            description: "abcd",
-                            price: 1234
-                        },
-                        {
-                            id: 2,
-                            name: "giặt là",
-                            description: "abcd",
-                            price: 123
-                        },
-                        {
-                            id: 1,
-                            name: "cgv cinama 2",
-                            description: "èghdfd",
-                            price: 12345
-                        },
-                    ]
-
-                    // từ danh sách mình hiển thị cho người dùng
+                .then(res => async function () {                    
                     entry = ""
-                    ví_dụ_res.forEach(element => {
-                        entry += `
-                        <tr>
-                            <td>${element.id}</td>
-                            <td>${element.name}</td>
-                            <td>${element.description}</td>
-                            <td>${element.producer}</td>
-                            <td>${element.price}</td>
-                            <td><a href="/services/EditServiceById/${element.id}">Edit</a></td>
-                            <td><a href="javascript:confirmDelete('${String(element.id)}')">Delete</a></td>
-                        </tr>
-                    `
+                    res.forEach(element => {
+                        const response = await fetch(
+                            'http://localhost:8000/account/getBusinessById/' + element
+                            .businessId, {
+                                method: 'GET'
+                            })
+                        const json = await response.json()
+                        if (json.businessId === localStorage.getItem('accountId')) {
+                            entry += `
+                                        <tr>
+                                            <td>${element.serviceId}</td>
+                                            <td>${element.serviceName}</td>
+                                            <td>${element.description}</td>
+                                            <td>${element.producer}</td>
+                                            <td>${element.priceTag}</td>
+                                            <td><a href="/services/service_edit_business?id=${element.serviceId}">Edit</a></td>
+                                            <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
+                                        </tr>`
+                        }
                     });
 
                     document.querySelector('#services').innerHTML = entry

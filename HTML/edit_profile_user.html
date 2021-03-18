@@ -306,7 +306,7 @@
                         phoneNumber: document.getElementById('phoneNumber').value,
                         password:  document.getElementById('password').value,
                         dob: document.getElementById('dob').value,
-                        ava: document.getElementById('ava').value,
+                        ava: json.avatar,
                         businessName: document.getElementById('business_name').value,
                         industry: document.getElementById('industry').value,
                         location: document.getElementById('location').value
@@ -333,7 +333,7 @@
                         bio: document.getElementById('bio').value,
                         phoneNumber: document.getElementById('phoneNumber').value,
                         dob: document.getElementById('dob').value,
-                        ava: document.getElementById('ava').value
+                        ava: json.avatar
                     })
                 }).then(r => r.json())
                 .then(res => {

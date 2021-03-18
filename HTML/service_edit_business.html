@@ -10,10 +10,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Class Management Web - made by FunStuff I</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
-    <!-- <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png"> -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/tmd.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -104,7 +105,6 @@
                                 </a>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="user-area dropdown float-right">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header><!-- /header -->
 
         <div class="content">
             <div class="animated fadeIn">
@@ -134,27 +134,42 @@
 
                     <div class="col-md-12">
                         <div class="card">
+                            {msg}
                             <div class="card-header">
-                                <strong class="card-title">params Service list</strong>
+                                <strong>Create Service Form</strong>
                             </div>
-                            <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Producer</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">#
-                                                <!--delete -->
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="services">
-                                        <!-- content -->
-                                    </tbody>
-                                </table>
+                            <div class="card-body card-block">
+                                <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class="form-control-label">Service Name</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input type="text" id="text-input serviceName" name="serviceName" class="form-control"
+                                                value="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Desciption</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="description" id ="description"
+                                                class="form-control" value=""></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class="form-control-label">Price</label>
+                                        </div>
+                                        <div class="col-12 col-md-9"><input type="number" id="text-input price"
+                                                name="price" class="form-control" value=""></div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" id="submitBtn" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -203,51 +218,47 @@
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
 
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
-        });
+        });       
 
-        function confirmDelete(uid) {
-            var r = confirm("Are you sure you want to delete?")
-            if (r) {
-                window.location.href = '/services/deleteServiceById/' + uid
-            }
-        }
     </script>
+
 <script>
-    document.querySelector('#bootstrap-data-table_next').addEventListener("click", async () => {
-            fetch(`http://localhost:8000/services/getAllService`, {
-                    method: 'GET'
-                }).then(r => r.json())
-                .then(res => async function () {                    
-                    entry = ""
-                    res.forEach(element => {
-                        const response = await fetch(
-                            'http://localhost:8000/account/getBusinessById/' + element
-                            .businessId, {
-                                method: 'GET'
-                            })
-                        const json = await response.json()
-                        if (json.businessId === localStorage.getItem('accountId')) {
-                            entry += `
-                                        <tr>
-                                            <td>${element.serviceId}</td>
-                                            <td>${element.serviceName}</td>
-                                            <td>${element.description}</td>
-                                            <td>${element.producer}</td>
-                                            <td>${element.priceTag}</td>                                            
-                                            <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
-                                        </tr>`
-                        }
-                    });
-
-                    document.querySelector('#services').innerHTML = entry
-                })
+    //not finished
+    async function loadJson() {
+        let uid = new URL(window.location.href).searchParams.get('id')
+        const response = await fetch('http://localhost:8000/service/getServiceById/' + uid, {
+            method: 'GET'
         })
+        const json = await response.json()        
+        document.getElementById('serviceName').value = json.serviceName
+        document.getElementById('description').value = json.description
+        document.getElementById('price').value = json.priceTag             
+            document.querySelector('#submitBtn').addEventListener("click", () => {
+                fetch(`http://localhost:8000/service/editService`, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            // name: "A",
+                            // bio: "abcde",
+                            // phone: 01234,
+                            // location; "VN"
+                            serviceId: uid,                            
+                            serviceName: document.getElementById('serviceName').value,
+                            description: document.getElementById('description').value,
+                            priceTag:  document.getElementById('price').value
+                        })
+                    }).then(r => r.json())
+                    .then(res => {
+                        // đã gửi thành công 
+                        // redirect về profile page
+                        window.location.replace("/service_list_business.html");
+                    })
+            })
+        }    
+    loadJson()
 </script>
-
 </body>
 
 </html>

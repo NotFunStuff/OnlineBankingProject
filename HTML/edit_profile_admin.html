@@ -110,7 +110,7 @@
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{avatar}" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -290,7 +290,7 @@
     <script>
         //not finished
         async function loadJson() {
-            let uid = req.params.id
+            let uid = new URL(window.location.href).searchParams.get('id')
             const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
                 method: 'GET'
             })
@@ -361,6 +361,7 @@
                 })
             }
         }
+        loadJson()
     </script>
 </body>
 
