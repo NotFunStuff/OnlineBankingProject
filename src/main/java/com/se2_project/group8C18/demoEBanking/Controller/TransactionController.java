@@ -16,31 +16,36 @@ import com.se2_project.group8C18.demoEBanking.Model.Transaction;
 import com.se2_project.group8C18.demoEBanking.Service.TransactionService;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class TransactionController {
+	
+	final String org = "http://127.0.0.1:5500";
 	
 	@Autowired
 	TransactionService transactionService;
 	
 	@PostMapping(value = "/transaction/addTransaction")
+	@CrossOrigin(origins = org)
 	public String addTransaction(@RequestBody String transaction)
 	{
 		return transactionService.addTransaction(transaction);
 	}
 	
 	@DeleteMapping(value = "/transaction/deleteTransactionById")
+	@CrossOrigin(origins = org)
 	public String deleteTransactionById(@RequestParam int transactionId)
 	{
 		return transactionService.deleteTransactionById(transactionId);
 	}
 	
 	@GetMapping(value = "/transaction/getTransactionById")
+	@CrossOrigin(origins = org)
 	public Transaction getTransactionById(@RequestParam int transactionId)
 	{
 		return transactionService.getTransactionById(transactionId);
 	}
 	
 	@GetMapping(value = "/transaction/getAllTransactions")
+	@CrossOrigin(origins = org)
 	public List<Transaction> getAllTransactions()
 	{
 		return transactionService.getAllTransactions();

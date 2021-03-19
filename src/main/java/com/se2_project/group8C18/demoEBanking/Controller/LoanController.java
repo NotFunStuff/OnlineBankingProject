@@ -14,13 +14,15 @@ import com.se2_project.group8C18.demoEBanking.Model.Loan;
 import com.se2_project.group8C18.demoEBanking.Service.LoanService;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class LoanController {
+	
+	final String org = "http://127.0.0.1:5500";
 	
 	@Autowired
 	LoanService loanService;
 	
 	@GetMapping(value = "/loan/getLoan")
+	@CrossOrigin(origins = org)
 	public Loan getLoan(@RequestParam int accountId) {
 		return loanService.getLoan(accountId);
 	}
