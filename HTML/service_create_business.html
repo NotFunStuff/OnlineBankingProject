@@ -144,20 +144,20 @@
                                         <div class="col col-md-3"><label class="form-control-label">Service Name</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="serviceName" class="form-control"
+                                            <input type="text" id="text-input serviceName" name="serviceName" class="form-control"
                                                 value="">
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Desciption</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="description"
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="description" id ="description"
                                                 class="form-control" value=""></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class="form-control-label">Price</label>
                                         </div>
-                                        <div class="col-12 col-md-9"><input type="number" id="text-input"
+                                        <div class="col-12 col-md-9"><input type="number" id="text-input price"
                                                 name="price" class="form-control" value=""></div>
                                     </div>
                                 </form>
@@ -221,21 +221,31 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
-        });
+        });       
 
-        var btn = document.getElementById("submitBtn");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
-        })
     </script>
 
-
+<script>
+    //not finished
+    async function loadJson() {                  
+            document.querySelector('#submitBtn').addEventListener("click", () => {
+                fetch(`http://localhost:8000/service/createService`, {
+                        method: 'POST',
+                        body: JSON.stringify({                           
+                            serviceName: document.getElementById('serviceName').value,
+                            description: document.getElementById('description').value,
+                            priceTag:  document.getElementById('price').value
+                        })
+                    }).then(r => r.json())
+                    .then(res => {
+                        // đã gửi thành công 
+                        // redirect về profile page
+                        window.location.replace("/account_list_admin.html");
+                    })
+            })
+        }    
+    loadJson()
+</script>
 </body>
 
 </html>

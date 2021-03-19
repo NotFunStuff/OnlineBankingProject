@@ -217,84 +217,28 @@
         }
     </script>
     <script>
-        ví_dụ_res = [{
-                id: 1,
-                name: "cgv cinama",
-                description: "abcd",
-                price: 1234
-            },
-            {
-                id: 2,
-                name: "giặt là",
-                description: "abcd",
-                price: 123
-            },
-            {
-                id: 1,
-                name: "cgv cinama 2",
-                description: "eghdfd",
-                price: 12345
-            },
-        ]
-
-        // từ danh sách mình hiển thị cho người dùng
-        entry = ""
-        ví_dụ_res.forEach(element => {
-            entry += `
-            <tr>
-                <td>${element.id}</td>
-                <td>${element.name}</td>
-                <td>${element.description}</td>
-                <td>${element.producer}</td>
-                <td>${element.price}</td>
-                <td><a href="/class_edit_${element.id}">Buy</a></td>                    
-            </tr>
-        `
-        });
-
-
-
-        // CÁI BÊN TRÊN ĐỂ VÍ DỤ. GIỐNG HỆT BÊN DƯỚI 
-        document.querySelector('#services').innerHTML = entry
-        document.querySelector('#bootstrap-data-table_next').addEventListener("click", () => {
+        document.querySelector('#bootstrap-data-table_next').addEventListener("click", async () => {
             fetch(`http://localhost:8000/services/getAllService`, {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => {
-                    // res là json chứa danh sách service 
-                    ví_dụ_res = [{
-                            id: 1,
-                            name: "cgv cinama",
-                            description: "abcd",
-                            price: 1234
-                        },
-                        {
-                            id: 2,
-                            name: "giặt là",
-                            description: "abcd",
-                            price: 123
-                        },
-                        {
-                            id: 1,
-                            name: "cgv cinama 2",
-                            description: "èghdfd",
-                            price: 12345
-                        },
-                    ]
-
-                    // từ danh sách mình hiển thị cho người dùng
+                .then(res => async function () {
                     entry = ""
-                    ví_dụ_res.forEach(element => {
+                    res.forEach(element => {
+                        const response = await fetch(
+                            'http://localhost:8000/account/getBusinessById/' + element
+                            .businessId, {
+                                method: 'GET'
+                            })
+                        const json = await response.json()
                         entry += `
-                        <tr>
-                            <td>${element.id}</td>
-                            <td>${element.name}</td>
-                            <td>${element.description}</td>
-                            <td>${element.producer}</td>
-                            <td>${element.price}</td>
-                            <td><a href="/class_edit_${element.id}">Buy</a></td>
-                        </tr>
-                    `
+                                        <tr>
+                                            <td>${element.serviceId}</td>
+                                            <td>${element.serviceName}</td>
+                                            <td>${element.description}</td>
+                                            <td>${element.producer}</td>
+                                            <td>${element.priceTag}</td>
+                                            <td><a href="/bill_user.html?id=${element.serviceId}">Buy</a></td>                                            
+                                        </tr>`
                     });
 
                     document.querySelector('#services').innerHTML = entry

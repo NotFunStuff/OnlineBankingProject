@@ -154,7 +154,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="services">
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
@@ -187,14 +187,16 @@
     <!-- Right Panel -->
 
     <!-- Scripts -->
-    <script> //not finished
-        fetch(`http://localhost:8080/account/getAllAccounts`, {
-                method: 'GET'
-            }).then(r => r.json())
-            .then(res => {   
-                entry = ""
-                res.forEach(element => {
-                    entry += `
+    <script>
+        //not finished
+        async function loadJson() {
+            await fetch(`http://localhost:8000/account/getAllAccounts`, {
+                    method: 'GET'
+                }).then(r => r.json())
+                .then(res => {
+                    entry = ""
+                    res.forEach(element => {
+                        entry += `
                             <tr>
                                 <td>${element.accountId}</td>
                         <td>${element.userName}</td>
@@ -204,14 +206,16 @@
                         <td>${element.timeCreated}</td>
                         <td>${element.balance}</td>
                         <td>${element.role}</td>
-                        <td><a href="/Failure(Java)/SE2Project/HTML/edit_profile_admin.html/?params=${element.accountId}">Edit</a></td>
+                        <td><a href="/edit_profile_admin.html?id=${element.accountId}">Edit</a></td>
                         <td><a href="javascript:confirmDelete('${String(element.accountId)}')">Delete</a></td>  
                             </tr>
                         `
-                });
+                    });
 
-                document.querySelector('#services').innerHTML = entry
-            })
+                    document.querySelector('#services').innerHTML = entry
+                })
+        }
+        loadJson()
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
@@ -244,7 +248,7 @@
             }
         }
     </script>
-    
+
 </body>
 
 </html>
