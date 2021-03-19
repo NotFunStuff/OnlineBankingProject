@@ -74,7 +74,8 @@ public class AccountService implements IAccountService {
 	@Autowired
 	CheckProperty checkProperty;
 	
-	
+	@Autowired
+	InvestTypeService investTypeService;
 	
 	@Override
 	public Account findById(int accountId) {
@@ -106,7 +107,7 @@ public class AccountService implements IAccountService {
 			Account acc = accountRepository.findById(accountId).get();
 			acc.getPaymentMethods().forEach(x -> paymentMethodService.deletePaymentMethodById(x.getPaymentMethodId()));
 			acc.getTransactions().forEach(x -> transactionService.deleteTransactionById(x.getTransactionId()));
-				
+			investTypeService.deleteInvestType(acc.getAccountId());
 			accountRepository.deleteById(accountId);
 			
 			return errorType.getSuccesful();
