@@ -241,10 +241,14 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        function confirmDelete(uid) {
+        async function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/account/deleteAccountById/' + uid
+                const response = await fetch('http://localhost:8000/account/deleteAccountById/?accountId=' + uid, {
+                method: 'DELETE'
+            })
+            console.log(uid)
+                // window.location.href = '/account_list_admin.html'
             }
         }
     </script>
