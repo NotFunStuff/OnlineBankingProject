@@ -149,8 +149,8 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input name" name="name"
-                                                class="form-control" value="name" required></div>
+                                        <div class="col-12 col-md-9"><input type="text" value="name" id="text-input name" name="name"
+                                                class="form-control" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
@@ -165,12 +165,12 @@
                                                 placeholder="Name" value="{phone_value}" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <!-- <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
                                                 class=" form-control-label">Avatar</label></div>
                                         <div class="col-12 col-md-9"><input type="file" id="file-input ava" name="ava"
                                                 class="form-control-file"></div>
-                                    </div>
+                                    </div> -->
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Date of
                                                 Birth</label></div>
@@ -182,20 +182,20 @@
                                         <div class="col col-md-3"><label class=" form-control-label">Business
                                                 name</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="business_name" id = "business_name"
-                                                placeholder="Business Name" value="" class="form-control">
+                                                placeholder="Business Name" value="  " class="form-control">
                                         </div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
-                                                placeholder="Location" value="" class="form-control" id ="location"></div>
+                                                placeholder="Location" value=" " class="form-control" id ="location"></div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="industry"
-                                                placeholder="Industry" value="" class="form-control" id="industry"></div>
+                                                placeholder="Industry" value=" " class="form-control" id="industry"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -291,17 +291,18 @@
         //not finished
         async function loadJson() {
             let uid = new URL(window.location.href).searchParams.get('id')
-            const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
-            })
+            })   
             const json = await response.json()
-            document.querySelector('.un').innerHTML = json.username
-            document.getElementById('name').value = json.name
+            console.log(json);
+            document.querySelector('.un').innerHTML = json.userName            
             document.getElementById('bio').value = json.bio
             document.getElementById('phoneNumber').value = json.phoneNumber
             document.getElementById('date').value = json.date
+            document.getElementById('name').value = json.name
             if (json.role === 'business') {
-                const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
+                const response = await fetch('http://localhost:8000/account/getBusinessById/?accountId=' + uid, {
                     method: 'GET'
                 })
                 const jsonBusiness = await response.json()
@@ -317,13 +318,13 @@
                                 // phone: 01234,
                                 // location; "VN"
                                 accountId: uid,
-                                username: json.username,
+                                userName: json.username,
                                 name: document.getElementById('name').value,
                                 password: json.password,
                                 bio: document.getElementById('bio').value,
                                 phoneNumber: document.getElementById('phoneNumber').value,
                                 dob: document.getElementById('date').value,
-                                ava: document.getElementById('ava').value,
+                                avatar: json.avatar,
                                 businessName: document.getElementById('business_name').value,
                                 industry: document.getElementById('industry').value,
                                 location: document.getElementById('location').value
@@ -344,13 +345,13 @@
                                 // bio: "abcde",
                                 // phone: 01234,
                                 // location; "VN"
-                                id: uid,
-                                username: json.username,
+                                accountId: uid,
+                                userName: json.userName,
                                 name: document.getElementById('name').value,
                                 bio: document.getElementById('bio').value,
                                 phoneNumber: document.getElementById('phoneNumber').value,
                                 dob: document.getElementById('dob').value,
-                                ava: document.getElementById('ava').value
+                                avatar: json.avatar
                             })
                         }).then(r => r.json())
                         .then(res => {

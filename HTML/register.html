@@ -118,7 +118,8 @@
                         phoneNumber: document.getElementsByName('phoneNumber').value,
                         timeCreated: new Date(),
                         dob: document.getElementsByName('dob').value,
-                        role: document.getElementsByName('role').value
+                        role: document.getElementsByName('role').value,
+                        avatar: "images/admin.jpg"
                     })             
                 }).then(r => r.json())
                 .then(res => {

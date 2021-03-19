@@ -170,12 +170,12 @@
                                         <div class="col-12 col-md-9"><input type="text" name="phoneNumber" placeholder="Name"
                                                 value="" class="form-control" id ="phoneNumber"></div>
                                     </div>
-                                    <div class="row form-group">
+                                    <!-- <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
                                                 class=" form-control-label">Avatar</label></div>
                                         <div class="col-12 col-md-9"><input type="file" id="file-input" name="ava"
                                                 class="form-control-file" id ="ava"></div>
-                                    </div>
+                                    </div> -->
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">DoB</label></div>
                                         <div class="col-12 col-md-9">
@@ -273,7 +273,7 @@
     
     //not finished
     let uid = req.params.id
-    const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+    const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
         method: 'GET'
     })
     const json = await response.json()
@@ -284,7 +284,7 @@
     document.getElementById('phoneNumber').value = json.phoneNumber
     document.getElementById('date').value = json.date              
     if (json.role === 'business') {
-        const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
+        const response = await fetch('http://localhost:8000/account/getBusinessById/?accountId=' + uid, {
             method: 'GET'
         })
         const jsonBusiness = await response.json()
@@ -339,7 +339,7 @@
                 .then(res => {
                     // đã gửi thành công 
                     // redirect về profile page
-                    window.location.replace("\account_list_admin.html");
+                    window.location.replace("/account_list_admin.html");
                 })
         })
     }
