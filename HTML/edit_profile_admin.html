@@ -138,7 +138,7 @@
                                 <strong>Edit Account Form</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
+                                <form id="myForm1" method="POST" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class="form-control-label">Username</label>
                                         </div>
@@ -149,8 +149,8 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" value="name" id="text-input name" name="name"
-                                                class="form-control" required></div>
+                                        <div class="col-12 col-md-9"><input type="text" value="name"
+                                                id="text-input name" name="name" class="form-control" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
@@ -161,8 +161,9 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Phone
                                                 Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber" id = "phoneNumber"
-                                                placeholder="Name" value="{phone_value}" class="form-control" required>
+                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber"
+                                                id="phoneNumber" placeholder="Name" value="{phone_value}"
+                                                class="form-control" required>
                                         </div>
                                     </div>
                                     <!-- <div class="row form-group">
@@ -175,27 +176,30 @@
                                         <div class="col col-md-3"><label class=" form-control-label">Date of
                                                 Birth</label></div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" name="date" id = "date">
+                                            <input type="date" name="date" id="date">
                                         </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden business">
                                         <div class="col col-md-3"><label class=" form-control-label">Business
                                                 name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="business_name" id = "business_name"
-                                                placeholder="Business Name" value="  " class="form-control">
+                                        <div class="col-12 col-md-9"><input type="text" name="business_name"
+                                                id="business_name" placeholder="Business Name" value="  "
+                                                class="form-control">
                                         </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden location">
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
-                                                placeholder="Location" value=" " class="form-control" id ="location"></div>
+                                                placeholder="Location" value=" " class="form-control" id="location">
+                                        </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden industry">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="industry"
-                                                placeholder="Industry" value=" " class="form-control" id="industry"></div>
+                                                placeholder="Industry" value=" " class="form-control" id="industry">
+                                        </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -274,90 +278,77 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
-
-        var btn = document.getElementById("submitBtn");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
-        })
     </script>
 
     <script>
-        //not finished
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
             let uid = new URL(window.location.href).searchParams.get('id')
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
-            })   
+            })
             const json = await response.json()
-            console.log(json);
-            document.querySelector('.un').innerHTML = json.userName            
-            document.getElementById('bio').value = json.bio
+            console.log(json.name);
+
+            document.querySelector('.un').innerHTML = json.userName
+            document.getElementById("text-input name").value = json.name
+            document.getElementById('text-input bio').value = json.bio
             document.getElementById('phoneNumber').value = json.phoneNumber
-            document.getElementById('date').value = json.date
-            document.getElementById('name').value = json.name
+            document.getElementById('date').value = json.dateOfBirth
+
             if (json.role === 'business') {
-                const response = await fetch('http://localhost:8000/account/getBusinessById/?accountId=' + uid, {
+                const response = await fetch('http://localhost:8000/account/getBusinessById/?businessId=' + uid, {
                     method: 'GET'
                 })
                 const jsonBusiness = await response.json()
                 document.getElementById('business_name').value = jsonBusiness.businessName
                 document.getElementById('industry').value = jsonBusiness.industry
                 document.getElementById('location').value = jsonBusiness.location
-                document.querySelector('#submitBtn').addEventListener("click", () => {
-                    fetch(`http://localhost:8000/account/editBusiness`, {
-                            method: 'POST',
+                document.querySelector(".business").classList.remove('hidden')
+                document.querySelector(".industry").classList.remove('hidden')
+                document.querySelector(".location").classList.remove('hidden')
+                document.querySelector('#submitBtn').addEventListener("click", async () => {
+                    await fetch(`http://localhost:8000/account/editBusiness`, {
+                            method: 'PUT',
                             body: JSON.stringify({
-                                // name: "A",
-                                // bio: "abcde",
-                                // phone: 01234,
-                                // location; "VN"
                                 accountId: uid,
-                                userName: json.username,
-                                name: document.getElementById('name').value,
+                                userName: json.userName,
+                                name: document.getElementById('text-input name').value,
                                 password: json.password,
-                                bio: document.getElementById('bio').value,
+                                bio: document.getElementById('text-input bio').value,
                                 phoneNumber: document.getElementById('phoneNumber').value,
-                                dob: document.getElementById('date').value,
+                                dateOfBirth: document.getElementById('date').value,
                                 avatar: json.avatar,
-                                businessName: document.getElementById('business_name').value,
+                                businessName: document.getElementById('business_name')
+                                    .value,
                                 industry: document.getElementById('industry').value,
                                 location: document.getElementById('location').value
                             })
-                        }).then(r => r.json())
+                        }).then(r => {
+                            r.json()    
+                        })
                         .then(res => {
-                            // đã gửi thành công 
-                            // redirect về profile page
-                            window.redirect
+
+                            window.location.href = '/account_list_admin.html';
                         })
                 })
             } else {
                 document.querySelector('#submitBtn').addEventListener("click", () => {
                     fetch(`http://localhost:8000/account/editAccount`, {
-                            method: 'POST',
+                            method: 'PUT',
                             body: JSON.stringify({
-                                // name: "A",
-                                // bio: "abcde",
-                                // phone: 01234,
-                                // location; "VN"
                                 accountId: uid,
                                 userName: json.userName,
+                                password: json.password,
                                 name: document.getElementById('name').value,
                                 bio: document.getElementById('bio').value,
                                 phoneNumber: document.getElementById('phoneNumber').value,
-                                dob: document.getElementById('dob').value,
+                                dateOfBirth: document.getElementById('dob').value,
                                 avatar: json.avatar
                             })
-                        }).then(r => r.json())
+                        }).then(r => {r.json()})
                         .then(res => {
-                            // đã gửi thành công 
-                            // redirect về profile page
-                            window.location.replace("\account_list_admin.html");
+                            window.location.href = "/account_list_admin.html";
                         })
                 })
             }

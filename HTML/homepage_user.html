@@ -179,7 +179,7 @@
                                                 <div class="col col-md-3 tmd"><label
                                                         class=" form-control-label">Role:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static" id="Role">User</p>
+                                                    <p class="form-control-static" id="role">User</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +234,7 @@
                                                         </div>
                                                         <p class="align-center-tmd">
                                                             <button type="submit" class="btn btn-success"
-                                                                id="#submitBtn1">
+                                                                id="submitBtn1">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
@@ -264,7 +264,7 @@
                                                         </div>
                                                         <p class="align-center-tmd">
                                                             <button type="submit" class="btn btn-success"
-                                                                id="#submitBtn2">
+                                                                id="submitBtn2">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
@@ -303,7 +303,7 @@
                                                         </div>
                                                         <p class="align-center-tmd">
                                                             <button type="submit" class="btn btn-success"
-                                                                id="#submitBtn3">
+                                                                id="submitBtn3">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
@@ -514,11 +514,11 @@
         //get only
         async function getJson() {
             const uid = localStorage.getItem('accountId')
-            const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
             })
-            const json = await response.json
-            document.getElementById('ava').src = json.avatar
+            const json = await response.json()
+            document.getElementById('ava').src = "images/admin.jpg"
             document.getElementById('name').innerHTML = json.name
             document.getElementById('bio').innerHTML = json.bio
             document.getElementById('timeCreated').innerHTML = json.timeCreated
@@ -535,12 +535,12 @@
                 document.getElementById('transfer_ammount').innerHTML = json.balance - 50
             }
 
-            const response1 = await fetch('http://localhost:8000/save/getSave/' + uid, {
+            const response1 = await fetch('http://localhost:8000/save/getSave/?saveId=' + 3, {
                 method: 'GET'
             })
             const jsonSave = await response1.json()
-
-            const response2 = await fetch('http://localhost:8000/loan/getLoan/' + uid, {
+            console.log(jsonSave)
+            const response2 = await fetch('http://localhost:8000/loan/getLoan/?loanId=' + uid, {
                 method: 'GET'
             })
             const jsonLoan = await response2.json()
@@ -610,7 +610,7 @@
                 })
         })
         document.querySelector('#submitBtn3').addEventListener("click", async () => {
-            const response3 = await fetch('http://localhost:8000/account/getAccountByPhoneNumber/' +
+            const response3 = await fetch('http://localhost:8000/account/getAccountByPhoneNumber/?phoneNumber=' +
                 document.getElementById('receiver'), {
                     method: 'GET'
                 })
