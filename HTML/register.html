@@ -54,7 +54,7 @@
                             <label>Password</label>
                             <input type="password" class="form-control" placeholder="Password" name="password"
                                 id="password" required>
-                            <span><small>Should be more than 6 letters or number with at least one uppercase
+                            <span><small>Should be more than 8 letters or number
                                     character</small></span>
                         </div>
                         <div class="form-group">
@@ -109,52 +109,71 @@
         // DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
         document.querySelector('#submitBtn').addEventListener("click", async () => {
-            console.log(document.getElementsByName('role'));
-            var role = document.getElementsByName('role');
-            var accountRole;
-            for (i = 0; i < role.length; i++) {
-                if (role[i].checked)
-                    accountRole = role[i].value
-            }
-            if (accountRole === 'User') {
-                await fetch(`http://localhost:8000/account/addAccount`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            userName: document.getElementById('userName').value,
-                            name: document.getElementById('name').value,
-                            password: document.getElementById('password').value,
-                            phoneNumber: document.getElementById('phoneNumber').value,   
-                            balance: 0,
-                            dateOfBirth: document.getElementById('date').value,
-                            role: null,
-                            avatar: "images/admin.jpg"
-                        })
-                    }).then(r => r.json())
-                    .then(res => {
-                        // window.location.href = '/login.html'
-                    })
-            } else if (accountRole === "Business"){
-                await fetch(`http://localhost:8000/account/addBusiness`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            userName: document.getElementById('userName').value,
-                            name: document.getElementById('name').value,
-                            password: document.getElementById('password').value,
-                            phoneNumber: document.getElementById('phoneNumber').value,                            
-                            dateOfBirth: document.getElementById('date').value,
-                            role: null,
-                            balance: 0,
-                            avatar: "images/admin.jpg",
-                            businessName: document.getElementById('name').value,
-                            location: "VietNam",
-                            industry: "Clothes"
-                        })
-                    }).then(r => r.json())
-                    .then(res => {
-                        // window.location.href = '/login.html'
-                    })
-            }
+            var isAllowed = true
+            var regUserName = document.getElementById('name').value
+            var regPhoneNumber = document.getElementById('phoneNumber').value
+            await fetch(`http://localhost:8000/account/getAllAccounts`, {
+                    method: 'GET'
+                }).then(r =>
+                    r.json()
+                )
+                .then(res => {
 
+                    res.forEach(element => {                        
+                        if (regUserName === element.userName || regPhoneNumber === element
+                            .phoneNumber) {
+                            isAllowed = false
+                        }
+                    });
+                })
+            if (isAllowed) {
+                var role = document.getElementsByName('role');
+                var accountRole;
+                for (i = 0; i < role.length; i++) {
+                    if (role[i].checked)
+                        accountRole = role[i].value
+                }
+                if (accountRole === 'User') {
+                    await fetch(`http://localhost:8000/account/addAccount`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                userName: document.getElementById('userName').value,
+                                name: document.getElementById('name').value,
+                                password: document.getElementById('password').value,
+                                phoneNumber: document.getElementById('phoneNumber').value,
+                                balance: 0,
+                                dateOfBirth: document.getElementById('date').value,
+                                role: null,
+                                avatar: "images/admin.jpg"
+                            })
+                        }).then(r => r.json())
+                        .then(res => {
+                            // window.location.href = '/login.html'
+                        })
+                } else if (accountRole === "Business") {
+                    await fetch(`http://localhost:8000/account/addBusiness`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                userName: document.getElementById('userName').value,
+                                name: document.getElementById('name').value,
+                                password: document.getElementById('password').value,
+                                phoneNumber: document.getElementById('phoneNumber').value,
+                                dateOfBirth: document.getElementById('date').value,
+                                role: "business",
+                                balance: 0,
+                                avatar: "images/admin.jpg",
+                                businessName: document.getElementById('name').value,
+                                location: "VietNam",
+                                industry: "Clothes"
+                            })
+                        }).then(r => r.json())
+                        .then(res => {
+                            // window.location.href = '/login.html'
+                        })
+                }
+            } else {
+                alert("username or phoneNumber are already registered")
+            }
         })
     </script>
 </body>
