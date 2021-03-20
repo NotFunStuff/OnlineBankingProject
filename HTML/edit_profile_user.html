@@ -304,11 +304,7 @@
                 document.querySelector('#submitBtn').addEventListener("click", () => {
                     fetch(`http://localhost:8000/account/editBusiness`, {
                             method: 'PUT',
-                            body: JSON.stringify({
-                                // name: "A",
-                                // bio: "abcde",
-                                // phone: 01234,
-                                // location; "VN"
+                            body: JSON.stringify({                                
                                 accountId: uid,
                                 userName: json.userName,
                                 name: document.getElementById('name').value,
@@ -324,9 +320,7 @@
                         }).then(r => {
                             r.json()
                         })
-                        .then(res => {
-                            // đã gửi thành công 
-                            // redirect về profile page
+                        .then(res => {                            
                             window.location.href = "/homepage_user.html";
                         })
                 })
@@ -334,11 +328,7 @@
                 document.querySelector('#submitBtn').addEventListener("click", () => {
                     fetch(`http://localhost:8000/account/editAccount`, {
                             method: 'PUT',
-                            body: JSON.stringify({
-                                // name: "A",
-                                // bio: "abcde",
-                                // phone: 01234,
-                                // location; "VN"
+                            body: JSON.stringify({                                
                                 accountId: uid,
                                 userName: json.userName,
                                 name: document.getElementById('name').value,
@@ -350,9 +340,7 @@
                         }).then(r => {
                             r.json()
                         })
-                        .then(res => {
-                            // đã gửi thành công 
-                            // redirect về profile page
+                        .then(res => {                            
                             window.location.href = "/homepage_user.html";
                         })
                 })

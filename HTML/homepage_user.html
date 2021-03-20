@@ -212,8 +212,7 @@
                                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="custom-nav-home"
                                                     role="tabpanel" aria-labelledby="custom-nav-home-tab">
-                                                    <form action="#" method="post"
-                                                        class="form-horizontal card-body card-block" id="myForm1">
+                                                    <form class="form-horizontal card-body card-block" id="myForm1">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
                                                                     class=" form-control-label">Withdrawable Amount of
@@ -232,18 +231,17 @@
                                                                     class="form-control">
                                                             </div>
                                                         </div>
+                                                    </form>
                                                         <p class="align-center-tmd">
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="submitBtn1">
+                                                            <button class="btn btn-success" id="submitBtn1">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
-                                                    </form>
+                                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel"
                                                     aria-labelledby="custom-nav-profile-tab">
-                                                    <form action="#" method="post"
-                                                        class="form-horizontal card-body card-block" id="myForm2">
+                                                    <form class="form-horizontal card-body card-block" id="myForm2">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
                                                                     class=" form-control-label">Current Balance:</label>
@@ -262,18 +260,17 @@
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
+                                                    </form>
                                                         <p class="align-center-tmd">
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="submitBtn2">
+                                                            <button class="btn btn-success" id="submitBtn2">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
-                                                    </form>
+                                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel"
                                                     aria-labelledby="custom-nav-contact-tab">
-                                                    <form action="#" method="post"
-                                                        class="form-horizontal card-body card-block" id="myForm3">
+                                                    <form class="form-horizontal card-body card-block" id="myForm3">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
                                                                     class=" form-control-label">Transferable Amount of
@@ -301,13 +298,13 @@
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
+                                                    </form>
                                                         <p class="align-center-tmd">
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="submitBtn3">
+                                                            <button class="btn btn-success" id="submitBtn3">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
-                                                    </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -544,7 +541,7 @@
                 method: 'GET'
             })
             const jsonLoan = await response2.json()
-            if (jsonSave === null) {
+            if (jsonSave.status === 400) {
                 document.getElementById('save_board').classList.add('hidden')
                 document.getElementById('save_hidden_display').classList.remove('hidden')
             } else {
@@ -553,7 +550,7 @@
                 document.getElementById('save_term').innerHTML = new Date() - jsonSave.duration
                 document.getElementById('save_earn').innerHTML = jsonSave.amount * jsonSave.rate - jsonSave.amount
             }
-            if (jsonLoan === null) {
+            if (jsonLoan.status === 400) {
                 document.getElementById('loan_board').classList.add('hidden')
                 document.getElementById('loan_hidden_display').classList.remove('hidden')
             } else {
@@ -571,46 +568,33 @@
             await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"
                         amount: document.getElementById('withdraw'),
                         accountId: localStorage.getItem('accountId'),
                         timeCreated: new Date(),
-                        verified: 0,
-                        //payment method ???
+                        verified: 0
                     })
                 }).then(r => r.json())
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("\homepage_user.html");
+                    window.location.href = "/homepage_user.html";
                 })
         })
         document.querySelector('#submitBtn2').addEventListener("click", async () => {
             await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"
                         amount: document.getElementById('deposit'),
                         accountId: localStorage.getItem('accountId'),
                         timeCreated: new Date(),
-                        verified: 0,
-                        //payment method ???
+                        verified: 0
                     })
                 }).then(r => r.json())
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("\homepage_user.html");
+                    window.location.href = "/homepage_user.html";
                 })
         })
         document.querySelector('#submitBtn3').addEventListener("click", async () => {
-            const response3 = await fetch('http://localhost:8000/account/getAccountByPhoneNumber/?phoneNumber=' +
+            const response3 = await fetch(
+                'http://localhost:8000/account/getAccountByPhoneNumber/?phoneNumber=' +
                 document.getElementById('receiver'), {
                     method: 'GET'
                 })
@@ -618,22 +602,15 @@
             await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"
                         amount: document.getElementById('transfer'),
                         accountId: localStorage.getItem('accountId'),
                         toAccountId: jsonPhone.accountId,
                         timeCreated: new Date(),
-                        verified: 1,
-                        //payment method ???
+                        verified: 1
                     })
                 }).then(r => r.json())
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("\homepage_user.html");
+                    window.location.href = "/homepage_user.html";
                 })
         })
     </script>
