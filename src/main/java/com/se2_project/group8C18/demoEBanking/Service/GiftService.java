@@ -73,7 +73,18 @@ public class GiftService implements IGiftService {
 
 			if (!giftRepository.existsById(gi.getTransactionId())) {
 				if (checkValidate.getOk(gi)) {
-					
+					Account acc = accountRepository.findById(gi.getAccount().getAccountId()).get();
+					Account toAccount = accountRepository.findById(gi.getToAccount().getAccountId()).get();
+					if(toAccount == null) {
+						return errorType.isNotExisted("Account "+ toAccount.getAccountId());
+					}
+					if(acc == null) {
+						return errorType.isNotExisted("Account " + acc.getAccountId());
+					}
+					if(gi.getAmount() > 0) {
+						acc.setBalance(acc.getBalance()-gi.getAmount());
+						toAccount.setBalance(toAccount.getBalance()+gi.getAmount());
+					}
 					
 					giftRepository.save(gi);
 					return errorType.getSuccesful();
