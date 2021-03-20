@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -26,7 +27,8 @@ public class Transaction {
 	private int transactionId;
 	
 	@Column(nullable = false)
-	private int amount;
+	@Min(value = 0)
+	private long amount;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "accountId", foreignKey = @ForeignKey(name = "fk_account_transaction"))
@@ -45,11 +47,11 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-	public int getAmount() {
+	public long getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(long amount) {
 		this.amount = amount;
 	}
 

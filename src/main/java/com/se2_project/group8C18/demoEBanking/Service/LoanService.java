@@ -78,8 +78,7 @@ public class LoanService implements ILoanService {
 		Loan lo = gson.fromJson(loan, Loan.class);
 		if (isEmpty(lo.getAccount().getAccountId())) {
 			return errorType.isNotExisted("loan");
-		}
-		else{
+		} else {
 
 			if (checkValidate.getOk(lo)) {
 				Loan loanCurrent = getLoan(lo.getAccount().getAccountId());
