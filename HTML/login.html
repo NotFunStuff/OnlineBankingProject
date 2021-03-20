@@ -82,7 +82,7 @@
                 const json = await response.json()
 
                 console.log(json)
-                if (json == null) {
+                if (json === null) {
                     alert("Wrong credential!!");
                 } else {
                     if (json.password === document.getElementById('password').value) {

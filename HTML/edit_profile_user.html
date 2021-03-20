@@ -195,15 +195,18 @@
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
-                                                placeholder="Name" value="" class="form-control"
-                                                id="location"></div>
+                                                placeholder="Name" value="" class="form-control" id="location"></div>
                                     </div>
                                     <div class="row form-group hidden">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
-                                        <div class="col-12 col-md-9"><input type="text" name="industry"
-                                                placeholder="Name" value="" class="form-control"
-                                                id="industry"></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="industry" id="industry" class="form-control">
+                                                <option value="Clothes">Clothes</option>
+                                                <option value="Movie">Movie</option>
+                                                <option value="Restaurant">Restaurant</option>
+                                                <option value="Electronics">Electronics</option>
+                                            </select></div>
                                     </div>
                                 </form>
 
@@ -319,7 +322,9 @@
                                 industry: document.getElementById('industry').value,
                                 location: document.getElementById('location').value
                             })
-                        }).then(r => {r.json()})
+                        }).then(r => {
+                            r.json()
+                        })
                         .then(res => {
                             // đã gửi thành công 
                             // redirect về profile page
@@ -343,7 +348,9 @@
                                 dateOfBirth: document.getElementById('date').value,
                                 avatar: json.avatar
                             })
-                        }).then(r => {r.json()})
+                        }).then(r => {
+                            r.json()
+                        })
                         .then(res => {
                             // đã gửi thành công 
                             // redirect về profile page
