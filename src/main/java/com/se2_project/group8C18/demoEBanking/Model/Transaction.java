@@ -1,5 +1,7 @@
 package com.se2_project.group8C18.demoEBanking.Model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -39,6 +43,10 @@ public class Transaction {
 	@JoinColumn(name = "paymentMethodId", foreignKey = @ForeignKey(name = "fk_paymentMethod_transaction"))
 	private PaymentMethod paymentMethod;
 
+	@Column(updatable = false)
+	@CreationTimestamp
+	private LocalDateTime timeCreated;
+	
 	public int getTransactionId() {
 		return transactionId;
 	}
@@ -69,6 +77,14 @@ public class Transaction {
 
 	public void setPaymentMethod(PaymentMethod paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+
+	public LocalDateTime getTimeCreated() {
+		return timeCreated;
+	}
+
+	public void setTimeCreated(LocalDateTime timeCreated) {
+		this.timeCreated = timeCreated;
 	}
 	
 	
