@@ -235,7 +235,10 @@
         function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/class_delete_' + uid
+                const response = await fetch('http://localhost:8000//service/deleteServiceById/?serviceId=' + uid, {
+                method: 'DELETE'
+            })            
+                window.location.href = '/service_list_admin.html'
             }
         }
     </script>
@@ -245,11 +248,12 @@
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
             })
-            const jsonAcc = await response.json()
+            var jsonAcc = await response.json()
+            console.log(jsonAcc);
             console.log(document.querySelector('#menu_admin'));
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
-            } else if (jsonAcc.role === "Business") {
+            } else if (jsonAcc.role === "business") {
                 document.querySelector('#menu_business').classList.remove('hidden')
             }
         }

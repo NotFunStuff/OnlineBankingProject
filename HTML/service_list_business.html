@@ -235,10 +235,13 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        function confirmDelete(uid) {
+        async function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/deleteServiceById/' + uid
+                const response = await fetch('http://localhost:8000//service/deleteServiceById/?serviceId=' + uid, {
+                method: 'DELETE'
+            })            
+                window.location.href = '/service_list_business.html'
             }
         }
     </script>
@@ -248,8 +251,8 @@
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
             })
-            const jsonAcc = await response.json()
-            console.log(jsonACC);
+            var jsonAcc = await response.json()
+            console.log(jsonAcc);            
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
             } else if (jsonAcc.role === "business") {
@@ -259,37 +262,31 @@
         menu()
     </script>
     <script>
-        //not test yet        
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE       
         async function loadJson() {
-            await fetch(`http://localhost:8000/services/getAllService`, {
+            await fetch(`http://localhost:8000/service/getServiceByBusiness/?businessId=` + localStorage.getItem('accountId'), {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => async function () {
+                .then(res => {                    
                     entry = ""
-                    res.forEach(element => async function () {
-                        const response = await fetch(
-                            'http://localhost:8000/account/getBusinessById/' + element
-                            .businessId, {
-                                method: 'GET'
-                            })
-                        const json = await response.json()
-                        if (json.businessId === localStorage.getItem('accountId')) {
-                            entry += `
+                    res.forEach(element => {
+                        entry += `
                                         <tr>
                                             <td>${element.serviceId}</td>
                                             <td>${element.serviceName}</td>
                                             <td>${element.description}</td>
-                                            <td>${element.producer}</td>
-                                            <td>${element.priceTag}</td>
-                                            <td><a href="/services/service_edit_business?id=${element.serviceId}">Edit</a></td>
+                                            <td>${element.business.businessName}</td>
+                                            <td>${element.business.industry}</td>
+                                            <td>${element.priceTag}</td>                                            
                                             <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
                                         </tr>`
-                        }
-                    });
+                    })
+                    document.querySelector('#services').innerHTML = entry   
+                });
 
-                    document.querySelector('#services').innerHTML = entry
-                })
+
         }
+        loadJson()
     </script>
 
 </body>

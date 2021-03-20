@@ -58,26 +58,27 @@
                                     href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,7 +111,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,18 +134,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -256,12 +258,12 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                        <p class="align-center-tmd">
-                                                            <button class="btn btn-success" id="submitBtn1">
-                                                                <i class="fa fa-dot-circle-o"></i> Submit
-                                                            </button>
-                                                        </p>
-                                                    
+                                                    <p class="align-center-tmd">
+                                                        <button class="btn btn-success" id="submitBtn1">
+                                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                                        </button>
+                                                    </p>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel"
                                                     aria-labelledby="custom-nav-profile-tab">
@@ -285,12 +287,12 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                        <p class="align-center-tmd">
-                                                            <button class="btn btn-success" id="submitBtn2">
-                                                                <i class="fa fa-dot-circle-o"></i> Submit
-                                                            </button>
-                                                        </p>
-                                                    
+                                                    <p class="align-center-tmd">
+                                                        <button class="btn btn-success" id="submitBtn2">
+                                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                                        </button>
+                                                    </p>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel"
                                                     aria-labelledby="custom-nav-contact-tab">
@@ -323,12 +325,12 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                        <p class="align-center-tmd">
-                                                            <button class="btn btn-success" id="submitBtn3">
-                                                                <i class="fa fa-dot-circle-o"></i> Submit
-                                                            </button>
-                                                        </p>
-                                                    
+                                                    <p class="align-center-tmd">
+                                                        <button class="btn btn-success" id="submitBtn3">
+                                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                                        </button>
+                                                    </p>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -623,15 +625,21 @@
                     method: 'GET'
                 })
             const jsonPhone = await response3.json()
-            console.log( localStorage.getItem('accountId'));
+            console.log(localStorage.getItem('accountId'));
             await fetch(`http://localhost:8000/transaction/addGift`, {
                     method: 'POST',
                     body: JSON.stringify({
                         amount: document.getElementById('transfer').value,
-                        accountId: localStorage.getItem('accountId'),
-                        toAccountId: jsonPhone.accountId                       
+                        account: {
+                            accountId: localStorage.getItem('accountId')
+                        },
+                        toAccount: {
+                            accountId: jsonPhone.accountId
+                        }
                     })
-                }).then(r => r.json())
+                }).then(r => {
+                    r.json()
+                })
                 .then(res => {
                     // window.location.href = "/homepage_user.html";
                 })
