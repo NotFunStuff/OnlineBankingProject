@@ -49,4 +49,10 @@ public class BillController {
 	{
 		return billService.getBillById(billId);
 	}
+	
+	@GetMapping(value = "/transaction/getBillByAccount")
+	@CrossOrigin(origins = org)
+	public List<Bill> getBillByAccount(@RequestParam int accountId){
+		return billService.getBillsByAccount(accountId);
+	}
 }

@@ -65,9 +65,11 @@ public class BillService implements IBillService {
 
 		if (serviceRepository.existsById(bil.getService().getServiceId())) {
 
-			if (billRepository.existsById(bil.getTransactionId())) {
+			if (!billRepository.existsById(bil.getTransactionId())) {
 				if (checkValidate.getOk(bil)) {
 					bil.setTime_created(LocalDateTime.now());
+					com.se2_project.group8C18.demoEBanking.Model.Service sv = serviceRepository.findById(bil.getService().getServiceId()).get();
+					bil.setPricetag(sv.getPriceTag());
 					billRepository.save(bil);
 					return errorType.getSuccesful();
 				}

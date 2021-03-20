@@ -21,20 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @PrimaryKeyJoinColumn(name = "billId")
 public class Bill extends Transaction {
 
-
 	@Column(updatable = false)
 	@CreationTimestamp
 	private LocalDateTime time_created;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns({
-			@JoinColumn(name = "serviceId", foreignKey = @ForeignKey(name = "fk_service_bill"), referencedColumnName = "serviceId"),
-			@JoinColumn(name = "priceTag", referencedColumnName = "priceTag") }
-
-	)
+	@JoinColumn(name = "serviceId", foreignKey = @ForeignKey(name = "fk_service_bill"))
 	@JsonIgnoreProperties(value = "bills")
 	private Service service;
 
+	@Column
+	private long pricetag;
+	
 	public LocalDateTime getTime_created() {
 		return time_created;
 	}
@@ -50,5 +48,15 @@ public class Bill extends Transaction {
 	public void setService(Service service) {
 		this.service = service;
 	}
+
+	public long getPricetag() {
+		return pricetag;
+	}
+
+	public void setPricetag(long pricetag) {
+		this.pricetag = pricetag;
+	}
+	
+	
 
 }
