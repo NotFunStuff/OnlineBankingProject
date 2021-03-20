@@ -5,15 +5,14 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="">
 <!--<![endif]-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Class Management Web - made by FunStuff I</title>
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <title>Online Banking Web - made by team 14C36</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <!-- <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png"> -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -26,7 +25,6 @@
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/tmd.css">
-
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -41,18 +39,47 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="menu-title">Class Management</li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Class</a>
+                    <li class="menu-title">14C36 Online Banking</li>
+                    <li><a href="/homepage_user.html"> <i class="menu-icon fa fa-home"></i>Home
+                        </a></li>
+                    <li class="menu-item-has-children dropdown"><a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                class="menu-icon fa fa-cogs"></i>User Service
+                        </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="/class_list">Class List</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="/class_create">Create Class</a></li>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            </li>
+                            <li><i class="fa fa-cutlery"></i><a
+                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                            <li><i class="fa fa-shopping-cart"></i><a
+                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                            <li><i class="fa fa-lightbulb-o"></i><a
+                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-
+                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
+                            class="menu-icon fa fa-laptop"></i>Admin Menu
+                    </a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                        </li>                        
+                    </ul>
+                </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
+            <!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
 
@@ -82,8 +109,8 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-
-                        <div class="dropdown for-notification">
+    
+                        <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
@@ -104,29 +131,25 @@
                                     <p>Server #3 overloaded.</p>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
+    
                     </div>
-
+    
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-
+    
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/profiles"><i class="fa fa-user"></i>My Profile</a>
-                            <!-- 
-                            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i>Notifications <span
-                                    class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a> -->
-
-                            <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
+                            
+                            <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </header><!-- /header -->
+        </header>
 
         <div class="content">
             <div class="animated fadeIn">
@@ -138,7 +161,7 @@
                                 <strong>Edit Account Form</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
+                                <form id="myForm1" method="POST" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class="form-control-label">Username</label>
                                         </div>
@@ -149,8 +172,8 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input name" name="name"
-                                                class="form-control" value="name" required></div>
+                                        <div class="col-12 col-md-9"><input type="text" value="name"
+                                                id="text-input name" name="name" class="form-control" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
@@ -158,44 +181,53 @@
                                         <div class="col-12 col-md-9"><input type="text" id="text-input bio" name="bio"
                                                 class="form-control" value="{bio_value}" required></div>
                                     </div>
-                                    <div class="row form-group">
+                                    <!-- <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Phone
                                                 Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber" id = "phoneNumber"
-                                                placeholder="Name" value="{phone_value}" class="form-control" required>
+                                        <div class="col-12 col-md-9"><input type="text" name="phoneNumber"
+                                                id="phoneNumber" placeholder="Name" value="{phone_value}"
+                                                class="form-control" required>
                                         </div>
-                                    </div>
-                                    <div class="row form-group">
+                                    </div> -->
+                                    <!-- <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
                                                 class=" form-control-label">Avatar</label></div>
                                         <div class="col-12 col-md-9"><input type="file" id="file-input ava" name="ava"
                                                 class="form-control-file"></div>
-                                    </div>
+                                    </div> -->
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Date of
                                                 Birth</label></div>
                                         <div class="col-12 col-md-9">
-                                            <input type="date" name="date" id = "date">
+                                            <input type="date" name="date" id="date">
                                         </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden business">
                                         <div class="col col-md-3"><label class=" form-control-label">Business
                                                 name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="business_name" id = "business_name"
-                                                placeholder="Business Name" value="" class="form-control">
+                                        <div class="col-12 col-md-9"><input type="text" name="business_name"
+                                                id="business_name" placeholder="Business Name" value="  "
+                                                class="form-control">
                                         </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden location">
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
-                                                placeholder="Location" value="" class="form-control" id ="location"></div>
+                                                placeholder="Location" value=" " class="form-control" id="location">
+                                        </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden industry">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
-                                        <div class="col-12 col-md-9"><input type="text" name="industry"
-                                                placeholder="Industry" value="" class="form-control" id="industry"></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="industry" id="industry" class="form-control">
+                                                <option value="Clothes">Clothes</option>
+                                                <option value="Movie">Movie</option>
+                                                <option value="Restaurant">Restaurant</option>
+                                                <option value="Electronics">Electronics</option>                                                
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3">
@@ -274,89 +306,92 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
-
-        var btn = document.getElementById("submitBtn");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
-        })
     </script>
-
+<script>
+    async function menu() {
+        var uid = localStorage.getItem("accountId")
+        const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
+            method: 'GET'
+        })
+        const jsonAcc = await response.json()
+        console.log(document.querySelector('#menu_admin'));
+        if (jsonAcc.role === "admin") {
+            document.querySelector('#menu_admin').classList.remove('hidden')
+        } else if (jsonAcc.role === "Business") {
+            document.querySelector('#menu_business').classList.remove('hidden')
+        }
+    }
+    menu()
+</script>
     <script>
-        //not finished
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
             let uid = new URL(window.location.href).searchParams.get('id')
-            const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
             })
             const json = await response.json()
-            document.querySelector('.un').innerHTML = json.username
-            document.getElementById('name').value = json.name
-            document.getElementById('bio').value = json.bio
-            document.getElementById('phoneNumber').value = json.phoneNumber
-            document.getElementById('date').value = json.date
+            console.log(json.name);
+
+            document.querySelector('.un').innerHTML = json.userName
+            document.getElementById("text-input name").value = json.name
+            document.getElementById('text-input bio').value = json.bio
+            
+            document.getElementById('date').value = json.dateOfBirth
+
             if (json.role === 'business') {
-                const response = await fetch('http://localhost:8000/account/getBusinessById/' + uid, {
+                const response = await fetch('http://localhost:8000/account/getBusinessById/?businessId=' + uid, {
                     method: 'GET'
                 })
                 const jsonBusiness = await response.json()
                 document.getElementById('business_name').value = jsonBusiness.businessName
                 document.getElementById('industry').value = jsonBusiness.industry
                 document.getElementById('location').value = jsonBusiness.location
-                document.querySelector('#submitBtn').addEventListener("click", () => {
-                    fetch(`http://localhost:8000/account/editBusiness`, {
-                            method: 'POST',
+                document.querySelector(".business").classList.remove('hidden')
+                document.querySelector(".industry").classList.remove('hidden')
+                document.querySelector(".location").classList.remove('hidden')
+                document.querySelector('#submitBtn').addEventListener("click", async () => {
+                    await fetch(`http://localhost:8000/account/editBusiness`, {
+                            method: 'PUT',
                             body: JSON.stringify({
-                                // name: "A",
-                                // bio: "abcde",
-                                // phone: 01234,
-                                // location; "VN"
                                 accountId: uid,
-                                username: json.username,
-                                name: document.getElementById('name').value,
+                                userName: json.userName,
+                                name: document.getElementById('text-input name').value,
                                 password: json.password,
-                                bio: document.getElementById('bio').value,
-                                phoneNumber: document.getElementById('phoneNumber').value,
-                                dob: document.getElementById('date').value,
-                                ava: document.getElementById('ava').value,
-                                businessName: document.getElementById('business_name').value,
+                                bio: document.getElementById('text-input bio').value,
+                                phoneNumber: json.phoneNumber,
+                                dateOfBirth: document.getElementById('date').value,
+                                avatar: json.avatar,
+                                businessName: document.getElementById('business_name')
+                                    .value,
                                 industry: document.getElementById('industry').value,
                                 location: document.getElementById('location').value
                             })
-                        }).then(r => r.json())
+                        }).then(r => {
+                            r.json()    
+                        })
                         .then(res => {
-                            // đã gửi thành công 
-                            // redirect về profile page
-                            window.redirect
+
+                            window.location.href = '/account_list_admin.html';
                         })
                 })
             } else {
                 document.querySelector('#submitBtn').addEventListener("click", () => {
                     fetch(`http://localhost:8000/account/editAccount`, {
-                            method: 'POST',
+                            method: 'PUT',
                             body: JSON.stringify({
-                                // name: "A",
-                                // bio: "abcde",
-                                // phone: 01234,
-                                // location; "VN"
-                                id: uid,
-                                username: json.username,
+                                accountId: uid,
+                                userName: json.userName,
+                                password: json.password,
                                 name: document.getElementById('name').value,
                                 bio: document.getElementById('bio').value,
-                                phoneNumber: document.getElementById('phoneNumber').value,
-                                dob: document.getElementById('dob').value,
-                                ava: document.getElementById('ava').value
+                                phoneNumber: json.phoneNumber,
+                                dateOfBirth: document.getElementById('dob').value,
+                                avatar: json.avatar
                             })
-                        }).then(r => r.json())
+                        }).then(r => {r.json()})
                         .then(res => {
-                            // đã gửi thành công 
-                            // redirect về profile page
-                            window.location.replace("\account_list_admin.html");
+                            window.location.href = "/account_list_admin.html";
                         })
                 })
             }

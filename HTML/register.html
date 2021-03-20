@@ -41,24 +41,26 @@
                     <form>
                         <div class="form-group">
                             <label>User Name</label>
-                            <input type="username" class="form-control" placeholder="User Name" name="name" required>
+                            <input type="username" class="form-control" placeholder="User Name" name="userName"
+                                id="userName" required>
                             <span><small>This is your log in name</small></span>
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="name" class="form-control" placeholder="Name" name="userName" required>
+                            <input type="name" class="form-control" placeholder="Name" name="name" id="name" required>
                             <span><small>This is your display name</small></span>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password" required>
-                            <span><small>Should be more than 6 letters or number with at least one uppercase
+                            <input type="password" class="form-control" placeholder="Password" name="password"
+                                id="password" required>
+                            <span><small>Should be more than 8 letters or number
                                     character</small></span>
                         </div>
                         <div class="form-group">
                             <label>Phone Number</label>
                             <input type="text" class="form-control" placeholder="0987654321" name="phoneNumber"
-                                required>
+                                id="phoneNumber" required>
                         </div>
                         <div class="row form-group">
                             <div class="form-check-inline">
@@ -82,7 +84,7 @@
                         <div class="row form-group">
                             <div class="col col-md-3"><label class=" form-control-label">DoB:</label></div>
                             <div class="col-12 col-md-9">
-                                <input type="date" name="dob" required>
+                                <input type="date" name="dob" id="date" required>
                             </div>
                         </div>
 
@@ -103,29 +105,75 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script> // not finished
-        document.querySelector('#submitBtn').addEventListener("click", () => {
-            fetch(`http://localhost:8080/account/addAccount`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"                    
-                        username: document.getElementsByName('userName').value,
-                        name: document.getElementsByName('name').value,
-                        password: document.getElementsByName('password').value,
-                        phoneNumber: document.getElementsByName('phoneNumber').value,
-                        timeCreated: new Date(),
-                        dob: document.getElementsByName('dob').value,
-                        role: document.getElementsByName('role').value
-                    })             
-                }).then(r => r.json())
+    <script>
+        // DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+        document.querySelector('#submitBtn').addEventListener("click", async () => {
+            var isAllowed = true
+            var regUserName = document.getElementById('name').value
+            var regPhoneNumber = document.getElementById('phoneNumber').value
+            await fetch(`http://localhost:8000/account/getAllAccounts`, {
+                    method: 'GET'
+                }).then(r =>
+                    r.json()
+                )
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("/login.html");
+
+                    res.forEach(element => {                        
+                        if (regUserName === element.userName || regPhoneNumber === element
+                            .phoneNumber) {
+                            isAllowed = false
+                        }
+                    });
                 })
+            if (isAllowed) {
+                var role = document.getElementsByName('role');
+                var accountRole;
+                for (i = 0; i < role.length; i++) {
+                    if (role[i].checked)
+                        accountRole = role[i].value
+                }
+                if (accountRole === 'User') {
+                    await fetch(`http://localhost:8000/account/addAccount`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                userName: document.getElementById('userName').value,
+                                name: document.getElementById('name').value,
+                                password: document.getElementById('password').value,
+                                phoneNumber: document.getElementById('phoneNumber').value,
+                                balance: 0,
+                                dateOfBirth: document.getElementById('date').value,
+                                role: null,
+                                avatar: "images/admin.jpg"
+                            })
+                        }).then(r => r.json())
+                        .then(res => {
+                            window.location.href = '/login.html'
+                        })
+                } else if (accountRole === "Business") {
+                    await fetch(`http://localhost:8000/account/addBusiness`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                userName: document.getElementById('userName').value,
+                                name: document.getElementById('name').value,
+                                password: document.getElementById('password').value,
+                                phoneNumber: document.getElementById('phoneNumber').value,
+                                dateOfBirth: document.getElementById('date').value,
+                                role: "business",
+                                balance: 0,
+                                avatar: "images/admin.jpg",
+                                businessName: document.getElementById('name').value,
+                                location: "VietNam",
+                                industry: "Clothes"
+                            })
+                        }).then(r => r.json())
+                        .then(res => {
+                            window.location.href = '/login.html'
+                        })
+                }
+            } else {
+                alert("username or phoneNumber are already registered")
+            }
         })
     </script>
 </body>

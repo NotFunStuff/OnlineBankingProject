@@ -9,11 +9,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Class Management Web - made by FunStuff I</title>
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <title>Online Banking Web - made by team 14C36</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <!-- <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png"> -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/tmd.css">
-
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -41,18 +40,47 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="menu-title">Class Management</li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Class</a>
+                    <li class="menu-title">14C36 Online Banking</li>
+                    <li><a href="/homepage_user.html"> <i class="menu-icon fa fa-home"></i>Home
+                        </a></li>
+                    <li class="menu-item-has-children dropdown"><a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                class="menu-icon fa fa-cogs"></i>User Service
+                        </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="/class_list">Class List</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="/class_create">Create Class</a></li>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            </li>
+                            <li><i class="fa fa-cutlery"></i><a
+                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                            <li><i class="fa fa-shopping-cart"></i><a
+                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                            <li><i class="fa fa-lightbulb-o"></i><a
+                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-
+                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
+                            class="menu-icon fa fa-laptop"></i>Admin Menu
+                    </a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                        </li>                        
+                    </ul>
+                </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
+            <!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
 
@@ -82,8 +110,8 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-
-                        <div class="dropdown for-notification">
+    
+                        <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
@@ -104,29 +132,25 @@
                                     <p>Server #3 overloaded.</p>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
+    
                     </div>
-
+    
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-
+    
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/profiles"><i class="fa fa-user"></i>My Profile</a>
-                            <!-- 
-                            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i>Notifications <span
-                                    class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a> -->
-
-                            <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
+                            
+                            <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </header><!-- /header -->
+        </header>
 
         <div class="content">
             <div class="animated fadeIn">
@@ -179,7 +203,7 @@
                                                 <div class="col col-md-3 tmd"><label
                                                         class=" form-control-label">Role:</label></div>
                                                 <div class="col-12 col-md-9">
-                                                    <p class="form-control-static" id="Role">User</p>
+                                                    <p class="form-control-static" id="role">User</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,8 +236,7 @@
                                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="custom-nav-home"
                                                     role="tabpanel" aria-labelledby="custom-nav-home-tab">
-                                                    <form action="#" method="post"
-                                                        class="form-horizontal card-body card-block" id="myForm1">
+                                                    <form class="form-horizontal card-body card-block" id="myForm1">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
                                                                     class=" form-control-label">Withdrawable Amount of
@@ -232,18 +255,17 @@
                                                                     class="form-control">
                                                             </div>
                                                         </div>
+                                                    </form>
                                                         <p class="align-center-tmd">
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="#submitBtn1">
+                                                            <button class="btn btn-success" id="submitBtn1">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
-                                                    </form>
+                                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel"
                                                     aria-labelledby="custom-nav-profile-tab">
-                                                    <form action="#" method="post"
-                                                        class="form-horizontal card-body card-block" id="myForm2">
+                                                    <form class="form-horizontal card-body card-block" id="myForm2">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
                                                                     class=" form-control-label">Current Balance:</label>
@@ -262,18 +284,17 @@
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
+                                                    </form>
                                                         <p class="align-center-tmd">
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="#submitBtn2">
+                                                            <button class="btn btn-success" id="submitBtn2">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
-                                                    </form>
+                                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel"
                                                     aria-labelledby="custom-nav-contact-tab">
-                                                    <form action="#" method="post"
-                                                        class="form-horizontal card-body card-block" id="myForm3">
+                                                    <form class="form-horizontal card-body card-block" id="myForm3">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
                                                                     class=" form-control-label">Transferable Amount of
@@ -288,7 +309,7 @@
                                                                     class=" form-control-label">Receiver phone
                                                                     number:</label></div>
                                                             <div class="col-12 col-md-9"><input type="text"
-                                                                    id="hf-email" name="receiver"
+                                                                    id="receiver" name="receiver"
                                                                     placeholder="0987654321" class="form-control">
                                                             </div>
                                                         </div>
@@ -297,17 +318,17 @@
                                                                     class=" form-control-label">Transfer
                                                                     Ammount:</label></div>
                                                             <div class="col-12 col-md-9"><input type="number"
-                                                                    id="hf-email" name="transfer"
+                                                                    id="transfer" name="transfer"
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
+                                                    </form>
                                                         <p class="align-center-tmd">
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="#submitBtn3">
+                                                            <button class="btn btn-success" id="submitBtn3">
                                                                 <i class="fa fa-dot-circle-o"></i> Submit
                                                             </button>
                                                         </p>
-                                                    </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -514,11 +535,11 @@
         //get only
         async function getJson() {
             const uid = localStorage.getItem('accountId')
-            const response = await fetch('http://localhost:8000/account/getAccountById/' + uid, {
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
             })
-            const json = await response.json
-            document.getElementById('ava').src = json.avatar
+            const json = await response.json()
+            document.getElementById('ava').src = "images/admin.jpg"
             document.getElementById('name').innerHTML = json.name
             document.getElementById('bio').innerHTML = json.bio
             document.getElementById('timeCreated').innerHTML = json.timeCreated
@@ -535,16 +556,16 @@
                 document.getElementById('transfer_ammount').innerHTML = json.balance - 50
             }
 
-            const response1 = await fetch('http://localhost:8000/save/getSave/' + uid, {
+            const response1 = await fetch('http://localhost:8000/save/getSave/?saveId=' + 3, {
                 method: 'GET'
             })
             const jsonSave = await response1.json()
-
-            const response2 = await fetch('http://localhost:8000/loan/getLoan/' + uid, {
+            console.log(jsonSave)
+            const response2 = await fetch('http://localhost:8000/loan/getLoan/?loanId=' + uid, {
                 method: 'GET'
             })
             const jsonLoan = await response2.json()
-            if (jsonSave === null) {
+            if (jsonSave.status === 400) {
                 document.getElementById('save_board').classList.add('hidden')
                 document.getElementById('save_hidden_display').classList.remove('hidden')
             } else {
@@ -553,7 +574,7 @@
                 document.getElementById('save_term').innerHTML = new Date() - jsonSave.duration
                 document.getElementById('save_earn').innerHTML = jsonSave.amount * jsonSave.rate - jsonSave.amount
             }
-            if (jsonLoan === null) {
+            if (jsonLoan.status === 400) {
                 document.getElementById('loan_board').classList.add('hidden')
                 document.getElementById('loan_hidden_display').classList.remove('hidden')
             } else {
@@ -571,71 +592,68 @@
             await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"
-                        amount: document.getElementById('withdraw'),
+                        amount: document.getElementById('withdraw').value,
                         accountId: localStorage.getItem('accountId'),
                         timeCreated: new Date(),
-                        verified: 0,
-                        //payment method ???
+                        verified: 0
                     })
                 }).then(r => r.json())
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("\homepage_user.html");
+                    window.location.href = "/homepage_user.html";
                 })
         })
         document.querySelector('#submitBtn2').addEventListener("click", async () => {
             await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"
-                        amount: document.getElementById('deposit'),
+                        amount: document.getElementById('deposit').value,
                         accountId: localStorage.getItem('accountId'),
                         timeCreated: new Date(),
-                        verified: 0,
-                        //payment method ???
+                        verified: 0
                     })
                 }).then(r => r.json())
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("\homepage_user.html");
+                    window.location.href = "/homepage_user.html";
                 })
         })
         document.querySelector('#submitBtn3').addEventListener("click", async () => {
-            const response3 = await fetch('http://localhost:8000/account/getAccountByPhoneNumber/' +
-                document.getElementById('receiver'), {
+            const response3 = await fetch(
+                'http://localhost:8000/account/getAccountByPhoneNumber/?phoneNumber=' +
+                document.getElementById('receiver').value, {
                     method: 'GET'
                 })
             const jsonPhone = await response3.json()
+            console.log(jsonPhone);
             await fetch(`http://localhost:8000/transaction/addTransaction`, {
                     method: 'POST',
                     body: JSON.stringify({
-                        // name: "A",
-                        // bio: "abcde",
-                        // phone: 01234,
-                        // location; "VN"
-                        amount: document.getElementById('transfer'),
+                        amount: document.getElementById('transfer').value,
                         accountId: localStorage.getItem('accountId'),
                         toAccountId: jsonPhone.accountId,
                         timeCreated: new Date(),
-                        verified: 1,
-                        //payment method ???
+                        verified: 1
                     })
                 }).then(r => r.json())
                 .then(res => {
-                    // đã gửi thành công 
-                    // redirect về profile page
-                    window.location.replace("\homepage_user.html");
+                    // window.location.href = "/homepage_user.html";
                 })
         })
+    </script>
+    <script>
+        async function menu() {
+            var uid = localStorage.getItem("accountId")
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
+                method: 'GET'
+            })
+            const jsonAcc = await response.json()
+            console.log(document.querySelector('#menu_admin'));
+            if (jsonAcc.role === "admin") {
+                document.querySelector('#menu_admin').classList.remove('hidden')
+            } else if (jsonAcc.role === "Business") {
+                document.querySelector('#menu_business').classList.remove('hidden')
+            }
+        }
+        menu()
     </script>
 </body>
 

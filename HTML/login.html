@@ -69,28 +69,30 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-        //not test yet
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
         async function login() {
             document.querySelector('#submitBtn').addEventListener("click", async () => {
                 let username = document.getElementById('name').value
                 console.log(username)
-                const response = await fetch('http://localhost:8000/account/getAccountByUserName/' + username , {
+                console.log(document.getElementById('password').value)
+                const response = await fetch('http://localhost:8000/account/getAccountByUserName/?userName=' + username , {
                     method: 'GET'
                 })
-                const json = await response.json
+                const json = await response.json()
+
                 console.log(json)
                 if (json === null) {
                     alert("Wrong credential!!");
                 } else {
-                    if (json.password === getElementById('password').value) {
+                    if (json.password === document.getElementById('password').value) {
                         if (json.role === "admin") {
                             localStorage.setItem('accountId', json.accountId)
                             window.location.href = '/account_list_admin.html'
 
                         } else {
                             localStorage.setItem('accountId', json.accountId)
-                            window.location.href = '/user_page.html'
+                            window.location.href = '/homepage_user.html'
                         }
                     } else {
                         alert("Wrong credential!!");
