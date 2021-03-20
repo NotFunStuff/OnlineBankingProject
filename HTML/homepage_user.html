@@ -253,7 +253,7 @@
                                                                     class=" form-control-label">Withdraw (x.000
                                                                     VND):</label></div>
                                                             <div class="col-12 col-md-9"><input type="number"
-                                                                    id="hf-email" name="withdraw" placeholder="Min: 1"
+                                                                    id="withdraw" name="withdraw" placeholder="Min: 1"
                                                                     class="form-control">
                                                             </div>
                                                         </div>
@@ -282,7 +282,7 @@
                                                                     class=" form-control-label">Deposit (x.000
                                                                     VND):</label></div>
                                                             <div class="col-12 col-md-9"><input type="number"
-                                                                    id="hf-email" name="deposit"
+                                                                    id="deposit" name="deposit"
                                                                     placeholder="Min of 1.000" class="form-control">
                                                             </div>
                                                         </div>
@@ -592,29 +592,43 @@
     <script>
         //post only        
         document.querySelector('#submitBtn1').addEventListener("click", async () => {
-            await fetch(`http://localhost:8000/transaction/addTransaction`, {
+            await fetch(`http://localhost:8000/transaction/addGift`, {
                     method: 'POST',
                     body: JSON.stringify({
                         amount: document.getElementById('withdraw').value,
-                        accountId: localStorage.getItem('accountId'),
-                        timeCreated: new Date(),
-                        verified: 0
+                        account: {
+                            accountId: localStorage.getItem('accountId')
+                        },
+                        toAccount: {
+                            accountId: 5
+                        }
                     })
-                }).then(r => r.json())
+                }).then(r => {
+                        r.json()
+                    }
+
+                )
                 .then(res => {
                     window.location.href = "/homepage_user.html";
                 })
         })
         document.querySelector('#submitBtn2').addEventListener("click", async () => {
-            await fetch(`http://localhost:8000/transaction/addTransaction`, {
+            await fetch(`http://localhost:8000/transaction/addGift`, {
                     method: 'POST',
                     body: JSON.stringify({
                         amount: document.getElementById('deposit').value,
-                        accountId: localStorage.getItem('accountId'),
-                        timeCreated: new Date(),
-                        verified: 0
+                        account: {
+                            accountId: 5
+                        },
+                        toAccount: {
+                            accountId: localStorage.getItem('accountId')
+                        }
                     })
-                }).then(r => r.json())
+                }).then(r => {
+                        r.json()
+                    }
+
+                )
                 .then(res => {
                     window.location.href = "/homepage_user.html";
                 })
