@@ -169,6 +169,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Producer</th>
+                                            <th scope="col">Industry</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">#
                                                 <!--delete -->
@@ -242,19 +243,21 @@
     </script>
     <script>
         async function loadJson() {
-            await fetch(`http://localhost:8000/service/getAllService`, {
+            await fetch(`http://localhost:8000/service/getAllServices`, {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => async function () {
+                .then(res =>{
+                    console.log("!23");
                     entry = ""
-                    res.forEach(element => async function () {
-                        const response = await fetch(
-                            'http://localhost:8000/account/getBusinessById/' + element
-                            .businessId, {
+                    res.forEach(element => {
+                        console.log(element);
+                        const response =  fetch(
+                            'http://localhost:8000/account/getBusinessById/?businessId=' + element
+                            .business.accountId, {
                                 method: 'GET'
                             })
-                        const json = await response.json()
-                        if (json.businessId === localStorage.getItem('accountId')) {
+                        const json =  response.json()
+                        
                             entry += `
                                         <tr>
                                             <td>${element.serviceId}</td>
@@ -265,7 +268,7 @@
                                             <td>${element.priceTag}</td>                                            
                                             <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
                                         </tr>`
-                        }
+                        
                     });
 
                     document.querySelector('#services').innerHTML = entry
@@ -283,7 +286,7 @@
             console.log(document.querySelector('#menu_admin'));
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
-            } else if (jsonAcc.role === "Business") {
+            } else if (jsonAcc.role === "business") {
                 document.querySelector('#menu_business').classList.remove('hidden')
             }
         }

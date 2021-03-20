@@ -623,15 +623,13 @@
                     method: 'GET'
                 })
             const jsonPhone = await response3.json()
-            console.log(jsonPhone);
-            await fetch(`http://localhost:8000/transaction/addTransaction`, {
+            console.log( localStorage.getItem('accountId'));
+            await fetch(`http://localhost:8000/transaction/addGift`, {
                     method: 'POST',
                     body: JSON.stringify({
                         amount: document.getElementById('transfer').value,
                         accountId: localStorage.getItem('accountId'),
-                        toAccountId: jsonPhone.accountId,
-                        timeCreated: new Date(),
-                        verified: 1
+                        toAccountId: jsonPhone.accountId                       
                     })
                 }).then(r => r.json())
                 .then(res => {
@@ -639,6 +637,7 @@
                 })
         })
     </script>
+
     <script>
         async function menu() {
             var uid = localStorage.getItem("accountId")
@@ -649,7 +648,7 @@
             console.log(document.querySelector('#menu_admin'));
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
-            } else if (jsonAcc.role === "Business") {
+            } else if (jsonAcc.role === "business") {
                 document.querySelector('#menu_business').classList.remove('hidden')
             }
         }
