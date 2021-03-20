@@ -166,12 +166,12 @@
                                         <div class="col-12 col-md-9"><input type="text" name="bio" placeholder="Bio"
                                                 value="Bio" class="form-control" id="bio"></div>
                                     </div>
-                                    <div class="row form-group">
+                                    <!-- <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Phone
                                                 Number</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="phoneNumber"
                                                 placeholder="Name" value="" class="form-control" id="phoneNumber"></div>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="row form-group">
                                         <div class="col col-md-3"><label for="file-input"
                                                 class=" form-control-label">Avatar</label></div>
@@ -291,8 +291,7 @@
             document.querySelector('.un').innerHTML = json.userName
             document.getElementById('password').value = json.password
             document.getElementById('name').value = json.name
-            document.getElementById('bio').value = json.bio
-            document.getElementById('phoneNumber').value = json.phoneNumber
+            document.getElementById('bio').value = json.bio           
             document.getElementById('date').value = json.dateOfBirth
             if (json.role === 'business') {
                 const response = await fetch('http://localhost:8000/account/getBusinessById/?accountId=' + uid, {
@@ -314,7 +313,7 @@
                                 userName: json.userName,
                                 name: document.getElementById('name').value,
                                 bio: document.getElementById('bio').value,
-                                phoneNumber: document.getElementById('phoneNumber').value,
+                                phoneNumber: json.phoneNumber,
                                 password: document.getElementById('password').value,
                                 dateOfBirth: document.getElementById('dob').value,
                                 avatar: json.avatar,
@@ -344,7 +343,7 @@
                                 userName: json.userName,
                                 name: document.getElementById('name').value,
                                 bio: document.getElementById('bio').value,
-                                phoneNumber: document.getElementById('phoneNumber').value,
+                                phoneNumber: json.phoneNumber,
                                 dateOfBirth: document.getElementById('date').value,
                                 avatar: json.avatar
                             })
