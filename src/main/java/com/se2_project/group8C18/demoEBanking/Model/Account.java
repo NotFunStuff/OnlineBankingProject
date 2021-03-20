@@ -63,7 +63,7 @@ public class Account {
 	private String phoneNumber;
 
 	@OneToMany(mappedBy = "toAccount")
-	@JsonIgnoreProperties(value = { "toAccount" })
+	@JsonIgnoreProperties(value = { "toAccount","account" })
 	private List<Gift> toGifts;
 
 	@OneToOne(mappedBy = "account")
@@ -75,7 +75,7 @@ public class Account {
 	private List<PaymentMethod> paymentMethods;
 
 	@OneToMany(mappedBy = "account")
-	@JsonIgnoreProperties(value = "account")
+	@JsonIgnoreProperties(value = {"account", "toAccount"})
 	private List<Transaction> transactions;
 
 	public int getAccountId() {
