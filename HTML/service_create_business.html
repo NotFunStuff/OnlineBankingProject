@@ -58,26 +58,27 @@
                                     href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,7 +111,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,18 +134,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -158,31 +160,30 @@
 
                     <div class="col-md-12">
                         <div class="card">
-                            {msg}
                             <div class="card-header">
                                 <strong>Create Service Form</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
+                                <form id="myForm1" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class="form-control-label">Service Name</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input serviceName" name="serviceName" class="form-control"
-                                                value="">
+                                            <input type="text" id="serviceName" name="serviceName" class="form-control"
+                                                value="" required>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
                                                 class=" form-control-label">Desciption</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="description" id ="description"
-                                                class="form-control" value=""></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="description"
+                                                id="description" class="form-control" value="" required></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class="form-control-label">Price</label>
                                         </div>
-                                        <div class="col-12 col-md-9"><input type="number" id="text-input price"
-                                                name="price" class="form-control" value=""></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="price" name="price"
+                                                class="form-control" value="" required></div>
                                     </div>
                                 </form>
 
@@ -245,46 +246,49 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
-        });       
-
+        });
     </script>
-<script>
-    async function menu() {
-        var uid = localStorage.getItem("accountId")
-        const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
-            method: 'GET'
-        })
-        const jsonAcc = await response.json()
-        console.log(document.querySelector('#menu_admin'));
-        if (jsonAcc.role === "admin") {
-            document.querySelector('#menu_admin').classList.remove('hidden')
-        } else if (jsonAcc.role === "Business") {
-            document.querySelector('#menu_business').classList.remove('hidden')
+    <script>
+        async function menu() {
+            var uid = localStorage.getItem("accountId")
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
+                method: 'GET'
+            })
+            const jsonAcc = await response.json()
+            console.log(document.querySelector('#menu_admin'));
+            if (jsonAcc.role === "admin") {
+                document.querySelector('#menu_admin').classList.remove('hidden')
+            } else if (jsonAcc.role === "business") {
+                document.querySelector('#menu_business').classList.remove('hidden')
+            }
         }
-    }
-    menu()
-</script>
-<script>
-    //not finished
-    async function loadJson() {                  
+        menu()
+    </script>
+    <script>
+        //not finished
+        async function loadJson() {
             document.querySelector('#submitBtn').addEventListener("click", () => {
-                fetch(`http://localhost:8000/service/createService`, {
+                console.log(document.getElementById('description').value);
+                fetch(`http://localhost:8000/service/addService`, {
                         method: 'POST',
-                        body: JSON.stringify({                           
+                        body: JSON.stringify({
                             serviceName: document.getElementById('serviceName').value,
                             description: document.getElementById('description').value,
-                            priceTag:  document.getElementById('price').value
+                            priceTag: document.getElementById('price').value,
+                            business: {
+                                accountId: localStorage.getItem('accountId')
+                            }
                         })
-                    }).then(r => r.json())
+                    }).then(r => {
+                        r.json()
+                    })
                     .then(res => {
-                        // đã gửi thành công 
-                        // redirect về profile page
-                        window.location.replace("/account_list_admin.html");
+                        window.location.href = '/service_list_business.html'
                     })
             })
-        }    
-    loadJson()
-</script>
+        }
+        loadJson()
+    </script>
 </body>
 
 </html>
