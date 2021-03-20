@@ -58,26 +58,27 @@
                                     href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,7 +111,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,18 +134,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -171,7 +173,8 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Principle Balance</label>
+                                        <div class="col col-md-3"><label class=" form-control-label">Principle
+                                                Balance</label>
                                         </div>
                                         <div class="col col-md-9">
                                             <p class="form-control-static principle-blnce-field">0</p>
@@ -198,6 +201,14 @@
                                         <div class="col-12 col-md-9"><input type="number" name="interest"
                                                 placeholder="x" value="x" class="form-control"></div>
                                     </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label">Opening
+                                                date</label>
+                                        </div>
+                                        <div class="col col-md-9">
+                                            <p class="form-control-static invest-type-field">DD-MM-YYYY</p>
+                                        </div>
+                                    </div>
                                 </form>
 
                             </div>
@@ -207,6 +218,11 @@
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm">
                                     <i class="fa fa-ban"></i> Reset
+                                </button>
+                            </div>
+                            <div class="card-footer" style="margin-top:30px">
+                                <button type="submit" id="withdrawBtn" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> RÚT TIỀN
                                 </button>
                             </div>
                         </div>
@@ -292,15 +308,15 @@
         const BASE_API = "http://localhost:8000"
         const uid = new URL(window.location.href).searchParams.get('id')
         const field = {
-            usermame:document.querySelector('.usermame-field'),
-            principle:document.querySelector('.principle-blnce-field'),
-            type:document.querySelector('.invest-type-field'),
-            rate:document.querySelector('#interest-rate'),
-            term:document.querySelector('#term-in-months'),
+            usermame: document.querySelector('.usermame-field'),
+            principle: document.querySelector('.principle-blnce-field'),
+            type: document.querySelector('.invest-type-field'),
+            rate: document.querySelector('#interest-rate'),
+            term: document.querySelector('#term-in-months'),
         }
 
         let res = null
-        res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}` , {
+        res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}`, {
             method: 'GET'
         })
         res = await response.json()
@@ -308,6 +324,7 @@
         field.usermame.innerHTML = res.username
         field.principle.innerHTML = res.ammount
         field.type.innerHTML = res.type
+        field.opening.innerHTML = res.type
         field.rate.value = res.rate
         field.term.value = res.term
 
@@ -324,6 +341,34 @@
                 })
             }).then(res => {
                 location.reload()
+            }).catch(err => {
+                console.log(err);
+            })
+        })
+
+
+        const withdrawalFormula = (princpl, rate, opening, term) => {
+            //DRAFT
+            let now = new Date()
+            let n = (now - opening) / term
+                let P = princpl / (1 - Math.pow((1 + rate), -n))
+            return P
+        }
+        let newBalance = res.balance + withdrawalFormula(field.principle.innerHTML, field.rate.value, field.opening.innerHTML, field.term.value)
+        document.querySelector('#withdrawBtn').addEventListener("click", async () => {
+            await fetch(`${BASE_API}/loan/deleteLoan/?accountId=${uid}`, {
+                method: 'DELETE',
+            }).then(res => {
+                await fetch(`${BASE_API}/account/editAccount/?accountId=${uid}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        accountId: uid,
+                        username: field.username,
+                        balance: newBalance,
+                    })
+                }).then(res => {
+                    location.reload()
+                })
             }).catch(err => {
                 console.log(err);
             })
