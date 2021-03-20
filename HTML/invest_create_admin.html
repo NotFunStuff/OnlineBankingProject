@@ -48,14 +48,14 @@
                                 class="menu-icon fa fa-cogs"></i>User Service
                         </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html?industry=Movie">Movie</a>
                             </li>
                             <li><i class="fa fa-cutlery"></i><a
-                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                                    href="/service_list_user.html?industry=Restaurant">Restaurant</a></li>
                             <li><i class="fa fa-shopping-cart"></i><a
-                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                                    href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
-                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
+                                    href="/service_list_user.html?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -75,6 +75,7 @@
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
                             <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
                             </li>
                         </ul>
@@ -293,7 +294,7 @@
             console.log(document.querySelector('#menu_admin'));
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
-            } else if (jsonAcc.role === "Business") {
+            } else if (jsonAcc.role === "business") {
                 document.querySelector('#menu_business').classList.remove('hidden')
             }
         }
@@ -304,16 +305,7 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        var btn = document.getElementById("submitBtn");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
-        })
+        
     </script>
 
 
@@ -323,22 +315,25 @@
         const field = {
             usermame: document.querySelector('.usermame-field'),
             principle: document.querySelector('.principle-blnce-field'),
-            type: document.querySelector('.invest-type-field'),
-            rate: document.querySelector('#interest-rate'),
-            term: document.querySelector('#term-in-months'),
+            type: document.getElementsByName('radios'),
+            rate: document.querySelector('.interest-rate'),
+            term: document.querySelector('.term-in-months'),
         }
-
-        document.querySelector('#submitBtn').addEventListener("click", async () => {
-            await fetch(`${BASE_API}/loan/editLoan/?accountId=${uid}`, {
+       
+        document.querySelector('#submitBtn').addEventListener("click", async () => {       
+                var investType;
+                for (i = 0; i < field.type.length; i++) {
+                    if (field.type[i].checked)
+                        investType = field.type[i].value
+                }
+                console.log(investType);
+            await fetch(`${BASE_API}/${investType}/add${investType}`, {
                 method: 'POST',
                 body: JSON.stringify({
                     accountId: uid,
-                    ammount: field.principle,
-                    type: field.type.value,
-                    rate: field.rate.value,
-                    term: field.type.value,
-                    term: field.term.value,
-                    date: new Date(),
+                    ammount: field.principle,                    
+                    rate: field.rate.value,                    
+                    duration: field.term.value                    
                 })
             }).then(res => {
                 location.reload()
