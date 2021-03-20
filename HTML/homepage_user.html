@@ -535,11 +535,12 @@
     <script>
         //not test yet
         //get only
+        
         async function getJson() {
             const uid = localStorage.getItem('accountId')
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
-            })
+            })            
             const json = await response.json()
             document.getElementById('ava').src = "images/admin.jpg"
             document.getElementById('name').innerHTML = json.name
@@ -637,8 +638,10 @@
                             accountId: jsonPhone.accountId
                         }
                     })
-                }).then(r =>{ r.json()}
-                   
+                }).then(r => {
+                        r.json()
+                    }
+
                 )
                 .then(res => {
                     window.location.href = "/homepage_user.html";
