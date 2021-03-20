@@ -236,14 +236,18 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        function confirmDelete(uid) {
+        async function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/services/deleteServiceById/' + uid
+                const response = await fetch('http://localhost:8000//service/deleteServiceById/?serviceId=' + uid, {
+                method: 'DELETE'
+            })            
+                window.location.href = '/service_list_admin.html'
             }
         }
     </script>
     <script>
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
             await fetch(`http://localhost:8000/service/getAllServices`, {
                     method: 'GET'
@@ -252,27 +256,21 @@
                     console.log("!23");
                     entry = ""
                     res.forEach(element => {
-                        console.log(element);
-                        const response = fetch(
-                            'http://localhost:8000/account/getBusinessById/?businessId=' + element
-                            .business.accountId, {
-                                method: 'GET'
-                            }).then(r => r.json()).then(res => {
-                            entry += `
+                        entry += `
                                         <tr>
                                             <td>${element.serviceId}</td>
                                             <td>${element.serviceName}</td>
                                             <td>${element.description}</td>
-                                            <td>${element.producer}</td>
-                                            <td>${element.industry}</td>
+                                            <td>${element.business.businessName}</td>
+                                            <td>${element.business.industry}</td>
                                             <td>${element.priceTag}</td>                                            
                                             <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
                                         </tr>`
-                        })
-                    });
+                    })
+                    document.querySelector('#services').innerHTML = entry   
+                });
 
-                    document.querySelector('#services').innerHTML = entry
-                })
+
         }
         loadJson()
     </script>
