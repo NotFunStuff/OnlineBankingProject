@@ -171,27 +171,36 @@
                                         <div class="col col-md-3"><label class="form-control-label">Username</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static">usermame</p>
+                                            <p class="form-control-static usermame-field">usermame</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label">Principle Balance</label>
+                                        </div>
+                                        <div class="col col-md-9">
+                                            <p class="form-control-static principle-blnce-field">0</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Invest Type</label>
                                         </div>
                                         <div class="col col-md-9">
-                                            <p class="form-control-static">Loan or Save</p>
+                                            <p class="form-control-static invest-type-field">Loan or Save</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="select"
                                                 class=" form-control-label">Interest (%)</label></div>
-                                        <div class="col-12 col-md-9"><input type="number" name="interest" placeholder="x.x"
-                                                value="x.x" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input id='interest-rate' type="number"
+                                                name="interest" placeholder="x.x" value="x.x" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="select"
-                                                class=" form-control-label">Term (months)</label></div>
-                                                <div class="col-12 col-md-9"><input type="number" name="interest" placeholder="x"
-                                                    value="x" class="form-control"></div>
+                                        <div class="col col-md-3"><label id='term-in-months' for="select"
+                                                class=" form-control-label">Term
+                                                (months)</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" name="interest"
+                                                placeholder="x" value="x" class="form-control"></div>
                                     </div>
                                 </form>
 
@@ -283,6 +292,47 @@
         })
     </script>
 
+    <script async>
+        const BASE_API = "http://localhost:8000"
+        const uid = new URL(window.location.href).searchParams.get('id')
+        const field = {
+            usermame:document.querySelector('.usermame-field'),
+            principle:document.querySelector('.principle-blnce-field'),
+            type:document.querySelector('.invest-type-field'),
+            rate:document.querySelector('#interest-rate'),
+            term:document.querySelector('#term-in-months'),
+        }
+
+        let res = null
+        res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}` , {
+            method: 'GET'
+        })
+        res = await response.json()
+        console.log(json.username);
+        field.usermame.innerHTML = res.username
+        field.principle.innerHTML = res.ammount
+        field.type.innerHTML = res.type
+        field.rate.value = res.rate
+        field.term.value = res.term
+
+
+        document.querySelector('#submitBtn').addEventListener("click", async () => {
+            await fetch(`${BASE_API}/loan/editLoan/?accountId=${uid}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    accountId: uid,
+                    username: field.username,
+                    ammount: field.principle,
+                    rate: field.rate.value,
+                    term: field.term.value,
+                })
+            }).then(res => {
+                location.reload()
+            }).catch(err => {
+                console.log(err);
+            })
+        })
+    </script>
 
 </body>
 
