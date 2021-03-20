@@ -69,7 +69,7 @@ public class TransactionService implements ITransactionService {
 			if (paymentMethodRepository.existsById(tran.getPaymentMethod().getPaymentMethodId())) {
 				if (!transactionRepository.existsById(tran.getTransactionId())) {
 					if (checkValidate.getOk(tran)) {
-						tran.setTimeCreated(LocalDateTime.now());
+					
 						transactionRepository.save(tran);
 						return errorType.getSuccesful();
 					}
