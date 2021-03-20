@@ -58,26 +58,27 @@
                                     href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,7 +111,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,18 +134,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -169,6 +171,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Producer</th>
+                                            <th scope="col">Industry</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">#
                                                 <!--delete -->
@@ -233,43 +236,41 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        function confirmDelete(uid) {
+        async function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
-                window.location.href = '/services/deleteServiceById/' + uid
+                const response = await fetch('http://localhost:8000//service/deleteServiceById/?serviceId=' + uid, {
+                method: 'DELETE'
+            })            
+                window.location.href = '/service_list_admin.html'
             }
         }
     </script>
     <script>
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
-            await fetch(`http://localhost:8000/service/getAllService`, {
+            await fetch(`http://localhost:8000/service/getAllServices`, {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => async function () {
+                .then(res => {
+                    console.log("!23");
                     entry = ""
-                    res.forEach(element => async function () {
-                        const response = await fetch(
-                            'http://localhost:8000/account/getBusinessById/' + element
-                            .businessId, {
-                                method: 'GET'
-                            })
-                        const json = await response.json()
-                        if (json.businessId === localStorage.getItem('accountId')) {
-                            entry += `
+                    res.forEach(element => {
+                        entry += `
                                         <tr>
                                             <td>${element.serviceId}</td>
                                             <td>${element.serviceName}</td>
                                             <td>${element.description}</td>
-                                            <td>${element.producer}</td>
-                                            <td>${element.industry}</td>
+                                            <td>${element.business.businessName}</td>
+                                            <td>${element.business.industry}</td>
                                             <td>${element.priceTag}</td>                                            
                                             <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
                                         </tr>`
-                        }
-                    });
+                    })
+                    document.querySelector('#services').innerHTML = entry   
+                });
 
-                    document.querySelector('#services').innerHTML = entry
-                })
+
         }
         loadJson()
     </script>
@@ -283,7 +284,7 @@
             console.log(document.querySelector('#menu_admin'));
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
-            } else if (jsonAcc.role === "Business") {
+            } else if (jsonAcc.role === "business") {
                 document.querySelector('#menu_business').classList.remove('hidden')
             }
         }
