@@ -146,7 +146,7 @@
                                 role: null,
                                 avatar: "images/admin.jpg"
                             })
-                        }).then(r => r.json())
+                        }).then(r => {r.json()})
                         .then(res => {
                             window.location.href = '/login.html'
                         })
@@ -166,7 +166,7 @@
                                 location: "VietNam",
                                 industry: "Clothes"
                             })
-                        }).then(r => r.json())
+                        }).then(r => {r.json()})
                         .then(res => {
                             window.location.href = '/login.html'
                         })
