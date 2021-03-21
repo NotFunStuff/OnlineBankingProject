@@ -48,36 +48,38 @@
                                 class="menu-icon fa fa-cogs"></i>User Service
                         </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html?industry=Movie">Movie</a>
                             </li>
                             <li><i class="fa fa-cutlery"></i><a
-                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                                    href="/service_list_user.html?industry=Restaurant">Restaurant</a></li>
                             <li><i class="fa fa-shopping-cart"></i><a
-                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                                    href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
-                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
+                                    href="/service_list_user.html?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -109,7 +111,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,18 +134,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -165,54 +168,56 @@
                                     <div class="col col-md-3"><label class="form-control-label">Username</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">usermame</p>
+                                        <p class="form-control-static" id="userName">usermame</p>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label class="form-control-label">Service Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">Service name</p>
+                                        <p class="form-control-static" id="serviceName">Service name</p>
                                     </div>
-                                </div>  
+                                </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label class="form-control-label">Producer</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">producer</p>
+                                        <p class="form-control-static" id="producer">producer</p>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label class="form-control-label">Industry</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">Industry</p>
+                                        <p class="form-control-static" id="industry">Industry</p>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label class="form-control-label">Location</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">location</p>
+                                        <p class="form-control-static" id="location">location</p>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label class="form-control-label">Time</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">time</p>
+                                        <p class="form-control-static" id="time">time</p>
                                     </div>
-                                </div>  
+                                </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3"><label class="form-control-label">Price</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">price</p>
+                                        <p class="form-control-static" id="price">price</p>
                                     </div>
                                 </div>
-                                <div class = "col-12 align-center-tmd">
-                                <p><button type="button" class="btn btn-success">Submit</button></p><p> <button type="button" class="btn btn-outline-secondary">Cancel</button></p>
-                            </div>                                
+                                <div class="col-12 align-center-tmd">
+                                    <p><button type="button" class="btn btn-success" id="submitBtn">Submit</button></p>
+                                    <p><a href="/homepage_user.html"> <button type="button"
+                                                class="btn btn-outline-secondary">Cancel</button></a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,35 +271,70 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
-
-        var btn = document.getElementById("submitBtn");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
-        })
     </script>
 
-<script>
-    async function menu() {
-        var uid = localStorage.getItem("accountId")
-        const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
-            method: 'GET'
-        })
-        const jsonAcc = await response.json()
-        console.log(document.querySelector('#menu_admin'));
-        if (jsonAcc.role === "admin") {
-            document.querySelector('#menu_admin').classList.remove('hidden')
-        } else if (jsonAcc.role === "Business") {
-            document.querySelector('#menu_business').classList.remove('hidden')
+    <script>
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        async function loadJson() {
+            let serviceId = new URL(window.location.href).searchParams.get('serviceId')
+            let uid = localStorage.getItem("accountId")
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
+                method: 'GET'
+            })
+            var jsonAccount = await response.json()
+            const response1 = await fetch('http://localhost:8000/service/getServiceById/?serviceId=' + serviceId, {
+                method: 'GET'
+            })
+            var jsonService = await response1.json()
+            console.log(jsonService);
+            document.getElementById('userName').innerHTML = jsonAccount.userName
+            document.getElementById('serviceName').innerHTML = jsonService.serviceName
+            document.getElementById('producer').innerHTML = jsonService.business.businessName
+            document.getElementById('industry').innerHTML = jsonService.business.industry
+            document.getElementById('location').innerHTML = jsonService.business.location
+            document.getElementById('time').innerHTML = new Date()
+            document.getElementById('price').innerHTML = jsonService.priceTag
+
+            document.querySelector('#submitBtn').addEventListener("click", async () => {
+                console.log(jsonService.priceTag);
+                await fetch(`http://localhost:8000/transaction/addGift`, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            amount: jsonService.priceTag,
+                            account: {
+                                accountId: localStorage.getItem('accountId')
+                            },
+                            toAccount: {
+                                accountId: jsonService.business.accountId
+                            }
+                        })
+                    }).then(r => {
+                        r.json()
+                    })
+                    .then(res => {
+                        window.location.href = "/homepage_user.html";
+                    })
+            })
         }
-    }
-    menu()
-</script>
+        loadJson()
+    </script>
+
+    <script>
+        async function menu() {
+            var uid = localStorage.getItem("accountId")
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
+                method: 'GET'
+            })
+            const jsonAcc = await response.json()
+            console.log(document.querySelector('#menu_admin'));
+            if (jsonAcc.role === "admin") {
+                document.querySelector('#menu_admin').classList.remove('hidden')
+            } else if (jsonAcc.role === "business") {
+                document.querySelector('#menu_business').classList.remove('hidden')
+            }
+        }
+        menu()
+    </script>
 </body>
 
 </html>

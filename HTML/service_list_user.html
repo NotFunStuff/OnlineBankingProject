@@ -48,36 +48,38 @@
                                 class="menu-icon fa fa-cogs"></i>User Service
                         </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html?industry=Movie">Movie</a>
                             </li>
                             <li><i class="fa fa-cutlery"></i><a
-                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                                    href="/service_list_user.html?industry=Restaurant">Restaurant</a></li>
                             <li><i class="fa fa-shopping-cart"></i><a
-                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                                    href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
-                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
+                                    href="/service_list_user.html?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,7 +112,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,18 +135,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -232,12 +235,12 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        function confirmDelete(uid) {
+        async function confirmDelete(uid) {
             var r = confirm("Are you sure you want to delete?")
             if (r) {
                 const response = await fetch('http://localhost:8000//service/deleteServiceById/?serviceId=' + uid, {
-                method: 'DELETE'
-            })            
+                    method: 'DELETE'
+                })
                 window.location.href = '/service_list_admin.html'
             }
         }
@@ -260,30 +263,28 @@
         menu()
     </script>
     <script>
-        async function loadJson() {
-            let industry = new URL(window.location.href).searchParams.get('industry')
+        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        async function loadJson() {           
             await fetch(`http://localhost:8000/service/getAllServices`, {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => async function () {
+                .then(res => { 
+                    var industry1 = new URL(window.location.href).searchParams.get('industry')                    
                     entry = ""
-                    res.forEach(element => async function(){
-                        const response = await fetch(
-                            'http://localhost:8000/account/getBusinessById/?accountId=' +
-                            element
-                            .businessId, {
-                                method: 'GET'
-                            })
-                        const json = await response.json()
-                        entry += `
+                    res.forEach(element => {
+                        
+                        if (element.business.industry === industry1) {
+                            entry += `
                                         <tr>
                                             <td>${element.serviceId}</td>
                                             <td>${element.serviceName}</td>
                                             <td>${element.description}</td>
-                                            <td>${element.producer}</td>
+                                            <td>${element.business.businessName}</td>
                                             <td>${element.priceTag}</td>
-                                            <td><a href="/bill_user.html?id=${element.serviceId}">Buy</a></td>                                            
+                                            <td><a href="/bill_user.html?serviceId=${element.serviceId}">Buy</a></td>                                            
                                         </tr>`
+                        }
+
                     });
 
                     document.querySelector('#services').innerHTML = entry

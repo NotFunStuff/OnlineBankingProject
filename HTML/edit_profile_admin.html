@@ -47,14 +47,14 @@
                                 class="menu-icon fa fa-cogs"></i>User Service
                         </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html?industry=Movie">Movie</a>
                             </li>
                             <li><i class="fa fa-cutlery"></i><a
-                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                                    href="/service_list_user.html?industry=Restaurant">Restaurant</a></li>
                             <li><i class="fa fa-shopping-cart"></i><a
-                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                                    href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
-                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
+                                    href="/service_list_user.html?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
@@ -73,6 +73,7 @@
                     </a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                        <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
                         <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
                         </li>                        
                     </ul>
@@ -237,8 +238,8 @@
                                             <p class="form-control-static hidden">+ - 1000</p>
                                             <p class="form-control-static">This account has not invest money yet <button
                                                     type="button"
-                                                    class="btn btn-link btn-sm hidden">Edit</button><button
-                                                    type="button" class="btn btn-link btn-sm">Add</button></p>
+                                                    class="btn btn-link btn-sm hidden" id = "invest_edit">Edit</button><a href ="invest_create_admin.html"><button
+                                                    type="button" class="btn btn-link btn-sm">Add</button></a></p>
 
                                         </div>
                                     </div>
@@ -317,7 +318,7 @@
         console.log(document.querySelector('#menu_admin'));
         if (jsonAcc.role === "admin") {
             document.querySelector('#menu_admin').classList.remove('hidden')
-        } else if (jsonAcc.role === "Business") {
+        } else if (jsonAcc.role === "business") {
             document.querySelector('#menu_business').classList.remove('hidden')
         }
     }
@@ -327,6 +328,9 @@
         //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
             let uid = new URL(window.location.href).searchParams.get('id')
+            document.querySelector('#invest_edit').addEventListener('Click' , () => {
+                window.location.href = '/invest_edit_admin.html?accountId=' + uid;
+            })
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
             })

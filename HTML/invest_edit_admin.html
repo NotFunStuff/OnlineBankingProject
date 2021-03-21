@@ -48,14 +48,14 @@
                                 class="menu-icon fa fa-cogs"></i>User Service
                         </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html?industry=Movie">Movie</a>
                             </li>
                             <li><i class="fa fa-cutlery"></i><a
-                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                                    href="/service_list_user.html?industry=Restaurant">Restaurant</a></li>
                             <li><i class="fa fa-shopping-cart"></i><a
-                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                                    href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
-                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
+                                    href="/service_list_user.html?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -75,6 +75,7 @@
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
                             <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
                             </li>
                         </ul>
@@ -281,7 +282,7 @@
             console.log(document.querySelector('#menu_admin'));
             if (jsonAcc.role === "admin") {
                 document.querySelector('#menu_admin').classList.remove('hidden')
-            } else if (jsonAcc.role === "Business") {
+            } else if (jsonAcc.role === "business") {
                 document.querySelector('#menu_business').classList.remove('hidden')
             }
         }

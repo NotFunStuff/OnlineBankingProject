@@ -41,21 +41,21 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="menu-title">14C36 Online Banking</li>
-                    <li><a href="/homepage_user.html"> <i class="menu-icon fa fa-home"></i>Home
+                    <li><a href="/homepage_user.html"> <i class="menu-icon fa fa-home"></i>Home 
                         </a></li>
                     <li class="menu-item-has-children dropdown"><a href="#" class="dropdown-toggle"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
                                 class="menu-icon fa fa-cogs"></i>User Service
                         </a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-film"></i><a href="/service_list_user.html/?industry=Movie">Movie</a>
+                            <li><i class="fa fa-film"></i><a href="/service_list_user.html?industry=Movie">Movie</a>
                             </li>
                             <li><i class="fa fa-cutlery"></i><a
-                                    href="/service_list_user.html/?industry=Restaurant">Restaurant</a></li>
+                                    href="/service_list_user.html?industry=Restaurant">Restaurant</a></li>
                             <li><i class="fa fa-shopping-cart"></i><a
-                                    href="/service_list_user.html/?industry=Clothes">Clothes</a></li>
+                                    href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
-                                    href="/service_list_user.html/?industry=Electronics">Electronics</a></li>
+                                    href="/service_list_user.html?industry=Electronics">Electronics</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -75,6 +75,7 @@
                         </a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
                             <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
                             </li>
                         </ul>
@@ -182,7 +183,7 @@
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3 tmd"><label
-                                                        class=" form-control-label">Dob:</label></div>
+                                                        class=" form-control-label">Date Of Birth:</label></div>
                                                 <div class="col-12 col-md-9">
                                                     <p class="form-control-static" id="dob">28/09/2000</p>
                                                 </div>
@@ -241,8 +242,7 @@
                                                     <form class="form-horizontal card-body card-block" id="myForm1">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
-                                                                    class=" form-control-label">Withdrawable Amount of
-                                                                    money:</label></div>
+                                                                    class=" form-control-label">Withdrawable money:</label></div>
                                                             <div class="col-12 col-md-9">
                                                                 <p class="form-control-static" id="withdraw_amount">
                                                                     Balance - 50k</p>
@@ -299,8 +299,7 @@
                                                     <form class="form-horizontal card-body card-block" id="myForm3">
                                                         <div class="row form-group">
                                                             <div class="col col-md-3 tmd"><label
-                                                                    class=" form-control-label">Transferable Amount of
-                                                                    money:</label></div>
+                                                                    class=" form-control-label">Transferable money:</label></div>
                                                             <div class="col-12 col-md-9">
                                                                 <p class="form-control-static" id="transfer_ammount">
                                                                     Balance - 50k</p>
@@ -343,7 +342,7 @@
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Interest Statistic</h4>
+                                    <h4>Statistic</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="custom-tab">
@@ -354,7 +353,7 @@
                                                     aria-controls="custom-nav-save" aria-selected="false">Saving</a>
                                                 <a class="nav-item nav-link" id="custom-nav-loan-tab" data-toggle="tab"
                                                     href="#custom-nav-loan" role="tab" aria-controls="custom-nav-loan"
-                                                    aria-selected="false">Loaning</a>
+                                                    aria-selected="false">Loan</a>
                                             </div>
                                         </nav>
                                         <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -363,7 +362,7 @@
                                                 <div id="save_board">
                                                     <div class="row form-group">
                                                         <div class="col col-md-3 tmd"><label
-                                                                class=" form-control-label">Saving Amount:</label></div>
+                                                                class=" form-control-label">Savings:</label></div>
                                                         <div class="col-12 col-md-9">
                                                             <p class="form-control-static" id="save_balance">Balance</p>
                                                         </div>
@@ -379,7 +378,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3 tmd"><label
-                                                                class=" form-control-label">Save Remain Term:</label>
+                                                                class=" form-control-label">Remaining Term:</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <p class="form-control-static" id="save_term">Compute</p>
@@ -387,7 +386,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3 tmd"><label
-                                                                class=" form-control-label">Interest will earn:</label>
+                                                                class=" form-control-label">Profit:</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <p class="form-control-static" id="save_earn">Compute</p>
@@ -397,7 +396,7 @@
                                                 </div>
                                                 <div class="row form-group hidden" id="save_hidden_display">
                                                     <div class="col col-md-12 tmd"><label
-                                                            class=" form-control-label">Your account is not saving
+                                                            class=" form-control-label">Your account is not a saving
                                                             account</label></div>
                                                 </div>
                                             </div>
@@ -422,7 +421,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3 tmd"><label
-                                                                class=" form-control-label">Loan Remain Term:</label>
+                                                                class=" form-control-label">Remaining Term:</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <p class="form-control-static" id="loan_term">Compute</p>
@@ -430,8 +429,7 @@
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-3 tmd"><label
-                                                                class=" form-control-label">Loan Interest
-                                                                Amount:</label>
+                                                                class=" form-control-label">Loss:</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
                                                             <p class="form-control-static" id="loan_earn">Compute</p>
@@ -440,7 +438,7 @@
                                                 </div>
                                                 <div class="row form-group hidden" id="loan_hidden_display">
                                                     <div class="col col-md-12 tmd"><label
-                                                            class=" form-control-label">Your account is not loaning
+                                                            class=" form-control-label">Your account is not a loaning
                                                             account</label></div>
                                                 </div>
                                             </div>
@@ -458,34 +456,42 @@
                                 <div class="col-lg-12">
                                     <div class="row form-group">
                                         <div class="col-lg-6 ">
-                                            <button type="button" class="btn btn-block btn-primary"><i
-                                                    class="fa fa-film"></i>&nbsp; Movie</button>
-                                        </div>
+                                            <a href="/service_list_user.html?industry=Movie">
+                                                <button type="button" class="btn btn-block btn-primary"><i
+                                                        class="fa fa-film"></i>&nbsp; Movie</button>
+                                            </a></div>
                                         <div class="col-lg-6 ">
-                                            <button type="button" class="btn btn-block btn-warning"><i
-                                                    class="fa fa-cutlery"></i>&nbsp; Restaurant</button>
+                                            <a href="/service_list_user.html?industry=Restaurant">
+                                                <button type="button" class="btn btn-block btn-warning"><i
+                                                        class="fa fa-cutlery"></i>&nbsp; Restaurant</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="row form-group">
-                                        <div class="col-lg-6 ">
-                                            <button type="button" class="btn btn-block btn-danger"><i
-                                                    class="fa fa-shopping-cart"></i>&nbsp; Clothes</button>
-                                        </div>
+                                        <a href="/service_list_user.html?industry=Clothes">
+                                            <div class="col-lg-6 ">
+                                                <button type="button" class="btn btn-block btn-danger"><i
+                                                        class="fa fa-shopping-cart"></i>&nbsp; Clothes</button>
+                                        </a></div>
+
+                                    <a href="/service_list_user.html?industry=Electronics">
                                         <div class="col-lg-6 ">
                                             <button type="button" class="btn btn-block btn-secondary"><i
                                                     class="fa fa-lightbulb-o"></i>&nbsp; Electronics</button>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </section>
+
                         </div>
                     </div>
+                    </section>
                 </div>
             </div>
+        </div>
+    </div>
 
-        </div><!-- .animated -->
+    </div><!-- .animated -->
     </div><!-- .content -->
 
 
@@ -535,12 +541,12 @@
     <script>
         //not test yet
         //get only
-        
+
         async function getJson() {
             const uid = localStorage.getItem('accountId')
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
-            })            
+            })
             const json = await response.json()
             document.getElementById('ava').src = "images/admin.jpg"
             document.getElementById('name').innerHTML = json.name
