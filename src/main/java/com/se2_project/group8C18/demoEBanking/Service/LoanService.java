@@ -11,6 +11,7 @@ import com.se2_project.group8C18.demoEBanking.Helper.CheckValidate;
 import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.ILoanService;
 import com.se2_project.group8C18.demoEBanking.Model.Loan;
+import com.se2_project.group8C18.demoEBanking.Repository.AccountRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.LoanRepository;
 
 @Service
@@ -27,6 +28,9 @@ public class LoanService implements ILoanService {
 
 	@Autowired
 	InvestTypeService investService;
+	
+	@Autowired
+	AccountRepository accountRepository;
 
 	@Override
 	public Loan getLoan(int accountId) {
@@ -46,6 +50,9 @@ public class LoanService implements ILoanService {
 	public String addLoan(String loan) {
 		Gson gson = new GsonBuilder().setDateFormat("dd/MMM/yyyy HH:mm:ss").create();
 		Loan lo = gson.fromJson(loan, Loan.class);
+		if(!accountRepository.existsById(lo.getAccount().getAccountId())) {
+			return errorType.isNotExisted("Account ");
+		}
 		if (investService.isEmpty(lo.getAccount().getAccountId())) {
 
 			if (checkValidate.getOk(lo)) {

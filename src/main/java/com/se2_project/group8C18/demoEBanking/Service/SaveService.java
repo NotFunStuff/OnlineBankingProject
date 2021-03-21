@@ -13,6 +13,7 @@ import com.se2_project.group8C18.demoEBanking.IService.ISaveService;
 import com.se2_project.group8C18.demoEBanking.Model.Account;
 import com.se2_project.group8C18.demoEBanking.Model.InvestType;
 import com.se2_project.group8C18.demoEBanking.Model.Save;
+import com.se2_project.group8C18.demoEBanking.Repository.AccountRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.SaveRepository;
 
 @Service
@@ -30,6 +31,9 @@ public class SaveService implements ISaveService{
 	
 	@Autowired
 	InvestTypeService investService;
+	
+	@Autowired
+	AccountRepository accountRepository;
 
 	@Override
 	public Save getSave(int accountId) {
@@ -49,6 +53,10 @@ public class SaveService implements ISaveService{
 	public String addSave(String save) {
 		Gson gson = new GsonBuilder().setDateFormat("dd/MMM/yyyy HH:mm:ss").create();
 		Save sa = gson.fromJson(save, Save.class);
+		
+		if(accountRepository.existsById(sa.getAccount().getAccountId())) {
+			return errorType.isNotExisted("Account ");
+		}
 		
 		if(investService.isEmpty(sa.getAccount().getAccountId()))
 		{
