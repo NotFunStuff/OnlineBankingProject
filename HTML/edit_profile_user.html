@@ -210,20 +210,20 @@
                                             <input type="date" name="date" id="date">
                                         </div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden business">
                                         <div class="col col-md-3"><label class=" form-control-label">Business
                                                 name</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="businessName"
                                                 placeholder="Business Name" value="" class="form-control"
                                                 id="business_name"></div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden location">
                                         <div class="col col-md-3"><label class=" form-control-label">Location</label>
                                         </div>
                                         <div class="col-12 col-md-9"><input type="text" name="location"
                                                 placeholder="Name" value="" class="form-control" id="location"></div>
                                     </div>
-                                    <div class="row form-group hidden">
+                                    <div class="row form-group hidden  industry">
                                         <div class="col col-md-3"><label class=" form-control-label">Industry</label>
                                         </div>
                                         <div class="col-12 col-md-9">
@@ -342,6 +342,9 @@
                 document.getElementById('business_name').value = jsonBusiness.businessName
                 document.getElementById('industry').value = jsonBusiness.industry
                 document.getElementById('location').value = jsonBusiness.location
+                document.querySelector(".business").classList.remove('hidden')
+                document.querySelector(".industry").classList.remove('hidden')
+                document.querySelector(".location").classList.remove('hidden')
                 document.querySelector('#submitBtn').addEventListener("click", () => {
                     fetch(`http://localhost:8000/account/editBusiness`, {
                             method: 'PUT',
@@ -352,7 +355,7 @@
                                 bio: document.getElementById('bio').value,
                                 phoneNumber: json.phoneNumber,
                                 password: document.getElementById('password').value,
-                                dateOfBirth: document.getElementById('dob').value,
+                                dateOfBirth: document.getElementById('date').value,
                                 avatar: json.avatar,
                                 businessName: document.getElementById('business_name').value,
                                 industry: document.getElementById('industry').value,

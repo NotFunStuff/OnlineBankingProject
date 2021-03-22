@@ -150,7 +150,7 @@
                         .then(res => {
                             window.location.href = '/login.html'
                         })
-                } else if (accountRole === "Business") {
+                } else if (accountRole === "business") {
                     await fetch(`http://localhost:8000/account/addBusiness`, {
                             method: 'POST',
                             body: JSON.stringify({
