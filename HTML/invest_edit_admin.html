@@ -167,14 +167,16 @@
                             <div class="card-body card-block">
                                 <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class="form-control-label">Username</label>
+                                        <div class="col col-md-3"><label
+                                                class="usernam form-control-label">Username</label>
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <p class="form-control-static usermame-field">usermame</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Principle
+                                        <div class="col col-md-3"><label
+                                                class="form-control-label">Principle
                                                 Balance</label>
                                         </div>
                                         <div class="col col-md-9">
@@ -196,18 +198,18 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label id='term-in-months' for="select"
-                                                class=" form-control-label">Term
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Term
                                                 (months)</label></div>
-                                        <div class="col-12 col-md-9"><input type="number" name="interest"
-                                                placeholder="x" value="x" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input id='term-in-months' type="number"
+                                                name="interest" placeholder="x" value="x" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Opening
                                                 date</label>
                                         </div>
                                         <div class="col col-md-9">
-                                            <p class="form-control-static invest-type-field">DD-MM-YYYY</p>
+                                            <p class="opening-date-fld form-control-static invest-type-field">DD-MM-YYYY
+                                            </p>
                                         </div>
                                     </div>
                                 </form>
@@ -309,25 +311,57 @@
         const BASE_API = "http://localhost:8000"
         const uid = new URL(window.location.href).searchParams.get('id')
         const field = {
-            usermame: document.querySelector('.usermame-field'),
+            usermame: document.querySelector('.usernam'),
             principle: document.querySelector('.principle-blnce-field'),
             type: document.querySelector('.invest-type-field'),
             rate: document.querySelector('#interest-rate'),
             term: document.querySelector('#term-in-months'),
+            opening: document.querySelector('.opening-date-fld'),
         }
 
-        let res = null
-        res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}`, {
-            method: 'GET'
-        })
-        res = await response.json()
-        console.log(json.username);
-        field.usermame.innerHTML = res.username
-        field.principle.innerHTML = res.ammount
-        field.type.innerHTML = res.type
-        field.opening.innerHTML = res.type
-        field.rate.value = res.rate
-        field.term.value = res.term
+        getres = async () => {
+            let isLoan = true
+            res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}`, {
+                method: 'GET'
+            })
+            try {
+                res = await res.json()
+            } catch (error) {
+                isLoan = false
+            }
+
+            if (!isLoan) {
+                res = await fetch(`${BASE_API}/save/getSave/?accountId=${uid}`, {
+                    method: 'GET'
+                })
+                res = await res.json()
+            }
+
+
+
+            console.log(`isloan=${isLoan}`)
+
+            const invest = res.account.investType
+            console.log()
+
+
+
+            field.usermame.innerHTML = res.username
+            field.principle.innerHTML = invest.ammount
+            field.rate.value = invest.rate
+            field.term.value = invest.duration
+
+            field.type.innerHTML = invest.investTypeId
+            field.opening.innerHTML = invest.timeCreated
+        }
+        getres()
+
+
+
+
+
+
+
 
 
         document.querySelector('#submitBtn').addEventListener("click", async () => {
@@ -352,14 +386,17 @@
             //DRAFT
             let now = new Date()
             let n = (now - opening) / term
-                let P = princpl / (1 - Math.pow((1 + rate), -n))
+            let P = princpl / (1 - Math.pow((1 + rate), -n))
             return P
         }
-        let newBalance = res.balance + withdrawalFormula(field.principle.innerHTML, field.rate.value, field.opening.innerHTML, field.term.value)
+
         document.querySelector('#withdrawBtn').addEventListener("click", async () => {
             await fetch(`${BASE_API}/loan/deleteLoan/?accountId=${uid}`, {
                 method: 'DELETE',
-            }).then(res => {
+            }).then(async (res) => {
+                let newBalance = res.balance + withdrawalFormula(field.principle.innerHTML,
+                    field.rate.value, field.opening
+                    .innerHTML, field.term.value)
                 await fetch(`${BASE_API}/account/editAccount/?accountId=${uid}`, {
                     method: 'PUT',
                     body: JSON.stringify({
