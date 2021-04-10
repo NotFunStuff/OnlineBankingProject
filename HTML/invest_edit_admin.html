@@ -167,20 +167,26 @@
                             <div class="card-body card-block">
                                 <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label
-                                                class="usernam form-control-label">Username</label>
+                                        <div class="col col-md-3"><label class="form-control-label">Username</label>
                                         </div>
                                         <div class="col-12 col-md-9">
                                             <p class="form-control-static usermame-field">usermame</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label
-                                                class="form-control-label">Principle
+                                        <div class="col col-md-3"><label class="form-control-label">Principle
                                                 Balance</label>
                                         </div>
                                         <div class="col col-md-9">
                                             <p class="form-control-static principle-blnce-field">0</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class="form-control-label">Maturity
+                                                Balance</label>
+                                        </div>
+                                        <div class="col col-md-9">
+                                            <p class="form-control-static maturity-blnce-field">0</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -210,6 +216,13 @@
                                         <div class="col col-md-9">
                                             <p class="opening-date-fld form-control-static invest-type-field">DD-MM-YYYY
                                             </p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class="form-control-label">Profit if withdrawn now</label>
+                                        </div>
+                                        <div class="col col-md-9">
+                                            <p class="form-control-static delta-blnce-field">0</p>
                                         </div>
                                     </div>
                                 </form>
@@ -311,16 +324,27 @@
         const BASE_API = "http://localhost:8000"
         const uid = new URL(window.location.href).searchParams.get('id')
         const field = {
-            usermame: document.querySelector('.usernam'),
+            usermame: document.querySelector('.usermame-field'),
             principle: document.querySelector('.principle-blnce-field'),
+            maturity: document.querySelector('.maturity-blnce-field'),
             type: document.querySelector('.invest-type-field'),
             rate: document.querySelector('#interest-rate'),
             term: document.querySelector('#term-in-months'),
             opening: document.querySelector('.opening-date-fld'),
+            delta: document.querySelector('.delta-blnce-field'),
         }
 
+        const withdrawalFormula = (princpl, rate, opening, term) => {
+            let now = new Date()
+            const diffTime = Math.abs(now - opening);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+            let n = diffDays / term
+            let P = princpl / (1 - Math.pow((1 + rate), -n))
+            return [Math.round(P), diffDays]
+        }
+
+        let isLoan = true
         getres = async () => {
-            let isLoan = true
             res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}`, {
                 method: 'GET'
             })
@@ -336,67 +360,32 @@
                 })
                 res = await res.json()
             }
-
-
-
             console.log(`isloan=${isLoan}`)
-
             const invest = res.account.investType
-            console.log()
-
-
-
-            field.usermame.innerHTML = res.username
-            field.principle.innerHTML = invest.ammount
+            field.usermame.innerHTML = res.account.name
+            field.principle.innerHTML = invest.amount
             field.rate.value = invest.rate
             field.term.value = invest.duration
-
-            field.type.innerHTML = invest.investTypeId
-            field.opening.innerHTML = invest.timeCreated
+            field.type.innerHTML = isLoan ? 'Loan' : 'Save'
+            const openingD = new Date(invest.timeCreated)
+            field.opening.innerHTML = openingD
+            const whenWithdraw = withdrawalFormula(
+                invest.amount, invest.rate, openingD, invest.duration
+            )[0]
+            field.maturity.innerHTML = whenWithdraw
+            const matured = whenWithdraw[1] > invest.duration*30
+            field.delta.innerHTML = matured?whenWithdraw-invest.amount:0
         }
         getres()
 
 
-
-
-
-
-
-
-
-        document.querySelector('#submitBtn').addEventListener("click", async () => {
-            await fetch(`${BASE_API}/loan/editLoan/?accountId=${uid}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    accountId: uid,
-                    username: field.username,
-                    ammount: field.principle,
-                    rate: field.rate.value,
-                    term: field.term.value,
-                })
-            }).then(res => {
-                location.reload()
-            }).catch(err => {
-                console.log(err);
-            })
-        })
-
-
-        const withdrawalFormula = (princpl, rate, opening, term) => {
-            //DRAFT
-            let now = new Date()
-            let n = (now - opening) / term
-            let P = princpl / (1 - Math.pow((1 + rate), -n))
-            return P
-        }
-
+        document.querySelector('.btn-danger.btn-sm').addEventListener("click", () => { getres() })
+        
         document.querySelector('#withdrawBtn').addEventListener("click", async () => {
-            await fetch(`${BASE_API}/loan/deleteLoan/?accountId=${uid}`, {
+            await fetch(`${BASE_API}/${isLoan?'loan/deleteLoan':'save/deleteSave'}/?accountId=${uid}`, {
                 method: 'DELETE',
             }).then(async (res) => {
-                let newBalance = res.balance + withdrawalFormula(field.principle.innerHTML,
-                    field.rate.value, field.opening
-                    .innerHTML, field.term.value)
+                let newBalance = res.balance + Number(field.delta.innerHTML)
                 await fetch(`${BASE_API}/account/editAccount/?accountId=${uid}`, {
                     method: 'PUT',
                     body: JSON.stringify({
