@@ -363,22 +363,21 @@
                     alert("This account holds no loans or saves")
                 }
             }
+            console.log(res);
             const invest = res.account.investType
             const openingD = new Date(invest.timeCreated)
             const whenWithdraw = withdrawalFormula(
                 invest.amount, invest.rate, openingD, invest.duration
-            )[0]
-            const matured = whenWithdraw[1] > invest.duration*30
+            )
             console.log(`isloan=${isLoan}`)
-            
             field.usermame.innerHTML = res.account.name
             field.principle.innerHTML = invest.amount
             field.rate.value = invest.rate
             field.term.value = invest.duration
             field.type.innerHTML = isLoan ? 'Loan' : 'Save'
             field.opening.innerHTML = openingD
-            field.maturity.innerHTML = whenWithdraw
-            field.delta.innerHTML = matured?whenWithdraw-invest.amount:0
+            field.maturity.innerHTML = whenWithdraw[0]
+            field.delta.innerHTML = (whenWithdraw[0]-invest.amount)*Math.floor(whenWithdraw[1]/365)*(isLoan?-1:1)
         }
         getres()
 

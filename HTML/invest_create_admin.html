@@ -235,7 +235,7 @@
                                 <button type="submit" id="submitBtn" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
+                                <button type="reset" class="btn btn-danger btn-sm" onclick="location.reload()">
                                     <i class="fa fa-ban"></i> Reset
                                 </button>
                             </div>
@@ -332,10 +332,12 @@
             await fetch(`${BASE_API}/${investType}/add${investType[0].toUpperCase() + investType.slice(1)}`, {
                 method: 'POST',
                 body: JSON.stringify({
-                    accountId: uid,
-                    ammount: field.principle.value,
+                    account: {
+                        accountId: uid
+                    },
+                    amount: field.principle.value,
                     rate: field.rate.value,
-                    duration: field.term.value
+                    term: field.term.value
                 })
             }).then(res => {
                 // location.reload()
