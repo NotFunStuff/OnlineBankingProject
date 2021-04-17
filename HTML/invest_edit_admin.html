@@ -56,6 +56,8 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -219,7 +221,8 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class="form-control-label">Profit if withdrawn now</label>
+                                        <div class="col col-md-3"><label class="form-control-label">Profit if withdrawn
+                                                now</label>
                                         </div>
                                         <div class="col col-md-9">
                                             <p class="form-control-static delta-blnce-field">0</p>
@@ -339,7 +342,7 @@
             const diffTime = Math.abs(now - opening)
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
             const n = diffDays / term
-            const P = princpl / (1 - Math.pow((1 + rate/100), -n))
+            const P = princpl / (1 - Math.pow((1 + rate / 100), -n))
             return [Math.round(P), diffDays]
         }
 
@@ -377,12 +380,15 @@
             field.type.innerHTML = isLoan ? 'Loan' : 'Save'
             field.opening.innerHTML = openingD
             field.maturity.innerHTML = whenWithdraw[0]
-            field.delta.innerHTML = (whenWithdraw[0]-invest.amount)*Math.floor(whenWithdraw[1]/365)*(isLoan?-1:1)
+            field.delta.innerHTML = (whenWithdraw[0] - invest.amount) * Math.floor(whenWithdraw[1] / 365) * (
+                isLoan ? -1 : 1)
         }
         getres()
 
 
-        document.querySelector('.btn-danger.btn-sm').addEventListener("click", () => { getres() })
+        document.querySelector('.btn-danger.btn-sm').addEventListener("click", () => {
+            getres()
+        })
 
         document.querySelector('#withdrawBtn').addEventListener("click", async () => {
             await fetch(`${BASE_API}/${isLoan?'loan/deleteLoan':'save/deleteSave'}/?accountId=${uid}`, {

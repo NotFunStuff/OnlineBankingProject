@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="">
 <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,29 +56,32 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_business"><a href="#" class="dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-building-o" ></i>Business Menu
-                        </a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create Service</a>
+                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown hidden" id = "menu_admin"><a href="#" class="dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i
-                            class="menu-icon fa fa-laptop"></i>Admin Menu
-                    </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
-                        <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
-                        <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
-                        </li>                        
-                    </ul>
-                </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-building-o"></i>Business Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_business.html">Service List</a></li>
+                            <li><i class="fa fa-plus-circle"></i><a href="/service_create_business.html">Create
+                                    Service</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown hidden" id="menu_admin"><a href="#"
+                            class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Admin Menu
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tasks"></i><a href="/service_list_admin.html">Service List</a></li>
+                            <li><i class="fa fa-archive"></i><a href="/transaction_admin.html">Transaction List</a></li>
+                            <li><i class="fa fa-users"></i><a href="/account_list_admin.html">Account List</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,7 +114,7 @@
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-    
+
                         <!-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,18 +137,19 @@
                                 </a>
                             </div>
                         </div> -->
-    
+
                     </div>
-    
+
                     <div class="user-area dropdown float-right">
                         <a class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
-    
+
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit Profile</a>
-                            
+                            <a class="nav-link" href="/edit_profile_user.html"><i class="fa fa-user"></i>Edit
+                                Profile</a>
+
                             <a class="nav-link" href="/login.html"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
@@ -226,7 +231,7 @@
                                                 <option value="Clothes">Clothes</option>
                                                 <option value="Movie">Movie</option>
                                                 <option value="Restaurant">Restaurant</option>
-                                                <option value="Electronics">Electronics</option>                                                
+                                                <option value="Electronics">Electronics</option>
                                             </select>
                                         </div>
                                     </div>
@@ -235,11 +240,11 @@
                                             <label class=" form-control-label">Invest money</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static hidden">+ - 1000</p>
-                                            <p class="form-control-static">This account has not invest money yet <button
-                                                    type="button"
-                                                    class="btn btn-link btn-sm hidden" id = "invest_edit">Edit</button><a href ="invest_create_admin.html"><button
-                                                    type="button" class="btn btn-link btn-sm">Add</button></a></p>
+                                            <p class="form-control-static hidden" id="amount">+ - 1000</p>
+                                            <p class="form-control-static" ><p id="invest_text">This account has not invest money yet</p> <button
+                                                    type="button" class="btn btn-link btn-sm hidden"
+                                                    id="invest_edit">Edit</button><button type="button"
+                                                        class="btn btn-link btn-sm" id="invest_add">Add</button></p>
 
                                         </div>
                                     </div>
@@ -308,28 +313,33 @@
             $('#bootstrap-data-table-export').DataTable();
         });
     </script>
-<script>
-    async function menu() {
-        var uid = localStorage.getItem("accountId")
-        const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
-            method: 'GET'
-        })
-        const jsonAcc = await response.json()
-        console.log(document.querySelector('#menu_admin'));
-        if (jsonAcc.role === "admin") {
-            document.querySelector('#menu_admin').classList.remove('hidden')
-        } else if (jsonAcc.role === "business") {
-            document.querySelector('#menu_business').classList.remove('hidden')
+    <script>
+        async function menu() {
+            var uid = localStorage.getItem("accountId")
+            const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
+                method: 'GET'
+            })
+            const jsonAcc = await response.json()
+            console.log(document.querySelector('#menu_admin'));
+            if (jsonAcc.role === "admin") {
+                document.querySelector('#menu_admin').classList.remove('hidden')
+            } else if (jsonAcc.role === "business") {
+                document.querySelector('#menu_business').classList.remove('hidden')
+            }
         }
-    }
-    menu()
-</script>
+        menu()
+    </script>   
     <script>
         //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
             let uid = new URL(window.location.href).searchParams.get('id')
-            document.querySelector('#invest_edit').addEventListener('Click' , () => {
-                window.location.href = '/invest_edit_admin.html?accountId=' + uid;
+            document.querySelector('#invest_edit').addEventListener('click', () => {
+                console.log("!23");
+                window.location.href = '/invest_edit_admin.html?id=' + uid;
+            })            
+            document.querySelector('#invest_add').addEventListener('click', () => {
+                console.log("!23");
+                window.location.href = '/invest_create_admin.html?id=' + uid;
             })
             const response = await fetch('http://localhost:8000/account/getAccountById/?accountId=' + uid, {
                 method: 'GET'
@@ -340,7 +350,7 @@
             document.querySelector('.un').innerHTML = json.userName
             document.getElementById("text-input name").value = json.name
             document.getElementById('text-input bio').value = json.bio
-            
+
             document.getElementById('date').value = json.dateOfBirth
 
             if (json.role === 'business') {
@@ -372,7 +382,7 @@
                                 location: document.getElementById('location').value
                             })
                         }).then(r => {
-                            r.json()    
+                            r.json()
                         })
                         .then(res => {
 
@@ -393,15 +403,48 @@
                                 dateOfBirth: document.getElementById('dob').value,
                                 avatar: json.avatar
                             })
-                        }).then(r => {r.json()})
+                        }).then(r => {
+                            r.json()
+                        })
                         .then(res => {
                             window.location.href = "/account_list_admin.html";
                         })
                 })
             }
+            const response123 = await fetch('http://localhost:8000/save/getSave/?accountId=' + uid, {
+                method: 'GET'
+            })
+            const jsonSave = await response123.json().then(res =>{
+                var amount = document.querySelector("#amount")
+                amount.innerHTML = res.amount
+                amount.classList.remove("hidden")
+                document.querySelector("#invest_edit").classList.remove("hidden")
+                document.querySelector("#invest_add").classList.add("hidden")
+                document.querySelector("#invest_text").classList.add("hidden")
+            }).catch(err => {
+
+            })
+            console.log(json.name);
+            const response1234 = await fetch('http://localhost:8000/loan/getLoan/?accountId=' + uid, {
+                method: 'GET'
+            })
+            const jsonLoan = await response1234.json().then(res =>{
+                var amount = document.querySelector("#amount")
+                amount.innerHTML =  "- " + res.amount
+                amount.classList.remove("hidden")
+                document.querySelector("#invest_edit").classList.remove("hidden")
+                document.querySelector("#invest_add").classList.add("hidden")
+                document.querySelector("#invest_text").classList.add("hidden")
+            }).catch(err => {
+
+            })
+            console.log(json.name);
+
         }
         loadJson()
     </script>
+
+    
 </body>
 
 </html>

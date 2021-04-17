@@ -56,6 +56,8 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -305,8 +307,6 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
-
-
     </script>
 
 
@@ -329,7 +329,8 @@
                     investType = field.type[i].value
             }
             console.log(investType);
-            await fetch(`${BASE_API}/${investType}/add${investType[0].toUpperCase() + investType.slice(1)}`, {
+            await fetch(
+            `${BASE_API}/${investType}/add${investType[0].toUpperCase() + investType.slice(1)}`, {
                 method: 'POST',
                 body: JSON.stringify({
                     account: {
@@ -337,7 +338,7 @@
                     },
                     amount: field.principle.value,
                     rate: field.rate.value,
-                    term: field.term.value
+                    duration: field.term.value
                 })
             }).then(res => {
                 // location.reload()

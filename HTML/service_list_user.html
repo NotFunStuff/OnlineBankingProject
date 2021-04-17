@@ -56,6 +56,8 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -264,15 +266,15 @@
     </script>
     <script>
         //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-        async function loadJson() {           
+        async function loadJson() {
             await fetch(`http://localhost:8000/service/getAllServices`, {
                     method: 'GET'
                 }).then(r => r.json())
-                .then(res => { 
-                    var industry1 = new URL(window.location.href).searchParams.get('industry')                    
+                .then(res => {
+                    var industry1 = new URL(window.location.href).searchParams.get('industry')
                     entry = ""
                     res.forEach(element => {
-                        
+
                         if (element.business.industry === industry1) {
                             entry += `
                                         <tr>
