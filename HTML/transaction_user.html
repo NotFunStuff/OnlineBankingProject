@@ -56,8 +56,8 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
-                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
-                            </li>
+                            <li><i class="fa fa-bars"></i><a
+                                    href="/transaction_user.html">User Transaction List</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -87,6 +87,7 @@
             <!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
+    <!-- /#left-panel -->
 
     <!-- Left Panel -->
 
@@ -164,28 +165,22 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Account list<a href="account_add_admin.html"><button
-                                    class="btn btn-link btn-sm">Add Account</button></a></strong>
+                                <strong class="card-title">Transaction list</strong>
                             </div>
                             <div class="card-body">
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">UserName</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Bio</th>
-                                            <th scope="col">DOB</th>
-                                            <th scope="col">phoneNumber</th>
-                                            <th scope="col">Time Created</th>
-                                            <th scope="col">Balance</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">#</th>
-                                            <th scope="col">#</th>
+                                            <th scope="col">Account Name</th>
+                                            <th scope="col">To Account Name</th>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Amount</th>
+
                                         </tr>
                                     </thead>
                                     <tbody id="services">
-
+                                        <!-- content -->
                                     </tbody>
                                 </table>
                             </div>
@@ -218,37 +213,6 @@
     <!-- Right Panel -->
 
     <!-- Scripts -->
-    <script>
-        //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-        async function loadJson() {
-            await fetch(`http://localhost:8000/account/getAllAccounts`, {
-                    method: 'GET'
-                }).then(r => r.json())
-                .then(res => {
-                    entry = ""
-                    res.forEach(element => {
-                        entry += `
-                            <tr>
-                                <td>${element.accountId}</td>
-                        <td>${element.userName}</td>
-                        <td>${element.name}</td>
-                        <td>${element.bio}</td>
-                        <td>${element.dateOfBirth}</td>
-                        <td>${element.phoneNumber}</td>
-                        <td>${element.timeCreated}</td>
-                        <td>${element.balance}</td>
-                        <td>${element.role}</td>
-                        <td><a href="/edit_profile_admin.html?id=${element.accountId}">Edit</a></td>
-                        <td><a href="javascript:confirmDelete('${String(element.accountId)}')">Delete</a></td>  
-                            </tr>
-                        `
-                    });
-
-                    document.querySelector('#services').innerHTML = entry
-                })
-        }
-        loadJson()
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -272,17 +236,6 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
-
-        async function confirmDelete(uid) {
-            var r = confirm("Are you sure you want to delete?")
-            if (r) {
-                const response = await fetch('http://localhost:8000/account/deleteAccountById/?accountId=' + uid, {
-                    method: 'DELETE'
-                })
-                console.log(uid)
-                window.location.href = '/account_list_admin.html'
-            }
-        }
     </script>
     <script>
         async function menu() {
@@ -300,6 +253,38 @@
         }
         menu()
     </script>
+    <script>
+        //not test yet
+        async function loadJson() {
+
+            var uid = localStorage.getItem("accountId")
+            console.log(uid);
+            await fetch(`http://localhost:8000/transaction/getGiftByAccount/?accountId=` + uid, {
+                    method: 'GET'
+                }).then(r => r.json())
+                .then(res => {
+                    entry = ""
+                    res.forEach(element => {
+
+
+                        entry += `
+                            <tr>
+                                <td>${element.transactionId}</td>
+                                <td>${element.account.userName}</td>
+                                <td>${element.toAccount.userName}</td>
+                                <td>${element.timeCreated}</td>
+                                <td>${element.amount}</td>
+                                                          
+                            </tr>
+                        `
+                    });
+
+                    document.querySelector('#services').innerHTML = entry
+                })
+        }
+        loadJson()
+    </script>
+
 </body>
 
 </html>

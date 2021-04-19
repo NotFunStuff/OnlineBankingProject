@@ -56,6 +56,8 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -241,8 +243,8 @@
             var r = confirm("Are you sure you want to delete?")
             if (r) {
                 const response = await fetch('http://localhost:8000//service/deleteServiceById/?serviceId=' + uid, {
-                method: 'DELETE'
-            })            
+                    method: 'DELETE'
+                })
                 window.location.href = '/service_list_admin.html'
             }
         }
@@ -268,7 +270,7 @@
                                             <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
                                         </tr>`
                     })
-                    document.querySelector('#services').innerHTML = entry   
+                    document.querySelector('#services').innerHTML = entry
                 });
 
 

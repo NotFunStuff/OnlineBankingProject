@@ -56,6 +56,8 @@
                                     href="/service_list_user.html?industry=Clothes">Clothes</a></li>
                             <li><i class="fa fa-lightbulb-o"></i><a
                                     href="/service_list_user.html?industry=Electronics">Electronics</a></li>
+                            <li><i class="fa fa-bars"></i><a href="/transaction_user.html">User Transaction List</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown hidden" id="menu_business"><a href="#"
@@ -162,7 +164,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Create Investment Form</strong>
+                                <strong>View Investment</strong>
                             </div>
                             <div class="card-body card-block">
                                 <form action="/class_edit_{classId}" id="myForm1" method="POST" class="form-horizontal">
@@ -174,11 +176,19 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Principle
+                                        <div class="col col-md-3"><label class="form-control-label">Principle
                                                 Balance</label>
                                         </div>
                                         <div class="col col-md-9">
                                             <p class="form-control-static principle-blnce-field">0</p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class="form-control-label">Maturity
+                                                Balance</label>
+                                        </div>
+                                        <div class="col col-md-9">
+                                            <p class="form-control-static maturity-blnce-field">0</p>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -196,18 +206,26 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label id='term-in-months' for="select"
-                                                class=" form-control-label">Term
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Term
                                                 (months)</label></div>
-                                        <div class="col-12 col-md-9"><input type="number" name="interest"
-                                                placeholder="x" value="x" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input id='term-in-months' type="number"
+                                                name="interest" placeholder="x" value="x" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label class=" form-control-label">Opening
                                                 date</label>
                                         </div>
                                         <div class="col col-md-9">
-                                            <p class="form-control-static invest-type-field">DD-MM-YYYY</p>
+                                            <p class="opening-date-fld form-control-static invest-type-field">DD-MM-YYYY
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class="form-control-label">Profit if withdrawn
+                                                now</label>
+                                        </div>
+                                        <div class="col col-md-9">
+                                            <p class="form-control-static delta-blnce-field">0</p>
                                         </div>
                                     </div>
                                 </form>
@@ -215,10 +233,10 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" id="submitBtn" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                    <i class="fa fa-dot-circle-o"></i> Click to error
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Reset
+                                    <i class="fa fa-ban"></i> Refresh
                                 </button>
                             </div>
                             <div class="card-footer" style="margin-top:30px">
@@ -311,55 +329,72 @@
         const field = {
             usermame: document.querySelector('.usermame-field'),
             principle: document.querySelector('.principle-blnce-field'),
+            maturity: document.querySelector('.maturity-blnce-field'),
             type: document.querySelector('.invest-type-field'),
             rate: document.querySelector('#interest-rate'),
             term: document.querySelector('#term-in-months'),
+            opening: document.querySelector('.opening-date-fld'),
+            delta: document.querySelector('.delta-blnce-field'),
         }
-
-        let res = null
-        res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}`, {
-            method: 'GET'
-        })
-        res = await response.json()
-        console.log(json.username);
-        field.usermame.innerHTML = res.username
-        field.principle.innerHTML = res.ammount
-        field.type.innerHTML = res.type
-        field.opening.innerHTML = res.type
-        field.rate.value = res.rate
-        field.term.value = res.term
-
-
-        document.querySelector('#submitBtn').addEventListener("click", async () => {
-            await fetch(`${BASE_API}/loan/editLoan/?accountId=${uid}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    accountId: uid,
-                    username: field.username,
-                    ammount: field.principle,
-                    rate: field.rate.value,
-                    term: field.term.value,
-                })
-            }).then(res => {
-                location.reload()
-            }).catch(err => {
-                console.log(err);
-            })
-        })
-
 
         const withdrawalFormula = (princpl, rate, opening, term) => {
-            //DRAFT
-            let now = new Date()
-            let n = (now - opening) / term
-                let P = princpl / (1 - Math.pow((1 + rate), -n))
-            return P
+            const now = new Date()
+            const diffTime = Math.abs(now - opening)
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+            const n = diffDays / term
+            const P = princpl / (1 - Math.pow((1 + rate / 100), -n))
+            return [Math.round(P), diffDays]
         }
-        let newBalance = res.balance + withdrawalFormula(field.principle.innerHTML, field.rate.value, field.opening.innerHTML, field.term.value)
+
+        let isLoan = true
+        getres = async () => {
+            res = await fetch(`${BASE_API}/loan/getLoan/?accountId=${uid}`, {
+                method: 'GET'
+            })
+            try {
+                res = await res.json()
+            } catch (error) {
+                isLoan = false
+            }
+            if (!isLoan) {
+                res = await fetch(`${BASE_API}/save/getSave/?accountId=${uid}`, {
+                    method: 'GET'
+                })
+                try {
+                    res = await res.json()
+                } catch (error) {
+                    alert("This account holds no loans or saves")
+                }
+            }
+            console.log(res);
+            const invest = res.account.investType
+            const openingD = new Date(invest.timeCreated)
+            const whenWithdraw = withdrawalFormula(
+                invest.amount, invest.rate, openingD, invest.duration
+            )
+            console.log(`isloan=${isLoan}`)
+            field.usermame.innerHTML = res.account.name
+            field.principle.innerHTML = invest.amount
+            field.rate.value = invest.rate
+            field.term.value = invest.duration
+            field.type.innerHTML = isLoan ? 'Loan' : 'Save'
+            field.opening.innerHTML = openingD
+            field.maturity.innerHTML = whenWithdraw[0]
+            field.delta.innerHTML = (whenWithdraw[0] - invest.amount) * Math.floor(whenWithdraw[1] / 365) * (
+                isLoan ? -1 : 1)
+        }
+        getres()
+
+
+        document.querySelector('.btn-danger.btn-sm').addEventListener("click", () => {
+            getres()
+        })
+
         document.querySelector('#withdrawBtn').addEventListener("click", async () => {
-            await fetch(`${BASE_API}/loan/deleteLoan/?accountId=${uid}`, {
+            await fetch(`${BASE_API}/${isLoan?'loan/deleteLoan':'save/deleteSave'}/?accountId=${uid}`, {
                 method: 'DELETE',
-            }).then(res => {
+            }).then(async (res) => {
+                let newBalance = res.balance + Number(field.delta.innerHTML)
                 await fetch(`${BASE_API}/account/editAccount/?accountId=${uid}`, {
                     method: 'PUT',
                     body: JSON.stringify({

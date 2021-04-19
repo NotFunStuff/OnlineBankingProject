@@ -28,11 +28,13 @@ public class LoanController {
 	}
 	
 	@PostMapping(value = "/loan/addLoan")
+	@CrossOrigin(origins = org)
 	public String addLoan(@RequestBody String loan) {
 		return loanService.addLoan(loan);
 	}
 	
 	@DeleteMapping(value = "/loan/deleteLoan")
+	@CrossOrigin(origins = org)
 	public String deleteLoan(@RequestParam int accountId) {
 		return loanService.deleteLoan(accountId);
 	}
