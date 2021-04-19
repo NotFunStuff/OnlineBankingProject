@@ -12,6 +12,7 @@ import com.se2_project.group8C18.demoEBanking.Helper.ErrorType;
 import com.se2_project.group8C18.demoEBanking.IService.ISaveService;
 import com.se2_project.group8C18.demoEBanking.Model.Account;
 import com.se2_project.group8C18.demoEBanking.Model.InvestType;
+import com.se2_project.group8C18.demoEBanking.Model.Loan;
 import com.se2_project.group8C18.demoEBanking.Model.Save;
 import com.se2_project.group8C18.demoEBanking.Repository.AccountRepository;
 import com.se2_project.group8C18.demoEBanking.Repository.SaveRepository;
@@ -56,7 +57,7 @@ public class SaveService implements ISaveService{
 		
 		if(!accountRepository.existsById(sa.getAccount().getAccountId())) {
 			return errorType.isNotExisted("Account ");
-		}
+		}	
 		
 		if(investService.isEmpty(sa.getAccount().getAccountId()))
 		{
@@ -89,19 +90,26 @@ public class SaveService implements ISaveService{
 	public String editSave(String save) {
 		Gson gson = new GsonBuilder().setDateFormat("dd/MMM/yyyy HH:mm:ss").create();
 		Save sa = gson.fromJson(save, Save.class);
-		if(saveRepository.existsById(sa.getInvestTypeId())) {
-			if(checkValidate.getOk(sa)) {
-				Save saveCurrent = saveRepository.findById(sa.getInvestTypeId()).get();
-				if(sa.getDescription()!=null) saveCurrent.setDescription(sa.getDescription());
-				if(sa.getAmount() >0)  saveCurrent.setAmount(sa.getAmount());
-				if(sa.getDuration()!= saveCurrent.getDuration()) saveCurrent.setDuration(sa.getDuration());
-				if(sa.getRate() != saveCurrent.getRate()) saveCurrent.setRate(sa.getRate());
+		if (isEmpty(sa.getAccount().getAccountId())) {
+			return errorType.isNotExisted("save");
+		} else {
+
+			if (checkValidate.getOk(sa)) {
+				Save saveCurrent = getSave(sa.getAccount().getAccountId());
+				if (sa.getAmount() != saveCurrent.getAmount())
+					saveCurrent.setAmount(sa.getAmount());
+				if (sa.getDescription() != null)
+					saveCurrent.setDescription(sa.getDescription());
+				if (sa.getDuration() != saveCurrent.getDuration())
+					saveCurrent.setDuration(sa.getDuration());
+				if (sa.getRate() != saveCurrent.getRate())
+					saveCurrent.setRate(sa.getRate());
 				saveCurrent.setTimeCreated(LocalDateTime.now());
+				saveRepository.save(saveCurrent);
 				return errorType.getSuccesful();
 			}
-			return errorType.isValidated(sa.getInvestTypeId());
+			return errorType.isValidated("save");
 		}
-		return errorType.isNotExisted(sa.getInvestTypeId());
 	}
 
 	@Override
