@@ -54,7 +54,7 @@ public class SaveService implements ISaveService{
 		Gson gson = new GsonBuilder().setDateFormat("dd/MMM/yyyy HH:mm:ss").create();
 		Save sa = gson.fromJson(save, Save.class);
 		
-		if(accountRepository.existsById(sa.getAccount().getAccountId())) {
+		if(!accountRepository.existsById(sa.getAccount().getAccountId())) {
 			return errorType.isNotExisted("Account ");
 		}
 		
