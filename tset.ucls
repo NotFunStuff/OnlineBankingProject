@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
+  <class id="1" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.PaymentMethodController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/PaymentMethodController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="312" x="283" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.se2_project.group8C18.demoEBanking.Model.InternationalBank" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/InternationalBank.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="250" width="291" x="4155" y="1849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Gift" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Gift.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="142" width="291" x="2500" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Save" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Save.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="250" width="291" x="2665" y="1849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.se2_project.group8C18.demoEBanking.Model.NationalBank" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/NationalBank.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="250" width="291" x="4486" y="1849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.LoanController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/LoanController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="312" x="635" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.InvestTypeController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/InvestTypeController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="312" x="987" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Transaction" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Transaction.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="358" width="291" x="4155" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Normal" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Normal.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="142" width="291" x="3162" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.se2_project.group8C18.demoEBanking.Model.SysAdmin" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/SysAdmin.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="142" width="291" x="3493" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.se2_project.group8C18.demoEBanking.Model.PaymentMethod" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/PaymentMethod.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="358" width="291" x="4486" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Service" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Service.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="412" width="291" x="3824" y="1849"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.SaveController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/SaveController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="312" x="1339" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.ServiceController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/ServiceController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="312" x="1691" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Loan" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Loan.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3379" y="1961"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.BillController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/BillController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="312" x="2043" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.BusinessController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/BusinessController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="312" x="2395" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.GiftController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/GiftController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="312" x="2747" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.TransactionController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/TransactionController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="312" x="3099" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Business" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Business.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="291" x="3824" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Bill" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Bill.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="250" width="291" x="4155" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.se2_project.group8C18.demoEBanking.Model.Account" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/Account.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="898" width="312" x="3493" y="513"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.se2_project.group8C18.demoEBanking.Model.InvestType" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Model/InvestType.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2958" y="2273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.AccountController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/AccountController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="312" x="3451" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.se2_project.group8C18.demoEBanking.Controller.NormalController" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Controller/NormalController.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="312" x="3803" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.se2_project.group8C18.demoEBanking.Service.PaymentMethodService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/PaymentMethodService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="358" width="368" x="1545" y="683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.se2_project.group8C18.demoEBanking.Service.SysAdminService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/SysAdminService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="124" width="298" x="193" y="339"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.se2_project.group8C18.demoEBanking.Service.BillService" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/BillService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="322" width="298" x="1207" y="683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.se2_project.group8C18.demoEBanking.Service.AccountService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/AccountService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1423" y="2128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.se2_project.group8C18.demoEBanking.Service.SaveService" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/SaveService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="268" width="298" x="531" y="683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.se2_project.group8C18.demoEBanking.Service.LoanService" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/LoanService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="268" width="298" x="869" y="683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.se2_project.group8C18.demoEBanking.Service.NormalService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/NormalService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="268" width="298" x="439" y="1081"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.se2_project.group8C18.demoEBanking.Service.ServiceService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/ServiceService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="298" x="531" y="339"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.se2_project.group8C18.demoEBanking.Service.NationalBankService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/NationalBankService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="346" x="1352" y="339"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.se2_project.group8C18.demoEBanking.Service.InternationalService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/InternationalService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="346" x="1738" y="339"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.se2_project.group8C18.demoEBanking.Service.GiftService" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/GiftService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="322" width="298" x="1953" y="683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="com.se2_project.group8C18.demoEBanking.Service.TransactionService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/TransactionService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="340" width="346" x="1178" y="1081"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="com.se2_project.group8C18.demoEBanking.Service.InvestTypeService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/InvestTypeService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="298" x="819" y="1081"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="com.se2_project.group8C18.demoEBanking.Service.BusinessService" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Service/BusinessService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="304" width="298" x="193" y="683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="40" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.SaveRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/SaveRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="1960" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="41" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.AccountRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/AccountRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="2317" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="42" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.LoanRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/LoanRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="2674" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="43" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.InvestTypeRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/InvestTypeRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="3031" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="44" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.BillRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/BillRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="3388" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="45" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.TransactionRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/TransactionRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="3745" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="46" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.NormalRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/NormalRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="4102" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="47" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.SysAdminRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/SysAdminRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="4459" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="48" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.NationalBankRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/NationalBankRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="4816" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="49" language="java" 
+    name="com.se2_project.group8C18.demoEBanking.Repository.InternationalBankRepository" project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/InternationalBankRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="5173" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="50" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.PaymentMethodRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/PaymentMethodRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="5530" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="51" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.ServiceRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/ServiceRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="5887" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="52" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.GiftRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/GiftRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="6244" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="53" language="java" name="com.se2_project.group8C18.demoEBanking.Repository.BusinessRepository" 
+    project="SE2Project" 
+    file="/SE2Project/src/main/java/com/se2_project/group8C18/demoEBanking/Repository/BusinessRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="317" x="6601" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="54">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="55" name="accountService"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="58" name="paymentMethodRepository"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="61" name="saveRepository"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="64" name="serviceService"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="66">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="67" name="serviceRepository"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="69">    
+    <bendpoint x="4164" y="513"/>    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="71">    
+    <bendpoint x="1596" y="1081"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="72" name="accountService"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="75" name="sysAdminRepository"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="78" name="account"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="81" name="accountRepository"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="84" name="billService"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="86">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="87" name="paymentMethodService"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="89">    
+    <bendpoint x="1554" y="1081"/>    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="90" name="accountService"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="93" name="businessRepository"/>      
+      <multiplicity id="94" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="96" name="transactionRepository"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="99" name="loanService"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="102" name="serviceRepository"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="105" name="transactionRepository"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="108" name="account"/>      
+      <multiplicity id="109" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="111" name="paymentMethodRepository"/>      
+      <multiplicity id="112" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="113">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <association id="114">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="115" name="businessRepository"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="118" name="nationalBankRepository"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="121" name="serviceRepository"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="124" name="services"/>      
+      <multiplicity id="125" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="127" name="serviceService"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="130" name="account"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="132">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="133">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="134" name="investService"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="137" name="toAccount"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="140" name="accountRepository"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <bendpoint x="788" y="1081"/>    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="143" name="businessService"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <bendpoint x="4319" y="513"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="146" name="paymentMethod"/>      
+      <multiplicity id="147" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="148">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="149" name="giftService"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="152" name="giftRepository"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="155" name="bills"/>      
+      <multiplicity id="156" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="158" name="giftRepository"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="160">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="161">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="162" name="transactions"/>      
+      <multiplicity id="163" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="164">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="165" name="billRepository"/>      
+      <multiplicity id="166" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="167">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="168" name="investTypeRepository"/>      
+      <multiplicity id="169" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="170">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="171" name="paymentMethodService"/>      
+      <multiplicity id="172" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="173">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="174" name="transactionService"/>      
+      <multiplicity id="175" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="176">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="177" name="businessRepository"/>      
+      <multiplicity id="178" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="179">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="180" name="internationalBankRepository"/>      
+      <multiplicity id="181" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="183" name="accountRepository"/>      
+      <multiplicity id="184" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="185">    
+    <bendpoint x="4340" y="513"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="186" name="transaction"/>      
+      <multiplicity id="187" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="188">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="189" name="paymentMethodRepository"/>      
+      <multiplicity id="190" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="191">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="192" name="accountService"/>      
+      <multiplicity id="193" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="194">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="195" name="accountRepository"/>      
+      <multiplicity id="196" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="197">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="198" name="investTypeService"/>      
+      <multiplicity id="199" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="200">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="201" name="serviceRepository"/>      
+      <multiplicity id="202" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="203">    
+    <bendpoint x="767" y="1081"/>    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="204" name="accountService"/>      
+      <multiplicity id="205" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="206">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="207" name="toGifts"/>      
+      <multiplicity id="208" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="209">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="210" name="billRepository"/>      
+      <multiplicity id="211" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="212">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <association id="213">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="214" name="normalRepository"/>      
+      <multiplicity id="215" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="216">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="217" name="paymentMethodRepository"/>      
+      <multiplicity id="218" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="219">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="220" name="billRepository"/>      
+      <multiplicity id="221" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="222">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="23"/>  
+  </generalization>  
+  <association id="223">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="224" name="investTypeService"/>      
+      <multiplicity id="225" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="226">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="227" name="paymentMethods"/>      
+      <multiplicity id="228" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="229">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="230" name="sysAdminRepository"/>      
+      <multiplicity id="231" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="232">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="233" name="transactionRepository"/>      
+      <multiplicity id="234" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="235">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="236" name="transactionService"/>      
+      <multiplicity id="237" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="238">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="239" name="business"/>      
+      <multiplicity id="240" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="241">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="242" name="normalRepository"/>      
+      <multiplicity id="243" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="244">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="245" name="investType"/>      
+      <multiplicity id="246" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="247">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="248" name="accountService"/>      
+      <multiplicity id="249" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="250">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="251" name="transactionService"/>      
+      <multiplicity id="252" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="253">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="254" name="transactionRepository"/>      
+      <multiplicity id="255" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="256">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="257" name="service"/>      
+      <multiplicity id="258" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="259">    
+    <bendpoint x="1575" y="1081"/>    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="260" name="paymentMethodService"/>      
+      <multiplicity id="261" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="262">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="263" name="transactionService"/>      
+      <multiplicity id="264" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="265">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="266" name="saveService"/>      
+      <multiplicity id="267" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="268">    
+    <bendpoint x="1147" y="1081"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="269" name="accountService"/>      
+      <multiplicity id="270" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="271">    
+    <bendpoint x="3336" y="513"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="272">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="273" name="billService"/>      
+      <multiplicity id="274" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="275">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="276" name="investService"/>      
+      <multiplicity id="277" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="278">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="279" name="paymentMethodService"/>      
+      <multiplicity id="280" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="281">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="282" name="transactionRepository"/>      
+      <multiplicity id="283" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="284">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="285" name="businessService"/>      
+      <multiplicity id="286" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="287">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="288" name="giftRepository"/>      
+      <multiplicity id="289" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <generalization id="290">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <association id="291">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="292" name="businessService"/>      
+      <multiplicity id="293" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="294">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="295" name="normalService"/>      
+      <multiplicity id="296" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="297">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="298" name="internationalRepository"/>      
+      <multiplicity id="299" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="300">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="301" name="accountRepository"/>      
+      <multiplicity id="302" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="303">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="304" name="accountRepository"/>      
+      <multiplicity id="305" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="306">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="307" name="paymentMethodRepository"/>      
+      <multiplicity id="308" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="309">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="310" name="accountRepository"/>      
+      <multiplicity id="311" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="312">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="313" name="transactionService"/>      
+      <multiplicity id="314" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="315">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="316" name="accountRepository"/>      
+      <multiplicity id="317" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="318">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="319" name="accountRepository"/>      
+      <multiplicity id="320" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="321">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="322" name="loanRepository"/>      
+      <multiplicity id="323" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="324">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="325" name="nationalBankRepository"/>      
+      <multiplicity id="326" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="true"/>
+</class-diagram>

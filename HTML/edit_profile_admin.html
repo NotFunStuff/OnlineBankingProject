@@ -235,17 +235,29 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group" id="invest_none">
                                         <div class="col col-md-3">
                                             <label class=" form-control-label">Invest money</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <p class="form-control-static hidden" id="amount">+ - 1000</p>
-                                            <p class="form-control-static" ><p id="invest_text">This account has not invest money yet</p> <button
-                                                    type="button" class="btn btn-link btn-sm hidden"
-                                                    id="invest_edit">Edit</button><button type="button"
-                                                        class="btn btn-link btn-sm" id="invest_add">Add</button></p>
+                                            <p class="form-control-static">
+                                                This account has not invest money yet<button type="button"
+                                                    class="btn btn-link btn-sm" id="invest_add">Add</button>
+                                            </p>
 
+                                        </div>
+                                    </div>
+                                    <div class="row form-group " id="investx_had">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Invest money</label>
+                                        </div>
+                                        <div class="col-12 col-md-9 d-flex">
+                                            <div class="form-control-static" id="amount">+ - 1000
+                                            </div>
+                                            <div class="form-control-static">
+                                                <button type="button" class="btn btn-link btn-sm"
+                                                    id="invest_edit">Edit</button>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -328,7 +340,7 @@
             }
         }
         menu()
-    </script>   
+    </script>
     <script>
         //DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         async function loadJson() {
@@ -336,7 +348,7 @@
             document.querySelector('#invest_edit').addEventListener('click', () => {
                 console.log("!23");
                 window.location.href = '/invest_edit_admin.html?id=' + uid;
-            })            
+            })
             document.querySelector('#invest_add').addEventListener('click', () => {
                 console.log("!23");
                 window.location.href = '/invest_create_admin.html?id=' + uid;
@@ -414,13 +426,11 @@
             const response123 = await fetch('http://localhost:8000/save/getSave/?accountId=' + uid, {
                 method: 'GET'
             })
-            const jsonSave = await response123.json().then(res =>{
+            const jsonSave = await response123.json().then(res => {
                 var amount = document.querySelector("#amount")
                 amount.innerHTML = res.amount
-                amount.classList.remove("hidden")
-                document.querySelector("#invest_edit").classList.remove("hidden")
-                document.querySelector("#invest_add").classList.add("hidden")
-                document.querySelector("#invest_text").classList.add("hidden")
+                document.querySelector("#invest_had").classList.remove("hidden")
+                document.querySelector("#invest_none").classList.add("hidden")
             }).catch(err => {
 
             })
@@ -428,13 +438,12 @@
             const response1234 = await fetch('http://localhost:8000/loan/getLoan/?accountId=' + uid, {
                 method: 'GET'
             })
-            const jsonLoan = await response1234.json().then(res =>{
+            const jsonLoan = await response1234.json().then(res => {
                 var amount = document.querySelector("#amount")
-                amount.innerHTML =  "- " + res.amount
+                amount.innerHTML = "- " + res.amount
                 amount.classList.remove("hidden")
-                document.querySelector("#invest_edit").classList.remove("hidden")
-                document.querySelector("#invest_add").classList.add("hidden")
-                document.querySelector("#invest_text").classList.add("hidden")
+                document.querySelector("#invest_had").classList.remove("hidden")
+                document.querySelector("#invest_none").classList.add("hidden")
             }).catch(err => {
 
             })
@@ -444,7 +453,7 @@
         loadJson()
     </script>
 
-    
+
 </body>
 
 </html>
