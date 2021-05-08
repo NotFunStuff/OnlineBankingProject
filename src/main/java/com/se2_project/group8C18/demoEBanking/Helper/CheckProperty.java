@@ -30,7 +30,7 @@ public class CheckProperty {
 	    }
 
 	    if (type.getSuperclass() != null) {
-	        fields =  (fields, type.getSuperclass());
+//	        fields =  (fields, type.getSuperclass());
 	    }
 
 	    return fields;
