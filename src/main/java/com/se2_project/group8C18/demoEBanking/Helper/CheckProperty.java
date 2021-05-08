@@ -30,7 +30,7 @@ public class CheckProperty {
 	    }
 
 	    if (type.getSuperclass() != null) {
-	        fields = getAllFieldsRecursive(fields, type.getSuperclass());
+	        fields =  (fields, type.getSuperclass());
 	    }
 
 	    return fields;
