@@ -232,18 +232,14 @@
 
                             </div>
                             <div class="card-footer">
-                                <button type="submit" id="submitBtn" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Click to error
+                                <button type="submit" id="withdrawBtn" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>
                                 <button type="reset" class="btn btn-danger btn-sm">
                                     <i class="fa fa-ban"></i> Refresh
                                 </button>
                             </div>
-                            <div class="card-footer" style="margin-top:30px">
-                                <button type="submit" id="withdrawBtn" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> RÚT TIỀN
-                                </button>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -311,16 +307,7 @@
             $('#bootstrap-data-table-export').DataTable();
         });
 
-        var btn = document.getElementById("submitBtn");
-
-        btn.addEventListener("click", function () {
-            var form = document.getElementById("myForm1");
-            console.log(form)
-            if (form.reportValidity()) {
-                console.log(form)
-                form.submit();
-            }
-        })
+        
     </script>
 
     <script async>
@@ -403,7 +390,7 @@
                         balance: newBalance,
                     })
                 }).then(res => {
-                    location.reload()
+                    window.location.href = '/account_list_admin.html'
                 })
             }).catch(err => {
                 console.log(err);
