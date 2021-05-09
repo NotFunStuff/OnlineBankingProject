@@ -282,9 +282,9 @@
                                             <td>${element.description}</td>
                                             <td>${element.business.businessName}</td>
                                             <td>${element.business.industry}</td>
-                                            <td>${element.priceTag}</td>                                            
-                                            <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>
-                                            <td><a href="/service_edit_business.html?id=${element.serviceId}">Delete</a></td>
+                                            <td>${element.priceTag}</td> 
+                                            <td><a href="/service_edit_business.html?id=${element.serviceId}">Edit</a></td>                                           
+                                            <td><a href="javascript:confirmDelete('${String(element.serviceId)}')">Delete</a></td>                                            
                                         </tr>`
                     })
                     document.querySelector('#services').innerHTML = entry

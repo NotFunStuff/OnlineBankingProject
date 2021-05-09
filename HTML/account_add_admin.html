@@ -359,14 +359,15 @@
                         .then(res => {
                             window.location.href = '/account_list_admin.html'
                         })
-                } else if (accountRole === "business") {
-                    await fetch(`http://localhost:8000/account/addBusiness`, {
+                } else if (accountRole === "Business") {
+                    await fetch(`http://localhost:8000/account/addAccount`, {
                             method: 'POST',
                             body: JSON.stringify({
                                 userName: document.getElementById('userName').value,
                                 name: document.getElementById('name').value,
                                 password: document.getElementById('password').value,
                                 phoneNumber: document.getElementById('phoneNumber').value,
+                                bio: document.getElementById('bio').value,
                                 dateOfBirth: document.getElementById('date').value,
                                 role: "business",
                                 balance: document.getElementById('balance').value,
